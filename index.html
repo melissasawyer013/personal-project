@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <script src="https://kit.fontawesome.com/0bf73eb96e.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700;900&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans+SC:wght@100;300;400;500;700;900&family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/CSS" href="./styles/styles.css">
+    <title>Dorchester Community Care Network</title>
+</head>
+<body>
+    <div class="whole-page-container">
+        <!-- Whole Navigation Bar Begins -->
+        <nav class="navbar"> 
+            <!-- Top Navigation Bar Begins -->
+            <div class="navbar-top">
+                <div class="navbar-home-icon-container">
+<!-- Is my home icon below accessible? And do I have to add anything else to my links below to make them accessible? Title Attributes? -->
+                    <a href="./index.html">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                    </a>
+                </div>
+                <div class="navbar-logo-container">
+                    <a href="./index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+                </div>
+                <div class="navbar-top-list">
+                    <div class="navbar-top-links-donate">
+                        <a href="./pages/donate.html">Donate</a>
+                    </div>
+                    <div class="navbar-top-links">
+                        <a href="./pages/login.html">Login</a>
+                    </div>
+                    <div class="navbar-top-links">
+                        <a href="./pages/help.html">Help</a>
+                    </div>
+                    <div class="navbar-top-links">
+                        <a href="#">Translate</a>
+                    </div>
+                </div>
+            </div> <!-- End Top Navigation Bar -->   
+            <!-- Bottom Navigation Bar Begins-->
+            <div class="navbar-bottom-list"> 
+                <ul class="navbar-bottom-list-links">
+                    <li><a href="#formTarget">Complete<br>Form</a></li>
+                    <li><a href="./pages/update-form.html">Update<br>Form</a></li>
+                    <li><a href="./pages/needs-and-offerings.html">Needs and <br> Offerings</a></li>
+                    <li><a href="./pages/community-resources.html">Community<br>Resources</a></li>
+                    <li><a href="./pages/block-coordinator.html">Become a Block<br>Coordinator</a></li>
+                    <li><a href="./pages/about-us.html">About Us</a></li>
+                </ul>
+            </div> <!-- End Bottom Navigation Bar -->
+        </nav> <!-- End Whole Navigation Bar -->
+        <div class="homepage-content-container">
+            <div class="home-page-info-container">
+                <p>
+                    The Dorchester Community Care Network is working to make sure you and your neighbors have everything you need during the COVID-19 pandemic and beyond. In these fast-moving and uncertain times, it’s important that we show up for each other and remember that we are not alone. We love our neighborhood and the people in it, and that is why we are committed to taking care of every member. 
+                </p>
+                <p>
+                    The form below started as a Google Form used to collect information about the specific needs and offerings of individuals and households in the Dorchester Community. We have moved to this web form and this website to better handle the data and track ongoing needs and offerings. 
+                </p>
+                <p>
+                    You can complete the form below without signing up with a username and password, but you must have a login to edit the information on the form after submission. We suggest signing up and logging in before completing the form. 
+                </p>
+            </div>
+            <!-- Form Starts Here -->
+            <div class="home-page-form">
+                <form id="formTarget" action="">
+                    <h1 class="form-header">COMPLETE THE FORM BELOW</h1>
+                    <p>Explanation of form. You will be able to choose which information to display publicly.</p>
+                    <hr>
+                    <!-- Name Section Starts Here -->
+                    <h2  class="form-section-header">NAME</h2>
+                    <div class="input-containers">
+                        <label for="firstName" class="form-labels">First Name </label>
+                        <input type="text" placeholder="first name" id="firstName" class="text-inputs">
+                    </div>
+                    <div class="input-containers">
+                        <label for="lastName" class="form-labels">Last Name </label>
+                        <input type="text" placeholder="last name" id="lastName" class="text-inputs">
+                    </div>
+                    <p class="form-labels">What information can we share publicly?<br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="fullNamePublic" name="Public-Display-Name" value="full name">
+                        <label for="fullNamePublic" class="form-labels-checkboxes">full name</label>
+                    </div>
+
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="firstNameOnlyPublic" name="Public-Display-Name" value="first name only">
+                        <label for="firstNameOnlyPublic" class="form-labels-checkboxes">first name only</label>
+                    </div>
+
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="lastNameOnlyPublic" name="Public-Display-Name" value="last name only">
+                        
+                        <label for="lastNameOnlyPublic" class="form-labels-checkboxes">last name only</label>
+                    </div>
+
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="pseudonymPublic" name="Public-Display-Name" value="pseudonym">
+                        <label for="pseudonymPublic" class="form-labels-checkboxes">pseudonym (generate a fake name)</label>
+                    </div>
+                    <br>
+                    <hr>
+                    <!-- Contact Information Section Starts Here -->
+                    <h2 class="form-section-header">CONTACT INFORMATION</h2>
+                    <div class="input-containers">
+                        <label for="phoneNumber" class="form-labels">Phone Number</label>
+                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789" id="phoneNumber" class="text-inputs">
+                    </div>
+
+                    <div class="input-containers">
+                        <label for="emailAddress" class="form-labels">Email Address</label>
+                        <input type="email" placeholder="YourEmail@email.com" id="emailAddress" class="text-inputs">
+                    </div>
+
+                    <p class="form-labels"> What information can we share publicly?<br><span class="form-labels-subtext">(check all that apply)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="phoneNumberPublic">
+                        <label for="phoneNumberPublic" class="form-labels-checkboxes">phone number</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="emailPublic">
+                        <label for="emailPublic" class="form-labels-checkboxes">email address</label>
+                    </div>
+                    <br>
+                    <hr>
+                    <!-- Address Information Section Starts Here-->
+                    <h2 class="form-section-header">LOCATION</h2>
+                    <div class="input-containers">
+                        <label for="addressHouseNumber" class="form-labels">House Number</label>
+                        <input type="text" placeholder="12345" id="addressHouseNumber" class="address-number-inputs">
+                    </div>
+                    <div class="input-containers">
+                        <label for="addressStreetName" class="form-labels">Street Name</label>
+                        <input type="text" placeholder="Dorchester Avenue" id="addressStreetName" class="text-inputs">
+                    </div>
+                    <div class="input-containers">
+                        <label for="addressApartmentNumber" class="form-labels">Apartment/Unit Number <span class="form-labels-subtext">(optional)</span></label>
+                        <input type="text" placeholder="Unit 3" id="addressApartmentNumber" class="address-number-inputs">
+                    </div>
+                    <p class="form-labels"> What sub-neighborhood of Dorchester do you live in? <br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodJfkSouthieSavin" name="Neighborhood">
+                        <label for="neighborhoodJfkSouthieSavin" class="form-labels-checkboxes">JFK/Southie/Savin</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodGroveHall" name="Neighborhood">
+                        <label for="neighborhoodGroveHall" class="form-labels-checkboxes">Grove Hall</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodUphams" name="Neighborhood">
+                        <label for="neighborhoodUphams" class="form-labels-checkboxes">Uphams</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodBowdoinGeneva" name="Neighborhood">
+                        <label for="neighborhoodBowdoinGeneva" class="form-labels-checkboxes">Bowdoin/Geneva</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodFieldsCorner" name="Neighborhood">
+                        <label for="neighborhoodFieldsCorner" class="form-labels-checkboxes">Fields Corner</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodStMarksNeponset" name="Neighborhood">
+                        <label for="neighborhoodStMarksNeponset" class="form-labels-checkboxes">St. Marks/Neponset</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodCodman" name="Neighborhood">
+                        <label for="neighborhoodCodman" class="form-labels-checkboxes">Codman</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodAshmont" name="Neighborhood">
+                        <label for="neighborhoodAshmont" class="form-labels-checkboxes">Ashmont</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodBlueHill" name="Neighborhood">
+                        <label for="neighborhoodBlueHill" class="form-labels-checkboxes">Blue Hill</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodLowerMills" name="Neighborhood">
+                        <label for="neighborhoodLowerMills" class="form-labels-checkboxes">Lower Mills</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodMattapan" name="Neighborhood">
+                        <label for="neighborhoodMattapan" class="form-labels-checkboxes">Mattapan</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodUnknown" name="Neighborhood">
+                        <label for="neighborhoodUnknown" class="form-labels-checkboxes">Don't know</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodNotDot" name="Neighborhood">
+                        <label for="neighborhoodNotDot" class="form-labels-checkboxes">Don't live in Dorchester or Mattapan</label>
+                    </div>
+                    <p class="form-labels">What information can we share publicly?<br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="fullAddressPublic" name="Address-Display-Public">
+                        <label for="fullAddressPublic" class="form-labels-checkboxes">full address + neighborhood</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="streetNameOnlyPublic" name="Address-Display-Public">
+                        <label for="streetNameOnlyPublic" class="form-labels-checkboxes">street name only + neighborhood</label>
+                    </div>
+                    
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="neighborhoodOnlyPublic" name="Address-Display-Public">
+                        <label for="neighborhoodOnlyPublic" class="form-labels-checkboxes">neighborhood only</label>
+                    </div>
+                    <br>
+                    <hr>
+                    <!-- Offerings Section Starts Here-->
+                    <h2 class="form-section-header">OFFERINGS</h2>
+                    <p class="form-labels"> What can you offer or share with your neighbors?<br><span class="form-labels-subtext">This information will be viewable on the Needs and Offerings page. (check all that apply)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerChildcare">
+                        <label for="offerChildcare" class="form-labels-checkboxes">childcare</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerCooking">
+                        <label for="offerCooking" class="form-labels-checkboxes">cooking for someone</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerFoodAndSupplies">
+                        <label for="offerFoodAndSupplies" class="form-labels-checkboxes">food & supplies</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerRidesCar">
+                        <label for="offerRidesCar" class="form-labels-checkboxes">give rides or access to a car</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerPetcare">
+                        <label for="offerPetCare" class="form-labels-checkboxes">petcare/dog-walking</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerInternetSubscriptions">
+                        <label for="offerInternetSubscriptions" class="form-labels-checkboxes">internet subscriptions (share your Netflix, Hulu, Prime, HBO, etc.)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerMedicalSupport">
+                        <label for="offerMedicalSupport" class="form-labels-checkboxes">medical support (pick up prescriptions, help with hotlines, etc.)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerMedicalAdvice">
+                        <label for="offerMedicalAdvice" class="form-labels-checkboxes">medical advice (if you are a medical professional only, please)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerStorage">
+                        <label for="offerStorage" class="form-labels-checkboxes">storage space</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerArt">
+                        <label for="offerArt" class="form-labels-checkboxes">art, music, writing</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerMentalHealth">
+                        <label for="offerMentalHealth" class="form-labels-checkboxes">mental health counseling</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerCompanionship">
+                        <label for="offerCompanionship" class="form-labels-checkboxes">conversation/companionship</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerLegal">
+                        <label for="offerLegal" class="form-labels-checkboxes">legal representation/advocacy (labor, housing, criminal, immigration)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerInterpretation">
+                        <label for="offerInterpretation" class="form-labels-checkboxes">interpretation/translation</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerSocialServices">
+                        <label for="offerSocialServices" class="form-labels-checkboxes">social service guidance (filing for medicare, unemployment, etc.)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerHealing">
+                        <label for="offerHealing" class="form-labels-checkboxes">healing, ritual, herbal medicine</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerHousingShort">
+                        <label for="offerHousingShort" class="form-labels-checkboxes">housing (short term)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerHousingLong">
+                        <label for="offerHousingLong" class="form-labels-checkboxes">housing (long term)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="offerOther">
+        <!-- What is a better way to create a text input to specify other?-->
+                        <label for="offerOther" class="form-labels-checkboxes">other:</label>
+                        <input type="text" class="text-inputs-for-other" id="offerOther" placeholder="please specify">
+                    </div>
+                    <br>
+                    <div class="input-containers">
+                        <label for="explainOfferings" class="form-labels">If you checked any of the boxes above, please elaborate on what you are offering so people can directly reach out to you.<br><span class="form-labels-subtext">Example: what kind of food and supplies you have to share, will you be donating goods, will you need reimbursement, details on housing (how many people, how long, what kind of living situation, etc.)</span></label>
+                        <textarea class="text-inputs" id="explainOfferings" placeholder="Explain here"></textarea>
+                    </div>
+                    <br>
+                    <p class="form-labels">Could you contribute money to individuals or to a collective pot?<br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="yesGiveMoney" name="GiveMoney">
+                        <label for="yesGiveMoney" class="form-labels-checkboxes">Yes</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="noGiveMoney" name="GiveMoney">
+                        <label for="noGiveMoney" class="form-labels-checkboxes">No</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="notNowGiveMoney" name="GiveMoney">
+                        <label for="notNowGiveMoney" class="form-labels-checkboxes">Not right now, bu that could change.</label>
+                    </div>
+                    <br>
+                    <hr>
+                    <!-- Needs Section Starts Here-->
+                    <h2 class="form-section-header">NEEDS</h2>
+                    <p class="form-labels"> Please check off what you are looking for or what you need. <br><span class="form-labels-subtext">This information will be viewable on the Needs and Offerings page. (check all that apply)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needChildcare">
+                        <label for="needChildcare" class="form-labels-checkboxes">childcare</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needCooking">
+                        <label for="needCooking" class="form-labels-checkboxes">cooked food</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needFoodAndSupplies">
+                        <label for="needFoodAndSupplies" class="form-labels-checkboxes">food & supplies</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needRidesCar">
+                        <label for="needRidesCar" class="form-labels-checkboxes">rides or access to a car</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needPetcare">
+                        <label for="needPetCare" class="form-labels-checkboxes">petcare/dog-walking</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needInternetSubscriptions">
+                        <label for="needInternetSubscriptions" class="form-labels-checkboxes">internet subscriptions (Netflix, Hulu, Prime, HBO, etc.)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needMedicalSupport">
+                        <label for="needMedicalSupport" class="form-labels-checkboxes">medical support (pick up prescriptions, help with hotlines to call, etc.)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needMedicalAdvice">
+                        <label for="needMedicalAdvice" class="form-labels-checkboxes">medical advice</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needStorage">
+                        <label for="needStorage" class="form-labels-checkboxes">storage space</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox" id="needArt">
+                        <label for="needArt" class="form-labels-checkboxes">art, music, writing</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needMentalHealth">
+                        <label for="needMentalHealth" class="form-labels-checkboxes">mental health counseling</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needCompanionship">
+                        <label for="needCompanionship" class="form-labels-checkboxes">conversation/companionship</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needLegal">
+                        <label for="needLegal" class="form-labels-checkboxes">legal representation/advocacy (labor, housing, criminal, immigration)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needInterpretation">
+                        <label for="needInterpretation" class="form-labels-checkboxes">interpretation/translation</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needSocialServices">
+                        <label for="needSocialServices" class="form-labels-checkboxes">social service guidance (filing for medicare, unemployment, etc.)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needHealing">
+                        <label for="needHealing" class="form-labels-checkboxes">healing, ritual, herbal medicine</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needHousingShort">
+                        <label for="needHousingShort" class="form-labels-checkboxes">housing (short term)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needHousingLong">
+                        <label for="needHousingLong" class="form-labels-checkboxes">housing (long term)</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="checkbox"   id="needOther">
+        <!-- What is a better way to create a text input to specify other?-->
+                        <label for="needOther" class="form-labels-checkboxes">other:</label>
+                        <input type="text"  class="text-inputs-for-other" id="needOther" placeholder="please specify">
+                    </div>
+                    <br>
+                    <div class="input-containers">
+                        <label for="explainNeeds" class="form-labels">If you checked any of the boxes above, please elaborate on what you are looking for so people can directly reach out to you.<br><span class="form-labels-subtext">Example: what kind of food and supplies you need and/or what kind of long or short-term housing you are looking for (how many people, how long, what kind of living situation, etc.)</span> </label>
+                        <textarea class="text-inputs" id="explainNeeds" placeholder="Explain here"></textarea>
+                    </div>
+                    <br>
+                    <div class="input-containers">
+                        <label for="explainFinancialNeeds" class="form-labels">If you have a financial need, we would like to know how much is needed (exact # or range), how often the need comes up (one-time or re-occuring), and best methods of receiving the money (Venmo, CashApp, Paypal, cash only).</label>
+                        <textarea class="text-inputs" id="explainFinancialNeeds" placeholder="Explain here"></textarea>
+                    </div>
+                    <br>
+                    <p class="form-labels">Would you like to keep your financial need private and accessible only to block coordinators or is it okay to include this information on the Needs and Offerings page?<br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="yesFinancialNeedPublic" name="Financial-Need-Public">
+                        <label for="yesFinancialNeedPublic" class="form-labels-checkboxes">Yes, it is okay to display my financial need on the Needs and Offerings page.</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="noFinancialNeedPublic" name="Financial-Need-Public">
+                        <label for="noFinancialNeedPublic" class="form-labels-checkboxes">No, please do not display my financial need.</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="noAskFinancialNeedPublic" name="Financial-Need-Public">
+                        <label for="noAskFinancialNeedPublic" class="form-labels-checkboxes">I do not have a financial need.</label>
+                    </div>
+                    <br>
+                    <hr>
+                    <!-- Other Questions Section Starts Here-->
+                    <h2 class="form-section-header">Other Questions</h2>
+                    <div class="input-containers">
+                        <label for="explainNeighborConnections" class="form-labels">Have you and your neighbors been connected? Tell us a little bit about what your neighborhood coordination has looked like before COVID pandemic and during it. We would like to figure out how best to connect with you and support you!</label>
+                        <textarea class="text-inputs" id="explainNeighborConnections" placeholder="Explain here"></textarea>
+                    </div>
+                    <br>
+                    <p class="form-labels">Are you interested in becoming a block coordinator? <br>This means you’d take on the responsibility of reaching out to your neighbors, coordinating a neighborhood group chat or phone tree, and staying in touch with the other coordinators for resource sharing. <br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="yesBlockCoord" name="BlockCoord">
+                        <label for="yesBlockCoord" class="form-labels-checkboxes">Yes, let's chat!</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="noBlockCoord" name="BlockCoord">
+                        <label for="noBlockCoord" class="form-labels-checkboxes">No</label> 
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="maybeBlockCoord" name="BlockCoord">
+                        <label for="maybeBlockCoord" class="form-labels-checkboxes">Maybe. I need more information.</label>
+                    </div>
+                    <br>
+                    <p class="form-labels">Do you want to help build and continue this emergine network outside of the roles of a block coordinator? Do you want to understand how this network works and where you can fit it?<br><span class="form-labels-subtext">(choose one)</span></p>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="yesNetwork" name="EmergingNetwork">
+                        <label for="yesNetwork" class="form-labels-checkboxes">Yes, follow up with me about what the network needs!</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="maybeNetwork" name="EmergingNetwork">
+                        <label for="maybeNetwork" class="form-labels-checkboxes">Maybe. I need more information and/or I don't have much time.</label>
+                    </div>
+                    <div class="input-checkboxes">
+                        <input type="radio"   id="noNetwork" name="EmergingNetwork">
+                        <label for="noNetwork" class="form-labels-checkboxes">No</label>
+                    </div>
+                    <br>
+                    <div class="input-containers">
+                        <label for="explainCheckIn" class="form-labels">We want to know how you are! Feel free to share how the coronavirus has impacted your life and anything else that you want to share.</label>
+                        <textarea class="text-inputs" id="explainCheckIn" placeholder="Explain here"></textarea>
+                    </div>
+                    <br>
+                    <input type="submit" class="form-submit-button">
+                </form>
+            </div> <!-- Homepage Form Container Ends Here-->
+        </div>  <!-- Homepage Content Container Ends Here-->
+    </div> <!-- Whole Page Container Ends Here -->
+        
+
+        
+    
+        
+    
+        
+
+
+     
+
+
+
+
+    <script src="./scripts/scripts.js"></script>
+
+</body>
+</html>
