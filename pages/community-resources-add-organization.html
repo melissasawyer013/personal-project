@@ -9,82 +9,96 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <div class="whole-page-container">
-        <!-- Whole Navigation Bar Begins -->
-        <nav class="navbar"> 
-            <!-- Top Navigation Bar Begins -->
-            <div class="navbar-top">
-                <div class="navbar-home-icon-container">
-                    <a href="../index.html">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </a>
+<!-- Whole Navigation Bar Begins -->
+    <nav class="navbar" role="navigation"> 
+<!-- Top Navigation Bar Begins -->
+        <div class="navbar-top">
+            <div class="navbar-home-icon-container">
+                <a href="../index.html">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </a>
+            </div>     
+            <div class="navbar-logo-container">
+                <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+            </div>
+            <div class="navbar-top-links-container">
+                <div class="navbar-top-links-donate">
+                    <a href="./donate.html">Donate</a>
                 </div>
-                <div class="navbar-logo-container">
-                    <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+                <div class="navbar-top-links">
+                    <a href="./login.html">Login</a>
                 </div>
-                <div class="navbar-top-list">
-                    <div class="navbar-top-links-donate">
-                        <a href="./donate.html">Donate</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./login.html">Login</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./help.html">Help</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="#">Translate</a>
-                    </div>
+                <div class="navbar-top-links">
+                    <a href="./help.html">Help</a>
                 </div>
-            </div> <!-- End Top Navigation Bar -->   
-            <!-- Bottom Navigation Bar Begins-->
-            <div class="navbar-bottom-list"> 
-                <ul class="navbar-bottom-list-links">
-                    <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
-                    <li><a href="./update-form.html">Update<br>Form</a></li>
-                    <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
-                    <li><a href="./community-resources.html">Community<br>Resources</a></li>
-                    <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
-                    <li><a href="./about-us.html">About Us</a></li>
-                </ul>
-            </div> <!-- End Bottom Navigation Bar -->
-        </nav> <!-- End Whole Navigation Bar -->
-        <div class="add-org-page-container">
-            <div class="add-org-form-container">
-                <h1>NOMINATE A COMMUNITY RESOURCE</h1>
+                <div class="navbar-top-links">
+                    <a href="#">Translate</a>
+                </div>
+            </div>
+        </div> <!-- End Top Navigation Bar -->   
+<!-- Bottom Navigation Bar Begins-->
+        <div class="navbar-bottom-container"> 
+            <ul class="navbar-bottom-list-links">
+                <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
+                <li><a href="./update-form.html">Update<br>Form</a></li>
+                <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
+                <div class="dropdown">
+                    <li class="navigation-current-border">
+                        <a href="./community-resources.html">Community<br>Resources</a>
+                        <div class="dropdown-content navigation-current-border">
+                            <a href="./community-resources-add-organization.html">Add a <br>Resource</a>
+                        </div>
+                    </li>
+                </div>
+                <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+            </ul>
+        </div> <!-- End Bottom Navigation Bar -->
+    </nav> <!-- End Whole Navigation Bar -->
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-b">
+            <h1>NOMINATE A COMMUNITY RESOURCE</h1>
                 <p>Criteria for review:</p>
                 <ul>
                     <li>must be offering services in Dorchester and Mattapan</li>
                     <br>
                     <li>must have directions or sign-up procedure for residents</li>
                 </ul>
-                <p>Tell us as much as you can about the community resource below and submit it for our organizers to review</p>
-                <form action="">
-                    <div class="input-containers">
-                        <label for="nomResourceName" class="add-org-form-labels">Organization's Name</label>
-                        <input type="text" placeholder="name" id="nomResourceName" class="text-inputs">
-                    </div>
-                    <div class="input-containers">
-                        <label for="nomResourceURL" class="add-org-form-labels">Organization's Website</label>
-                        <input type="url" placeholder="website url" id="nomResourceURL" class="text-inputs">
-                    </div>
-                    <div class="input-containers">
-                        <label for="nomOrgInfo" class="add-org-form-labels">Tell us more about this organization.<br><span class="add-org-form-labels-subtext">What services are they providing? Where are they providing services? How do people access these services?</span></label>
-                        <textarea class="text-inputs" id="nomOrgInfo" placeholder="Explain here"></textarea>
-                    </div>
-                    <div class="input-containers">
-                        <label for="nomOrgConnection" class="add-org-form-labels">Tell us about your connection to this organization<br><span class="add-org-form-labels-subtext">What is your experience with this organization? Are you a member, volunteer, or recipient of their services? Explain how you know about them.</span></label>
-                        <textarea class="text-inputs" id="nomOrgConnection" placeholder="Explain here"></textarea>
-                    </div>
-                    <div class="input-containers">
-                        <label for="nomOrgConnection" class="add-org-form-labels">Share any contact information you have for this organization.<br><span class="add-org-form-labels-subtext">Do you know the name and contact information of someone within the organization that can tell us more?</span></label>
-                        <textarea class="text-inputs" id="nomOrgConnection" placeholder="Explain here"></textarea>
-                    </div>
-                    <br>
-                    <input type="submit" class="green-submit-button">
+            <div class="form-container">
+                <form action="/addResourceData" method="POST">
+                    <fieldset>
+                        <legend class="sub-field-legend">Tell us as much as you can about the community resource below and submit it for our organizers to review.<br><span class="form-labels-subtext">Fields marked with an asterisk * are required.</span></legend>
+                        <div class="input-containers">
+                            <label for="nomResourceName" class="form-labels">Organization's Name *</label>
+                            <input type="text" placeholder="name" id="nomResourceName" name="nomResourceName" class="text-inputs" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="nomResourceURL" class="form-labels">Organization's Website</label>
+                            <input type="url" placeholder="website url" id="nomResourceURL" name="nomResourceURL" class="text-inputs">
+                        </div>
+                        <br>
+                        <div class="input-containers">
+                            <label for="nomResourceInfo" class="form-labels">Tell us more about this organization. *<br><span class="form-labels-subtext">What services are they providing? Where are they providing services? How do people access these services?</span></label>
+                            <textarea class="text-inputs" id="nomResourceInfo" name="nomResourceInfo" placeholder="Explain here" required></textarea>
+                        </div>
+                        <br>
+                        <div class="input-containers">
+                            <label for="nomResourceConnection" class="form-labels">Tell us about your connection to this organization<br><span class="form-labels-subtext">What is your experience with this organization? Are you a member, volunteer, or recipient of their services? Explain how you know about them.</span></label>
+                            <textarea class="text-inputs" id="nomResourceConnection" name="nomResourceConnection" placeholder="Explain here"></textarea>
+                        </div>
+                        <br>
+                        <div class="input-containers">
+                            <label for="nomResourceConnection" class="form-labels">Share any contact information you have for this organization.<br><span class="form-labels-subtext">Do you know the name and contact information of someone within the organization that can tell us more?</span></label>
+                            <textarea class="text-inputs" id="nomResourceConnection" name="nomResourceConnecion" placeholder="Explain here"></textarea>
+                        </div>
+                        <br>
+                        <input type="submit" class="button palette-a">
+                    </fieldset>
                 </form>
             </div>
         </div>
-        <script src="../scripts/scripts.js"></script>
+    </div>
+    <script src="../scripts/scripts.js"></script>
 </body>
 </html>

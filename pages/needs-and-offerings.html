@@ -9,19 +9,19 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <!-- Whole Navigation Bar Begins -->
-    <nav class="navbar"> 
-        <!-- Top Navigation Bar Begins -->
+<!-- Whole Navigation Bar Begins -->
+    <nav class="navbar" role="navigation"> 
+<!-- Top Navigation Bar Begins -->
         <div class="navbar-top">
             <div class="navbar-home-icon-container">
                 <a href="../index.html">
                     <i class="fas fa-home" aria-hidden="true"></i>
                 </a>
-            </div>
+            </div>     
             <div class="navbar-logo-container">
                 <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
             </div>
-            <div class="navbar-top-list">
+            <div class="navbar-top-links-container">
                 <div class="navbar-top-links-donate">
                     <a href="./donate.html">Donate</a>
                 </div>
@@ -36,260 +36,283 @@
                 </div>
             </div>
         </div> <!-- End Top Navigation Bar -->   
-        <!-- Bottom Navigation Bar Begins-->
-        <div class="navbar-bottom-list"> 
+<!-- Bottom Navigation Bar Begins-->
+        <div class="navbar-bottom-container"> 
             <ul class="navbar-bottom-list-links">
                 <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
                 <li><a href="./update-form.html">Update<br>Form</a></li>
                 <li class="navigation-current-border"><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
-                <li><a href="./community-resources.html">Community<br>Resources</a></li>
+                <div class="dropdown">
+                    <li>
+                        <a href="./community-resources.html">Community<br>Resources</a>
+                        <div class="dropdown-content">
+                            <a href="./community-resources-add-organization.html">Add a <br>Resource</a>
+                        </div>
+                    </li>
+                </div>
                 <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
                 <li><a href="./about-us.html">About Us</a></li>
             </ul>
         </div> <!-- End Bottom Navigation Bar -->
     </nav> <!-- End Whole Navigation Bar -->
-    <div class="page-container">
-        <div class="green-large-content-container">
-            <h1>Browse Individual Needs and Offerings Below</h1>
-            <p class="form-labels-subtext">Narrow your search by selecting from the filters below.</p>
-            <form action="">
-                <div class="need-offerings-search-form-container">
-                    <div class="search-form-column-container">
-                        <p class="form-labels"> What sub-neighborhood(s) do you want to search in? 
-                        <span class="form-labels-subtext">(choose one or more to apply)</span>
-                        <br><br>
-                            
-                        </p>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodJfkSouthieSavin" name="searchNeighborhood">
-                            <label for="searchNeighborhoodJfkSouthieSavin" class="form-labels-checkboxes">JFK/Southie/Savin</label>
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-a">
+            <h1>BROWSE NEEDS & OFFERINGS</h1>
+            <form action="/searchNeedsOfferings" method="POST">
+                <fieldset>
+                    <legend>Narrow your search by selecting from the filters below.</legend>
+                    <div class="container-row">
+<!-- SUB-NEGEIGBORHOOD SEARCH STARTS HERE -->
+                        <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
+                            <h3>Neighborhood</h3>
+                            <fieldset>
+                                <legend class="form-labels">What sub-neighborhood(s) do you want to search in? <br>
+                                <span class="form-labels-subtext">(choose one or more to apply)</span></legend>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodJfkSouthieSavin" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodJfkSouthieSavin" class="form-labels-check-radio">JFK/Southie/Savin</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodGroveHall" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodGroveHall" class="form-labels-check-radio">Grove Hall</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodUphams" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodUphams" class="form-labels-check-radio">Uphams</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodBowdoinGeneva" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodBowdoinGeneva" class="form-labels-check-radio">Bowdoin/Geneva</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodFieldsCorner" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodFieldsCorner" class="form-labels-check-radio">Fields Corner</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodStMarksNeponset" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodStMarksNeponset" class="form-labels-check-radio">St. Marks/Neponset</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodCodman" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodCodman" class="form-labels-check-radio">Codman</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodAshmont" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodAshmont" class="form-labels-check-radio">Ashmont</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodBlueHill" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodBlueHill" class="form-labels-check-radio">Blue Hill</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodLowerMills" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodLowerMills" class="form-labels-check-radio">Lower Mills</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodMattapan" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodMattapan" class="form-labels-check-radio">Mattapan</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodNotDot" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodNotDot" class="form-labels-check-radio">Outside Dorchester and Mattapan</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeighborhoodAll" name="searchNeighborhood" required>
+                                    <label for="searchNeighborhoodAll" class="form-labels-check-radio">Outside Dorchester and Mattapan</label>
+                                </div>
+                            </fieldset>
                         </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodGroveHall" name="searchNeighborhood">
-                            <label for="searchNeighborhoodGroveHall" class="form-labels-checkboxes">Grove Hall</label>
+<!-- NEEDS SEARCH STARTS HERE -->
+                        <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
+                            <h3>Needs</h3>
+                            <fieldset>
+                                <legend class="form-labels">What need(s) do you want to search for? <br><span class="form-labels-subtext">(choose zero or more to apply)</span></legend>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeedChildcare" name="searchNeeds">
+                                    <label for="searchNeedChildcare" class="form-labels-check-radio">childcare</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedCooking" name="searchNeeds">
+                                    <label for="searchNeedCooking" class="form-labels-check-radio">cooked food</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedFoodAndSupplies" name="searchNeeds">
+                                    <label for="searchNeedFoodAndSupplies" class="form-labels-check-radio">food & supplies</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedRidesCar" name="searchNeeds">
+                                    <label for="searchNeedRidesCar" class="form-labels-check-radio">rides or access to a vehicle</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedPetcare" name="searchNeeds">
+                                    <label for="searchNeedPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedInternetSubscriptions" name="searchNeeds">
+                                    <label for="searchNeedInternetSubscriptions" class="form-labels-check-radio">internet subscriptions</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedMedicalSupport" name="searchNeeds">
+                                    <label for="searchNeedMedicalSupport" class="form-labels-check-radio">medical support</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedMedicalAdvice" name="searchNeeds">
+                                    <label for="searchNeedMedicalAdvice" class="form-labels-check-radio">medical advice</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedStorage" name="searchNeeds">
+                                    <label for="searchNeedStorage" class="form-labels-check-radio">storage space</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="searchNeedArt" name="searchNeeds">
+                                    <label for="searchNeedArt" class="form-labels-check-radio">art, music, writing</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedMentalHealth" name="searchNeeds">
+                                    <label for="searchNeedMentalHealth" class="form-labels-check-radio">mental health counseling</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedCompanionship" name="searchNeeds">
+                                    <label for="searchNeedCompanionship" class="form-labels-check-radio">conversation/companionship</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedLegal" name="searchNeeds">
+                                    <label for="searchNeedLegal" class="form-labels-check-radio">legal representation/advocacy</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedInterpretation" name="searchNeeds">
+                                    <label for="searchNeedInterpretation" class="form-labels-check-radio">interpretation/translation</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedSocialServices" name="searchNeeds">
+                                    <label for="searchNeedSocialServices" class="form-labels-check-radio">social service guidance</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedHealing" name="searchNeeds">
+                                    <label for="searchNeedHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedHousingShort" name="searchNeeds">
+                                    <label for="searchNeedHousingShort" class="form-labels-check-radio">housing (short-term)</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedHousingLong" name="searchNeeds">
+                                    <label for="searchNeedHousingLong" class="form-labels-check-radio">housing (long-term)</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedOther" name="searchNeeds">
+                                    <label for="searchNeedOther" class="form-labels-check-radio">other</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedFinancial" name="searchNeeds">
+                                    <label for="searchNeedFinancial" class="form-labels-check-radio">financial</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchNeedAll" name="searchNeeds">
+                                    <label for="searchNeedAll" class="form-labels-check-radio">all needs</label>
+                                </div>
+                                <br>
+                            </fieldset>
                         </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodUphams" name="searchNeighborhood">
-                            <label for="searchNeighborhoodUphams" class="form-labels-checkboxes">Uphams</label>
+<!-- OFFERINGS SEARCH STARTS HERE -->
+                        <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
+                            <h3>Offerings</h3>
+                            <fieldset>
+                                <legend class="form-labels">What offering(s) do you want to search for? <br><span class="form-labels-subtext">(choose zero or more to apply)</span></legend>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferChildcare">
+                                    <label for="searchOfferChildcare" class="form-labels-check-radio">childcare</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferCooking">
+                                    <label for="searchOfferCooking" class="form-labels-check-radio">cooking for someone</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferFoodAndSupplies">
+                                    <label for="searchOfferFoodAndSupplies" class="form-labels-check-radio">food & supplies</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferRidesCar">
+                                    <label for="searchOfferRidesCar" class="form-labels-check-radio">give rides or access to a vehicle</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferPetcare">
+                                    <label for="searchOfferPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferInternetSubscriptions">
+                                    <label for="searchOfferInternetSubscriptions" class="form-labels-check-radio">internet subscriptions</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferMedicalSupport">
+                                    <label for="searchOfferMedicalSupport" class="form-labels-check-radio">medical support</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferMedicalAdvice">
+                                    <label for="searchOfferMedicalAdvice" class="form-labels-check-radio">medical advice</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferStorage">
+                                    <label for="searchOfferStorage" class="form-labels-check-radio">storage space</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferArt">
+                                    <label for="searchOfferArt" class="form-labels-check-radio">art, music, writing</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferMentalHealth">
+                                    <label for="searchOfferMentalHealth" class="form-labels-check-radio">mental health counseling</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferCompanionship">
+                                    <label for="searchOfferCompanionship" class="form-labels-check-radio">conversation/companionship</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferLegal">
+                                    <label for="searchOfferLegal" class="form-labels-check-radio">legal representation/advocacy</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferInterpretation">
+                                    <label for="searchOfferInterpretation" class="form-labels-check-radio">interpretation/translation</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferSocialServices">
+                                    <label for="searchOfferSocialServices" class="form-labels-check-radio">social service guidance</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferHealing">
+                                    <label for="searchOfferHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferHousingShort">
+                                    <label for="searchOfferHousingShort" class="form-labels-check-radio">housing (short-term)</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferHousingLong">
+                                    <label for="searchOfferHousingLong" class="form-labels-check-radio">housing (long-term)</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferOther">
+                                    <label for="searchOfferOther" class="form-labels-check-radio">other</label>
+                                </div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="searchOfferAll">
+                                    <label for="searchOfferAll" class="form-labels-check-radio">all offerings</label>
+                                </div>
+                            </fieldset>
                         </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodBowdoinGeneva" name="searchNeighborhood">
-                            <label for="searchNeighborhoodBowdoinGeneva" class="form-labels-checkboxes">Bowdoin/Geneva</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodFieldsCorner" name="searchNeighborhood">
-                            <label for="searchNeighborhoodFieldsCorner" class="form-labels-checkboxes">Fields Corner</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodStMarksNeponset" name="searchNeighborhood">
-                            <label for="searchNeighborhoodStMarksNeponset" class="form-labels-checkboxes">St. Marks/Neponset</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodCodman" name="searchNeighborhood">
-                            <label for="searchNeighborhoodCodman" class="form-labels-checkboxes">Codman</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodAshmont" name="searchNeighborhood">
-                            <label for="searchNeighborhoodAshmont" class="form-labels-checkboxes">Ashmont</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodBlueHill" name="searchNeighborhood">
-                            <label for="searchNeighborhoodBlueHill" class="form-labels-checkboxes">Blue Hill</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searcheighborhoodLowerMills" name="searchNeighborhood">
-                            <label for="searchNeighborhoodLowerMills" class="form-labels-checkboxes">Lower Mills</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodMattapan" name="searchNeighborhood">
-                            <label for="searchNeighborhoodMattapan" class="form-labels-checkboxes">Mattapan</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeighborhoodAll" name="searchNeighborhood">
-                            <label for="searchNeighborhoodAll" class="form-labels-checkboxes">all neighborhoods</label>
-                        </div>
-                    </div>
-                    <div class="search-form-column-container">
-                        <p class="form-labels"> What need(s) do you want to search for? <span class="form-labels-subtext">(choose zero or more to apply)</span></p>
-                        <br>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedChildcare">
-                            <label for="searchNeedChildcare" class="form-labels-checkboxes">childcare</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedCooking">
-                            <label for="searchNeedCooking" class="form-labels-checkboxes">cooked food</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedFoodAndSupplies">
-                            <label for="searchNeedFoodAndSupplies" class="form-labels-checkboxes">food & supplies</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedRidesCar">
-                            <label for="searchNeedRidesCar" class="form-labels-checkboxes">rides or access to a car</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedPetcare">
-                            <label for="searchNeedPetCare" class="form-labels-checkboxes">petcare/dog-walking</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedInternetSubscriptions">
-                            <label for="searchNeedInternetSubscriptions" class="form-labels-checkboxes">internet subscriptions</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedMedicalSupport">
-                            <label for="searchNeedMedicalSupport" class="form-labels-checkboxes">medical support</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedMedicalAdvice">
-                            <label for="searchNeedMedicalAdvice" class="form-labels-checkboxes">medical advice</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedStorage">
-                            <label for="searchNeedStorage" class="form-labels-checkboxes">storage space</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox" id="searchNeedArt">
-                            <label for="searchNeedArt" class="form-labels-checkboxes">art, music, writing</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedMentalHealth">
-                            <label for="searchNeedMentalHealth" class="form-labels-checkboxes">mental health counseling</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedCompanionship">
-                            <label for="searchNeedCompanionship" class="form-labels-checkboxes">conversation/companionship</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedLegal">
-                            <label for="searchNeedLegal" class="form-labels-checkboxes">legal representation/advocacy</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedInterpretation">
-                            <label for="searchNeedInterpretation" class="form-labels-checkboxes">interpretation/translation</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedSocialServices">
-                            <label for="searchNeedSocialServices" class="form-labels-checkboxes">social service guidance</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedHealing">
-                            <label for="searchNeedHealing" class="form-labels-checkboxes">healing, ritual, herbal medicine</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedHousingShort">
-                            <label for="searchNeedHousingShort" class="form-labels-checkboxes">housing (short term)</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedHousingLong">
-                            <label for="searchNeedHousingLong" class="form-labels-checkboxes">housing (long term)</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedOther">
-                            <label for="searchNeedOther" class="form-labels-checkboxes">other</label>
-                        </div>
-                        <div class="input-checkboxes">
-                            <input type="checkbox"   id="searchNeedAll">
-                            <label for="searchNeedAll" class="form-labels-checkboxes">all needs</label>
-                        </div>
-                        <br>
-                    </div>
-                    <div class="search-form-column-container">
-                        <p class="form-labels"> What offering(s) do you want to search for? <span class="form-labels-subtext">(choose zero or more to apply)</span></p>
-                        <br>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferChildcare">
-                                <label for="searchOfferChildcare" class="form-labels-checkboxes">childcare</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferCooking">
-                                <label for="searchOfferCooking" class="form-labels-checkboxes">cooking for someone</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferFoodAndSupplies">
-                                <label for="searchOfferFoodAndSupplies" class="form-labels-checkboxes">food & supplies</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferRidesCar">
-                                <label for="searchOfferRidesCar" class="form-labels-checkboxes">give rides or access to a car</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferPetcare">
-                                <label for="searchOfferPetCare" class="form-labels-checkboxes">petcare/dog-walking</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferInternetSubscriptions">
-                                <label for="searchOfferInternetSubscriptions" class="form-labels-checkboxes">internet subscriptions</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferMedicalSupport">
-                                <label for="searchOfferMedicalSupport" class="form-labels-checkboxes">medical support</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferMedicalAdvice">
-                                <label for="searchOfferMedicalAdvice" class="form-labels-checkboxes">medical advice</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferStorage">
-                                <label for="searchOfferStorage" class="form-labels-checkboxes">storage space</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferArt">
-                                <label for="searchOfferArt" class="form-labels-checkboxes">art, music, writing</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferMentalHealth">
-                                <label for="searchOfferMentalHealth" class="form-labels-checkboxes">mental health counseling</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferCompanionship">
-                                <label for="searchOfferCompanionship" class="form-labels-checkboxes">conversation/companionship</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferLegal">
-                                <label for="searchOfferLegal" class="form-labels-checkboxes">legal representation/advocacy</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferInterpretation">
-                                <label for="searchOfferInterpretation" class="form-labels-checkboxes">interpretation/translation</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferSocialServices">
-                                <label for="searchOfferSocialServices" class="form-labels-checkboxes">social service guidance</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferHealing">
-                                <label for="searchOfferHealing" class="form-labels-checkboxes">healing, ritual, herbal medicine</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferHousingShort">
-                                <label for="searchOfferHousingShort" class="form-labels-checkboxes">housing (short term)</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferHousingLong">
-                                <label for="searchOfferHousingLong" class="form-labels-checkboxes">housing (long term)</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferOther">
-                                <label for="searchOfferOther" class="form-labels-checkboxes">other</label>
-                            </div>
-                            <div class="input-checkboxes">
-                                <input type="checkbox"   id="searchOfferAll">
-                                <label for="searchOfferAll" class="form-labels-checkboxes">all offerings</label>
-                            </div>
-                            <br>
-                    </div>
-                </div>  
-                <br>    
-                <input type="submit" class="form-submit-button" value="Search">  
+                    </div>    
+                </fieldset>
+                <br>
+                <input type="submit" class="button palette-b">
+                <br>
             </form>
-                
-                
-
+<!-- SEARCH FORM ENDS HERE -->
         </div>
-        <div class="search-result-container">
-            <h1>Need or Offering (Example)</h1>
-            <div class="search-result-container-row">
+        <div class="medium-content-container-column palette-c" style="font-size: 1em;">
+            <h2>Need or Offering (Example)</h2>
+            <div class="container-row">
                 <div class="search-result-row-label">
                     <span>Neighbor's Name:</span>
                 </div>   
@@ -298,7 +321,7 @@
                     <br><br>
                 </div>
             </div>
-            <div class="search-result-container-row">
+            <div class="container-row">
                 <div class="search-result-row-label">
                     <span>Category:</span>
                 </div>   
@@ -307,7 +330,7 @@
                     <br><br>
                 </div>
             </div>
-            <div class="search-result-container-row">
+            <div class="container-row">
                 <div class="search-result-row-label">
                     <span>Neighborhood:</span>
                 </div>   
@@ -316,7 +339,7 @@
                     <br><br>
                 </div>
             </div>
-            <div class="search-result-container-row">
+            <div class="container-row">
                 <div class="search-result-row-label">
                     <span>More Information from Neighbor:</span>
                 </div>   
@@ -325,7 +348,7 @@
                     <br><br>
                 </div>
             </div>
-            <div class="search-result-container-row">
+            <div class="container-row">
                 <div class="search-result-row-label">
                     <span>Frequency:</span>
                 </div>   
@@ -334,7 +357,7 @@
                     <br><br>
                 </div>
             </div>
-            <div class="search-result-container-row">
+            <div class="container-row">
                 <div class="search-result-row-label">
                     <span>Contact Information:</span>
                 </div>   
@@ -345,8 +368,33 @@
                     <br><br>
                 </div>
             </div>
+            <div class="container-row">
+                <div class="search-result-row-label">
+                    <span>Community Update:</span>
+                </div>   
+                <div class="search-result-row-result">
+                    <span>This is where information that is updated on the form below gets put. </span>
+                    <br><br>
+                </div>
+            </div>
+            <form action="/addCommunityNotes" method="POST">
+                <fieldset>
+                    <div class="container-row">
+                        <div class="search-result-row-label">
+                            <legend>Update this need or offering:</legend>
+                            <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
+                        </div>   
+                        <div class="search-result-row-result">
+                            <textarea class="text-inputs" placeholder="Explain here" id="communityNotes" name="communityNotes" style="width: auto; max-width: 600px; min-width: 450px"></textarea>
+                            <br><br>
+                            <input type="submit" class="button palette-a">
+                            <br>
+                        </div>
+                    </div>
+                </fieldset>  
+            </form>
         </div>
-    </div>   
+    </div>
     <script src="../scripts/scripts.js"></script>
 </body>
 </html>

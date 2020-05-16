@@ -9,7 +9,7 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <!-- Whole Navigation Bar Begins -->
+<!-- Whole Navigation Bar Begins -->
     <nav class="navbar" role="navigation"> 
 <!-- Top Navigation Bar Begins -->
         <div class="navbar-top">
@@ -56,26 +56,20 @@
         </div> <!-- End Bottom Navigation Bar -->
     </nav> <!-- End Whole Navigation Bar -->
 <!-- Page Content Starts -->
-    <div class="page-container-column"> 
-        <div class="large-content-container-column palette-b">
-            <h1>DONATE TO OUR COLLECTIVE POT</h1>
-            <div class="container-row" style="justify-content: space-around;">
-                <div class="half-width-content-container-column">
-                    <h2>Every little bit counts.</h2>
-                    <span class="form-labels-subtext">Click below to donate through one of the platforms.</span>
-                    <br>
-                    <button class="palette-a">CashApp</button>
-                    <br>
-                    <button class="palette-a">Venmo</button>
-                    <br>
-                    <button class="palette-a">Paypal</button>
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-a">
+            <h1>RESET YOUR PASSWORD</h1>
+            <form action="/resetPassword" method="POST">
+                <div class="input-containers">
+                    <label for="resetPasswordEmail" class="form-labels">Enter your email address *</label>
+                    <input type="email" placeholder="YourEmail@email.com" id="resetPasswordEmail" name="resetPasswordEmail" class="text-inputs" required>
                 </div>
-                <div class="half-width-content-container-column">
-                    <h2>How we distribute funds</h2>
-                    <p>Explain how funds are collected and distributed, giving examples of the kinds of aks the collective pot has been able to provide for.</p>
-                    
-                </div>
-            </div>
+                <br>
+                <input type="submit" class="button palette-b">
+                <br>
+            </form>
+            <a href="./login.html" aria-label="Click here to navigate to the login page.">Back to login screen</a>
+            <br>
         </div>
     </div>
     <script src="../scripts/scripts.js"></script>

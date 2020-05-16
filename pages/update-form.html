@@ -9,49 +9,1523 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <div class="whole-page-container">
-        <!-- Whole Navigation Bar Begins -->
-        <nav class="navbar"> 
-            <!-- Top Navigation Bar Begins -->
-            <div class="navbar-top">
-                <div class="navbar-home-icon-container">
-                    <a href="../index.html">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </a>
+<!-- Whole Navigation Bar Begins -->
+    <nav class="navbar" role="navigation"> 
+<!-- Top Navigation Bar Begins -->
+        <div class="navbar-top">
+            <div class="navbar-home-icon-container">
+                <a href="../index.html">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </a>
+            </div>     
+            <div class="navbar-logo-container">
+                <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+            </div>
+            <div class="navbar-top-links-container">
+                <div class="navbar-top-links-donate">
+                    <a href="./donate.html">Donate</a>
                 </div>
-                <div class="navbar-logo-container">
-                    <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+                <div class="navbar-top-links">
+                    <a href="./login.html">Login</a>
                 </div>
-                <div class="navbar-top-list">
-                    <div class="navbar-top-links-donate">
-                        <a href="./donate.html">Donate</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./login.html">Login</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./help.html">Help</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="#">Translate</a>
-                    </div>
+                <div class="navbar-top-links">
+                    <a href="./help.html">Help</a>
                 </div>
-            </div> <!-- End Top Navigation Bar -->   
-            <!-- Bottom Navigation Bar Begins-->
-            <div class="navbar-bottom-list"> 
-                <ul class="navbar-bottom-list-links">
-                    <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
-                    <li class="navigation-current-border"><a href="./update-form.html">Update<br>Form</a></li>
-                    <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
-                    <li><a href="./community-resources.html">Community<br>Resources</a></li>
-                    <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
-                    <li><a href="./about-us.html">About Us</a></li>
-                </ul>
-            </div> <!-- End Bottom Navigation Bar -->
-        </nav> <!-- End Whole Navigation Bar -->
-
-        <h1 style="color:#ffffff">Update Form Page</h1>
-        <p style="color:#ffffff; background-color: #354033; font-size: 1.2em; font-weight: 300; line-height: 1.5">I'm waiting to get a more finalized version of the "Complete Form" page (on the index) completed before doing this page, because they will look almost identical to each other, with the update form page having the value of each input contain the user's previous entry.</p>
+                <div class="navbar-top-links">
+                    <a href="#">Translate</a>
+                </div>
+            </div>
+        </div> <!-- End Top Navigation Bar -->   
+<!-- Bottom Navigation Bar Begins-->
+        <div class="navbar-bottom-container"> 
+            <ul class="navbar-bottom-list-links">
+                <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
+                <li class="navigation-current-border"><a href="./update-form.html">Update<br>Form</a></li>
+                <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
+                <div class="dropdown">
+                    <li>
+                        <a href="./community-resources.html">Community<br>Resources</a>
+                        <div class="dropdown-content">
+                            <a href="./community-resources-add-organization.html">Add a <br>Resource</a>
+                        </div>
+                    </li>
+                </div>
+                <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+            </ul>
+        </div> <!-- End Bottom Navigation Bar -->
+    </nav> <!-- End Whole Navigation Bar -->
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+    <!-- Form Starts Here -->
+        <div class="large-content-container-column palette-b">
+            <div class="form-container">
+                <form id="formTarget" action="/addFormData" method="POST">
+                    <h1>UPDATE THE FORM BELOW</h1>
+                    <p>You can update your answers in the form below. Fields marked with an asterisk * are required. You will be able to choose which information you want to display publicly.</p>
+                    <hr>
+    <!-- Name Section Starts Here -->
+                    <fieldset>
+                        <legend class="header-legend">NAME</legend>
+                        <div class="input-containers">
+                            <label for="formFirstName" class="form-labels">First Name *</label>
+                            <input type="text" placeholder="first name" id="formFirstName"
+                            name="formFirstName" class="text-inputs" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="formLastName" class="form-labels">Last Name *</label>
+                            <input type="text" placeholder="last name" id="formLastName" 
+                            name="formLastName" class="text-inputs" required>
+                        </div>
+                        <br>
+                        <fieldset>
+                            <legend class="sub-field-legend">What information can we share publicly? *</legend>
+                            <span class="form-labels-subtext">(choose one)</span>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formFullNamePublic" name="formPublicDisplayName" value="full name" required>
+                                <label for="formFullNamePublic" class="form-labels-check-radio">full name</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="firstNameOnlyPublic" name="formPublicDisplayName" value="first name only" required>
+                                <label for="formFirstNameOnlyPublic" class="form-labels-check-radio">first name only</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formLastNameOnlyPublic" name="formPublicDisplayName" value="last name only" required>
+                                <label for="formLastNameOnlyPublic" class="form-labels-check-radio">last name only</label> 
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formPseudonymPublic" name="formPublicDisplayName" value="pseudonym" required>
+                                <label for="formPseudonymPublic" class="form-labels-check-radio">pseudonym (generate a fake name)</label>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+                    <br>
+                    <hr>
+    <!-- Contact Information Section Starts Here -->
+                    <fieldset>
+                        <legend class="header-legend">CONTACT INFORMATION</legend>
+                        <div class="input-containers">
+                            <label for="formPhoneNumber" class="form-labels">Phone Number *</label>
+                            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789" id="formPhoneNumber" class="text-inputs" name="formPhoneNumber" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="formEmail" class="form-labels">Email Address *</label>
+                            <input type="email" placeholder="YourEmail@email.com" id="formEmail" class="text-inputs" name="formEmail" required>
+                        </div>
+                        <br>
+                        <fieldset>
+                            <legend class="sub-field-legend">What information can we share publicly?</legend>
+                            <span class="form-labels-subtext">(check all that apply or leave blank to allow neither to be displayed publicly)</span>
+                            <div class="input-container-check-radio">
+                                <input type="checkbox" id="formPhoneNumberPublic" name="formPublicDisplayContact">
+                                <label for="formPhoneNumberPublic" class="form-labels-check-radio">phone number</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="checkbox" id="emailPublic" name="formPublicDisplayContact">
+                                <label for="emailPublic" class="form-labels-check-radio">email address</label>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+                    <br>
+                    <hr>
+    <!-- Address Information Section Starts Here-->
+                    <fieldset>
+                        <legend class="header-legend">LOCATION</legend>
+                        <div class="input-containers">
+                            <label for="formAddressHouseNumber" class="form-labels">House Number</label>
+                            <input type="text" placeholder="12345" id="formAddressHouseNumber" class="address-number-inputs" name="formAddressHouseNumber">
+                        </div>
+                        <div class="input-containers">
+                            <label for="formAddressStreetName" class="form-labels">Street Name *</label>
+                            <input type="text" placeholder="Dorchester Avenue" id="formAddressStreetName" class="text-inputs" name="formAddressStreetName" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="formAddressApartmentNumber" class="form-labels">Apartment/Unit Number <span class="form-labels-subtext">(optional)</span></label>
+                            <input type="text" placeholder="Unit 3" id="formAddressApartmentNumber" class="address-number-inputs" name="formAddressApartmentNumber">
+                        </div>
+                        <br>
+                        <fieldset>
+                            <legend class="sub-field-legend">What sub-neighborhood of Dorchester do you live in? *</legend>
+                            <span class="form-labels-subtext">(choose one)</span>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodJfkSouthieSavin" name="formNeighborhood" required>
+                                <label for="formNeighborhoodJfkSouthieSavin" class="form-labels-check-radio">JFK/Southie/Savin</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodGroveHall" name="formNeighborhood" required>
+                                <label for="formNeighborhoodGroveHall" class="form-labels-check-radio">Grove Hall</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodUphams" name="formNeighborhood" required>
+                                <label for="formNeighborhoodUphams" class="form-labels-check-radio">Uphams</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodBowdoinGeneva" name="formNeighborhood" required>
+                                <label for="formNeighborhoodBowdoinGeneva" class="form-labels-check-radio">Bowdoin/Geneva</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodFieldsCorner" name="formNeighborhood" required>
+                                <label for="formNeighborhoodFieldsCorner" class="form-labels-check-radio">Fields Corner</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodStMarksNeponset" name="formNeighborhood" required>
+                                <label for="formNeighborhoodStMarksNeponset" class="form-labels-check-radio">St. Marks/Neponset</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodCodman" name="formNeighborhood" required>
+                                <label for="formNeighborhoodCodman" class="form-labels-check-radio">Codman</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodAshmont" name="formNeighborhood" required>
+                                <label for="formNeighborhoodAshmont" class="form-labels-check-radio">Ashmont</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodBlueHill" name="formNeighborhood" required>
+                                <label for="formNeighborhoodBlueHill" class="form-labels-check-radio">Blue Hill</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodLowerMills" name="formNeighborhood" required>
+                                <label for="formNeighborhoodLowerMills" class="form-labels-check-radio">Lower Mills</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodMattapan" name="formNeighborhood" required>
+                                <label for="formNeighborhoodMattapan" class="form-labels-check-radio">Mattapan</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodUnknown" name="formNeighborhood" required>
+                                <label for="formNeighborhoodUnknown" class="form-labels-check-radio">Don't know</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodNotDot" name="formNeighborhood" required>
+                                <label for="formNeighborhoodNotDot" class="form-labels-check-radio">Don't live in Dorchester or Mattapan</label>
+                            </div>
+                        </fieldset>
+                        <br>
+                        <fieldset>
+                            <legend class="sub-field-legend">What information can we share publicly? *</legend>
+                            <span class="form-labels-subtext">(choose one)</span>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formFullAddressPublic" name="formPublicDisplayAddress" required>
+                                <label for="formFullAddressPublic" class="form-labels-check-radio">full address + neighborhood</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio"   id="formStreetNameOnlyPublic" name="formPublicDisplayAddress" required>
+                                <label for="formStreetNameOnlyPublic" class="form-labels-check-radio">street name only + neighborhood</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNeighborhoodOnlyPublic" name="formPublicDisplayAddress" required>
+                                <label for="formNeighborhoodOnlyPublic" class="form-labels-check-radio">neighborhood only</label>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+                    <br>
+                    <hr>
+    <!-- Offerings Section Starts Here-->
+                    <fieldset>
+                        <legend class="header-legend">OFFERINGS</legend>
+                        <fieldset>
+                            <legend class="sub-field-legend">What can you offer or share with your neighbors?</legend>
+                            <span class="form-labels-subtext">This information will be viewable on the Needs and Offerings page along with the personal information you've chosen to share. (check all that apply)</span>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferChildcare" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferChildcare" class="form-labels-check-radio">childcare</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your childcare offering so people can directly reach out to you.</legend>
+                                        <label for="explainOfferChildcare" class="form-labels-subtext">Examples: What experience do you have with childcare? Would you be able to go to the child's house or will they be required to come to yours? What precautions are you taking around the COVID-19 virus? What is your availability?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferChildcare" name="explainOfferChildcare"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferCooking" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferCooking" class="form-labels-check-radio">cooking for someone</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering to cook for someone so people can directly reach out to you.</legend>
+                                        <label for="explainOfferCooking" class="form-labels-subtext">Examples: How often could you cook for someone? What types of foods can you cook? Can you accomodate allergies and dietary restrictions? How would you transport the food to your neighbor? What precautions are you taking around the COVID-19 virus?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferCooking" name="explainOfferCooking"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferFoodAndSupplies" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferFoodAndSupplies" class="form-labels-check-radio">food & supplies</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of food and supplies so people can directly reach out to you.</legend>
+                                        <label for="explainOfferFoodAndSupplies" class="form-labels-subtext">Examples: What kind of food and/or supplies do you have to offer? How often will you have extra supplies and/or food available? What precautions are you taking around the COVID-19 virus? How would you distribute extra food and/or supplies?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferFoodAndSupplies" name="explainOfferFoodAndSupplies"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferRidesCar" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferRidesCar" class="form-labels-check-radio">give rides or access to a vehicle</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of rides and/or vehicle access so people can directly reach out to you.</legend>
+                                        <label for="explainOfferRidesCar" class="form-labels-subtext">Examples: What is your availability for giving rides if that is what you are offering? What is the vehicle availability if that is what you are offering? What precautions are you taking around the COVID-19 virus? What precautions would you need neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferRidesCar" name="explainOfferRidesCar"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferPetcare" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of petcare/dog-walking so people can directly reach out to you.</legend>
+                                        <label for="explainOfferPetCare" class="form-labels-subtext">Examples: Explain what you are offering. What is your availability for petcare and/or dog-walking? What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferPetCare" name="explainOfferPetCare"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferInternetSubs" class="contains-hidden-div" name="formOfferInternetSubs">
+                                    <label for="formOfferInternetSubs" class="form-labels-check-radio">internet subscriptions (share your Netflix, Hulu, Prime, HBO, etc.)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of internet subscriptions so people can directly reach out to you.</legend>
+                                        <label for="explainOfferInternetSubs" class="form-labels-subtext">Examples: What subscriptions are you offering to share? How can neighbors contact you to exchange login information?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferInternetSubs" name="explainOfferInternetSubs"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferMedicalSupport" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferMedicalSupport" class="form-labels-check-radio">medical support (pick up prescriptions, help with hotlines, etc.)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of medical support so people can directly reach out to you.</legend>
+                                        <label for="explainOfferMedicalSupport" class="form-labels-subtext">Examples: What type of support are you offering? If you're offering to pick up prescriptions, how often could you do so? What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferMedicalSupport" name="explainOfferMedicalSupport"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferMedicalAdvice" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferMedicalAdvice" class="form-labels-check-radio">medical advice (if you are a medical professional only, please)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of medical advice so people can directly reach out to you.</legend>
+                                        <label for="explainOfferMedicalAdvice" class="form-labels-subtext">Examples: Explain the nature of your offering. What type of advice are you qualified to offer? What are your credentials? How can neighbors contact you about this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferMedicalAdvice" name="explainOfferMedicalAdvice"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferStorage" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferStorage" class="form-labels-check-radio">storage space</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of storage space so people can directly reach out to you.</legend>
+                                        <label for="explainOfferStorage" class="form-labels-subtext">Examples: How much space do you have available? Explain the accessibility of the space. What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferStorage" name="explainOfferStorage"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferArt" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferArt" class="form-labels-check-radio">art, music, writing</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of art, music, or writing so people can directly reach out to you.</legend>
+                                        <label for="explainOfferArt" class="form-labels-subtext">Examples: Explain what you are offering. What kind of art do you do? How would you get this art to your neighbors? How can neighbors contact you to request art, music, and/or writing.</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferArt" name="explainOfferArt"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferMentalHealth" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferMentalHealth" class="form-labels-check-radio">mental health counseling/resources (if you are licensed/qualified to do so only, please)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of mental health counseling and/or resources so people can directly reach out to you.</legend>
+                                        <label for="explainOfferMentalHealth" class="form-labels-subtext">Examples: Explain the nature of your offering. What are you offering? What types of services are you qualified to offer? What are your credentials? How can neighbors contact you about this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferMentalHealth" name="explainOfferMentalHealth"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>   
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferCompanionship" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferCompanionship" class="form-labels-check-radio">conversation/companionship</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of conversation and companionship so people can directly reach out to you.</legend>
+                                        <label for="explainOfferCompanionship" class="form-labels-subtext">Examples: Explain what you are offering. How can neighbors contact you about this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferCompanionship" name="explainOfferCompanionship"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferLegal" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferLegal" class="form-labels-check-radio">legal representation/advocacy (labor, housing, criminal, immigration)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of legal representation so people can directly reach out to you.</legend>
+                                        <label for="explainOfferCompanionship" class="form-labels-subtext">Examples: Explain what you are offering. What experience and/or expertise do you have? How can neighbors contact you about this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferCompanionship" name="explainOfferCompanionship"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferInterpretation" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferInterpretation" class="form-labels-check-radio">interpretation/translation</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of interpretation and translation so people can directly reach out to you.</legend>
+                                        <label for="explainOfferInterpretation" class="form-labels-subtext">Examples: What languages can you interpret or translate? How can neighbors contact you about this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferInterpretation" name="explainOfferInterpretation"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferSocialServices" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferSocialServices" class="form-labels-check-radio">social service guidance (filing for medicare, unemployment, etc.)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of social service guidance so people can directly reach out to you.</legend>
+                                        <label for="explainOfferSocialServices" class="form-labels-subtext">Examples: What social service guidance can you provide? What platforms can you use to assist neighbors (FaceTime, Zoom, Google Hangouts, etc.)?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferSocialServices" name="explainOfferSocialServices"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferHealing" class="contains-hidden-div" name="formOfferings" >
+                                    <label for="formOfferHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of healing, ritual, and/or herbal medicine so people can directly reach out to you.</legend>
+                                        <label for="explainOfferHealing" class="form-labels-subtext">Examples: What healing, ritual, and/or herbal medicing are you offering? How can neighbors access your offering? What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferHealing" name="explainOfferHealing"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferHousingShort" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferHousingShort" class="form-labels-check-radio">housing (short-term)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of short-term housing so people can directly reach out to you.</legend>
+                                        <label for="explainOffeHousingShort" class="form-labels-subtext">Examples: Describe the living space and living arangements around the space you are offering. What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOffeHousingShort" name="explainOffeHousingShort"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferHousingLong" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferHousingLong" class="form-labels-check-radio">housing (long-term)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your offering of long-term housing so people can directly reach out to you.</legend>
+                                        <label for="explainOffeHousingLong" class="form-labels-subtext">Examples: Describe the living space and living arangements around the space you are offering. What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOffeHousingLong" name="explainOffeHousingLong"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formOfferOther" class="contains-hidden-div" name="formOfferings">
+                                    <label for="formOfferOther" class="form-labels-check-radio">other</label>
+                                </div> 
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your other offering so people can directly reach out to you.</legend>
+                                        <label for="explainOfferOther" class="form-labels-subtext">Examples: What are you offering? How would neighbors access this offering? What precautions are you taking around the COVID-19 virus? What precautions would you need your neighbors to follow for this offering?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainOfferOther" name="explainOfferOther"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                        </fieldset> <!-- Offerings Checkboxes Fieldset ends here -->
+                        <br>
+                        <fieldset>
+                            <legend class="sub-field-legend">Could you contribute money to individuals or to a collective pot? *</legend>
+                            <span class="form-labels-subtext">(choose one)</span>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formYesGiveMoney" name="formGiveMoney" required>
+                                <label for="formYesGiveMoney" class="form-labels-check-radio">Yes</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNoGiveMoney" name="formGiveMoney" required>
+                                <label for="formNoGiveMoney" class="form-labels-check-radio">No</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNotNowGiveMoney" name="formGiveMoney" required>
+                                <label for="formNotNowGiveMoney" class="form-labels-check-radio">Not right now, but that could change.</label>
+                            </div>
+                        </fieldset>
+                    </fieldset> <!-- Offerings Fieldset ends here -->
+                    <br>
+                    <hr>
+    <!-- Needs Section Starts Here-->
+                    <fieldset>
+                        <legend class="header-legend">NEEDS</legend>
+                        <fieldset>
+                            <legend class="sub-field-legend">Please check off what you are looking for or what you need.</legend>
+                            <span class="form-labels-subtext">This information will be viewable on the Needs and Offerings page along with the personal information you've chosen to share. (check all that apply)</span>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox"   id="formNeedChildcare" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedChildcare" class="form-labels-check-radio">childcare</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your childcare need so people can directly reach out to you.</legend>
+                                        <label for="explainNeedChildcare" class="form-labels-subtext">Examples: How old are the children? What experience do you require? Would you want a childcare provider to come to your residence? What precautions are you taking around the COVID-19 virus? What precautions would you expect a childcare provider to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedChildcare" name="explainNeedChildcare"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareFrequencyMoreThanWeekly" name="needChildcareFrequency">
+                                            <label for="needChildcareFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareFrequencyWeekly" name="needChildcareFrequency">
+                                            <label for="needChildcareFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareFrequencyBiWeekly" name="needChildcareFrequency">
+                                            <label for="needChildcareFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareFrequencyMonthly" name="needChildcareFrequency">
+                                            <label for="needChildcareFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareFrequencyInfrequent" name="needChildcareFrequency">
+                                            <label for="needChildcareFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareFrequencyOnce" name="needChildcareFrequency">
+                                            <label for="needChildcareFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareUrgentYes" name="needChildcareUrgency">
+                                            <label for="needChildcareUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needChildcareUrgentNo" name="needChildcareUrgency">
+                                            <label for="needChildcareUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedCooking" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedCooking" class="form-labels-check-radio">cooked food</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for cooked food so people can directly reach out to you.</legend>
+                                        <label for="explainNeedCooking" class="form-labels-subtext">Examples: Do you have any dietary restrictions? What type of foods do you enjoy? What precautions would you expect a neighbor providing food to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedCooking" name="explainNeedCooking"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingFrequencyMoreThanWeekly" name="needCookingFrequency">
+                                            <label for="needCookingFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingFrequencyWeekly" name="needCookingFrequency">
+                                            <label for="needCookingFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingFrequencyBiWeekly" name="needCookingFrequency">
+                                            <label for="needCookingFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingFrequencyMonthly" name="needCookingFrequency">
+                                            <label for="needCookingFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingFrequencyInfrequent" name="needCookingFrequency">
+                                            <label for="needCookingFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingFrequencyOnce" name="needCookingFrequency">
+                                            <label for="needCookingFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingUrgentYes" name="needCookingUrgency">
+                                            <label for="needCookingUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCookingUrgentNo" name="needCookingUrgency">
+                                            <label for="needCookingUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedFoodAndSupplies" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedFoodAndSupplies" class="form-labels-check-radio">food & supplies</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for food and supplies so people can directly reach out to you.</legend>
+                                        <label for="explainNeedFoodAndSupplies" class="form-labels-subtext">Examples: What kind of food and/or supplies do you need? Do you have any dietary restrictions? What precautions would you expect a neighbor providing food & supplies to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedFoodAndSupplies" name="explainNeedFoodAndSupplies"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesFrequencyMoreThanWeekly" name="needFoodAndSuppliesFrequency">
+                                            <label for="needFoodAndSuppliesFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesFrequencyWeekly" name="needFoodAndSuppliesFrequency">
+                                            <label for="needFoodAndSuppliesFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesFrequencyBiWeekly" name="needFoodAndSuppliesFrequency">
+                                            <label for="needFoodAndSuppliesFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesFrequencyMonthly" name="needFoodAndSuppliesFrequency">
+                                            <label for="needFoodAndSuppliesFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesFrequencyInfrequent" name="needFoodAndSuppliesFrequency">
+                                            <label for="needFoodAndSuppliesFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesFrequencyOnce" name="needFoodAndSuppliesFrequency">
+                                            <label for="needFoodAndSuppliesFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesUrgentYes" name="needFoodAndSuppliesUrgency">
+                                            <label for="needFoodAndSuppliesUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFoodAndSuppliesUrgentNo" name="needFoodAndSuppliesUrgency">
+                                            <label for="needFoodAndSuppliesUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedRidesCar" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedRidesCar" class="form-labels-check-radio">rides or access to a vehicle</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for rides or access to a vehicle so people can directly reach out to you.</legend>
+                                        <label for="explainNeedRidesCar" class="form-labels-subtext">Examples: Explain your need. Where would you need a ride to or where would you need to drive a borrowed vehicle? What precautions are you taking around COVID-19? What precautions would you expect a neighbor providing a ride or access to a vehicle to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedRidesCar" name="explainNeedRidesCar"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarFrequencyMoreThanWeekly" name="needRidesCarFrequency">
+                                            <label for="needRidesCarFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarFrequencyWeekly" name="needRidesCarFrequency">
+                                            <label for="needRidesCarFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarFrequencyBiWeekly" name="needRidesCarFrequency">
+                                            <label for="needRidesCarFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarFrequencyMonthly" name="needRidesCarFrequency">
+                                            <label for="needRidesCarFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarFrequencyInfrequent" name="needRidesCarFrequency">
+                                            <label for="needRidesCarFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarFrequencyOnce" name="needRidesCarFrequency">
+                                            <label for="needRidesCarFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarUrgentYes" name="needRidesCarUrgency">
+                                            <label for="needRidesCarUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needRidesCarUrgentNo" name="needRidesCarUrgency">
+                                            <label for="needRidesCarUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>                          
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedPetcare" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for petcare and/or dog-walking so people can directly reach out to you.</legend>
+                                        <label for="explainNeedPetcare" class="form-labels-subtext">Examples: Explain what you are asking for. What precautions are you taking around COVID-19? What precautions would you expect a neighbor providing food & supplies to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedPetcare" name="explainNeedPetcare"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareFrequencyMoreThanWeekly" name="needPetcareFrequency">
+                                            <label for="needPetcareFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareFrequencyWeekly" name="needPetcareFrequency">
+                                            <label for="needPetcareFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareFrequencyBiWeekly" name="needPetcareFrequency">
+                                            <label for="needPetcareFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareFrequencyMonthly" name="needPetcareFrequency">
+                                            <label for="needPetcareFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareFrequencyInfrequent" name="needPetcareFrequency">
+                                            <label for="needPetcareFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareFrequencyOnce" name="needPetcareFrequency">
+                                            <label for="needPetcareFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareUrgentYes" name="needPetcareUrgency">
+                                            <label for="needPetcareUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needPetcareUrgentNo" name="needPetcareUrgency">
+                                            <label for="needPetcareUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedInternetSubscriptions" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedInternetSubscriptions" class="form-labels-check-radio">internet subscriptions (Netflix, Hulu, Prime, HBO, etc.)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for internet subscriptions so people can directly reach out to you.</legend>
+                                        <label for="explainNeedInternetSubscriptions" class="form-labels-subtext">Examples: Explain what you are asking for.</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedInternetSubscriptions" name="explainNeedInternetSubscriptions"></textarea>
+                                    </div>
+                                    <br>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedMedicalSupport" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedMedicalSupport" class="form-labels-check-radio">medical support (pick up prescriptions, help with hotlines to call, etc.)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for medical support so people can directly reach out to you.</legend>
+                                        <label for="explainNeedMedicalSupport" class="form-labels-subtext">Examples: Explain this need. What precautions would you expect a neighbor providing medical support to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedMedicalSupport" name="explainNeedMedicalSupport"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportFrequencyMoreThanWeekly" name="needMedicalSupportFrequency">
+                                            <label for="needMedicalSupportFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportFrequencyWeekly" name="needMedicalSupportFrequency">
+                                            <label for="needMedicalSupportFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportFrequencyBiWeekly" name="needMedicalSupportFrequency">
+                                            <label for="needMedicalSupportFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportFrequencyMonthly" name="needMedicalSupportFrequency">
+                                            <label for="needMedicalSupportFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportFrequencyInfrequent" name="needMedicalSupportFrequency">
+                                            <label for="needMedicalSupportFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportFrequencyOnce" name="needMedicalSupportFrequency">
+                                            <label for="needMedicalSupportFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportUrgentYes" name="needMedicalSupportUrgency">
+                                            <label for="needMedicalSupportUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalSupportUrgentNo" name="needMedicalSupportUrgency">
+                                            <label for="needMedicalSupportUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedMedicalAdvice" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedMedicalAdvice" class="form-labels-check-radio">medical advice</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for medical advice so people can directly reach out to you.</legend>
+                                        <label for="explainNeedMedicalAdvice" class="form-labels-subtext">Examples: What kind of advice do you need?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedMedicalAdvice" name="explainNeedMedicalAdvice"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalAdviceUrgentYes" name="needMedicalAdviceUrgency">
+                                            <label for="needMedicalAdviceUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMedicalAdviceUrgentNo" name="needMedicalAdviceUrgency">
+                                            <label for="needMedicalAdviceUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedStorage" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedStorage" class="form-labels-check-radio">storage space</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for storage so people can directly reach out to you.</legend>
+                                        <label for="explainNeedneedStorage" class="form-labels-subtext">Examples: What do you need to store? What kind of access would you need to these storage items? What precautions are you taking around COVID-19? What precautions would you expect a neighbor providing storage space to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedneedStorage" name="explainNeedneedStorage"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needStorageUrgentYes" name="needStorageUrgency">
+                                            <label for="needStorageUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needStorageUrgentNo" name="needStorageUrgency">
+                                            <label for="needStorageUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedArt" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedArt" class="form-labels-check-radio">art, music, writing</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for art, music, and/or writing so people can directly reach out to you.</legend>
+                                        <label for="explainNeedArt" class="form-labels-subtext">Examples: Explain what you are asking for and how neighbors can meet this need.</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedArt" name="explainNeedArt"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtFrequencyMoreThanWeekly" name="needArtFrequency">
+                                            <label for="needArtFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtFrequencyWeekly" name="needArtFrequency">
+                                            <label for="needArtFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtFrequencyBiWeekly" name="needArtFrequency">
+                                            <label for="needArtFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtFrequencyMonthly" name="needArtFrequency">
+                                            <label for="needArtFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtFrequencyInfrequent" name="needArtFrequency">
+                                            <label for="needArtFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtFrequencyOnce" name="needArtFrequency">
+                                            <label for="needArtFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtUrgentYes" name="needArtUrgency">
+                                            <label for="needArtUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needArtUrgentNo" name="needArtUrgency">
+                                            <label for="needArtUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedMentalHealth" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedMentalHealth" class="form-labels-check-radio">mental health counseling</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for mental health counseling so people can directly reach out to you.</legend>
+                                        <label for="explainNeedMentalHealth" class="form-labels-subtext">Examples: Explain what you are asking for? What type of person are you looking to have as a counselor?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedMentalHealth" name="explainNeedMentalHealth"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthFrequencyMoreThanWeekly" name="needMentalHealthFrequency">
+                                            <label for="needMentalHealthFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthFrequencyWeekly" name="needMentalHealthFrequency">
+                                            <label for="needMentalHealthFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthFrequencyBiWeekly" name="needMentalHealthFrequency">
+                                            <label for="needMentalHealthFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthFrequencyMonthly" name="needMentalHealthFrequency">
+                                            <label for="needMentalHealthFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthFrequencyInfrequent" name="needMentalHealthFrequency">
+                                            <label for="needMentalHealthFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthFrequencyOnce" name="needMentalHealthFrequency">
+                                            <label for="needMentalHealthFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthUrgentYes" name="needMentalHealthUrgency">
+                                            <label for="needMentalHealthUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needMentalHealthUrgentNo" name="needMentalHealthUrgency">
+                                            <label for="needMentalHealthUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedCompanionship" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedCompanionship" class="form-labels-check-radio">conversation/companionship</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for companionship so people can directly reach out to you.</legend>
+                                        <label for="explainNeedCompanionship" class="form-labels-subtext">Examples: What type of companionship are you looking for? What interests do you have? How would you like to connect with someone for conversation (FaceTime, GoogleHangouts, Zoom, etc.)?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedCompanionship" name="explainNeedCompanionship"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipFrequencyMoreThanWeekly" name="needCompanionshipFrequency">
+                                            <label for="needCompanionshipFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipFrequencyWeekly" name="needCompanionshipFrequency">
+                                            <label for="needCompanionshipFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipFrequencyBiWeekly" name="needCompanionshipFrequency">
+                                            <label for="needCompanionshipFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipFrequencyMonthly" name="needCompanionshipFrequency">
+                                            <label for="needCompanionshipFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipFrequencyInfrequent" name="needCompanionshipFrequency">
+                                            <label for="needCompanionshipFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipFrequencyOnce" name="needCompanionshipFrequency">
+                                            <label for="needCompanionshipFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipUrgentYes" name="needCompanionshipUrgency">
+                                            <label for="needCompanionshipUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needCompanionshipUrgentNo" name="needCompanionshipUrgency">
+                                            <label for="needCompanionshipUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedLegal" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedLegal" class="form-labels-check-radio">legal representation/advocacy (labor, housing, criminal, immigration)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for legal representation or advocacy so people can directly reach out to you.</legend>
+                                        <label for="explainNeedLegal" class="form-labels-subtext">Examples: What type of legal represenation or advocacy do you need?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedLegal" name="explainNeedLegal"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needLegalUrgentYes" name="needLegalUrgency">
+                                            <label for="needLegalUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needLegalUrgentNo" name="needLegalUrgency">
+                                            <label for="needLegalUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedInterpretation" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedInterpretation" class="form-labels-check-radio">interpretation/translation</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for interpretation and translation services so people can directly reach out to you.</legend>
+                                        <label for="explainNeedInterpretation" class="form-labels-subtext">Examples: What language do you speak or is the document in? What language does it need to be translated to?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedInterpretation" name="explainNeedInterpretation"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationFrequencyMoreThanWeekly" name="needInterpretationFrequency">
+                                            <label for="needInterpretationFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationFrequencyWeekly" name="needInterpretationFrequency">
+                                            <label for="needInterpretationFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationFrequencyBiWeekly" name="needInterpretationFrequency">
+                                            <label for="needInterpretationFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationFrequencyMonthly" name="needInterpretationFrequency">
+                                            <label for="needInterpretationFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationFrequencyInfrequent" name="needInterpretationFrequency">
+                                            <label for="needInterpretationFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationFrequencyOnce" name="needInterpretationFrequency">
+                                            <label for="needInterpretationFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationUrgentYes" name="needInterpretationUrgency">
+                                            <label for="needInterpretationUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needInterpretationUrgentNo" name="needInterpretationUrgency">
+                                            <label for="needInterpretationUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedSocialServices" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedSocialServices" class="form-labels-check-radio">social service guidance (filing for medicare, unemployment, etc.)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for social service guidance so people can directly reach out to you.</legend>
+                                        <label for="explainNeedSocialServices" class="form-labels-subtext">Examples: What social services do you want assistance accessing?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedSocialServices" name="explainNeedSocialServices"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesFrequencyMoreThanWeekly" name="needSocialServicesFrequency">
+                                            <label for="needSocialServicesFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesFrequencyWeekly" name="needSocialServicesFrequency">
+                                            <label for="needSocialServicesFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesFrequencyBiWeekly" name="needSocialServicesFrequency">
+                                            <label for="needSocialServicesFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesFrequencyMonthly" name="needSocialServicesFrequency">
+                                            <label for="needSocialServicesFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesFrequencyInfrequent" name="needSocialServicesFrequency">
+                                            <label for="needSocialServicesFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesFrequencyOnce" name="needSocialServicesFrequency">
+                                            <label for="needSocialServicesFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesUrgentYes" name="needSocialServicesUrgency">
+                                            <label for="needSocialServicesUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needSocialServicesUrgentNo" name="needSocialServicesUrgency">
+                                            <label for="needSocialServicesUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio"> 
+                                    <input type="checkbox" id="formNeedHealing" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for healing, ritual, and/or herbal medicine so people can directly reach out to you.</legend>
+                                        <label for="explainNeedHealing" class="form-labels-subtext">Examples: What type of healing, ritual, and/or herbal medicine are you asking for? What precautions would you expect a neighbor providing herbal medicine to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedHealing" name="explainNeedHealing"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingFrequencyMoreThanWeekly" name="needHealingFrequency">
+                                            <label for="needHealingFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingFrequencyWeekly" name="needHealingFrequency">
+                                            <label for="needHealingFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingFrequencyBiWeekly" name="needHealingFrequency">
+                                            <label for="needHealingFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingFrequencyMonthly" name="needHealingFrequency">
+                                            <label for="needHealingFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingFrequencyInfrequent" name="needHealingFrequency">
+                                            <label for="needHealingFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingFrequencyOnce" name="needHealingFrequency">
+                                            <label for="needHealingFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingUrgentYes" name="needHealingUrgency">
+                                            <label for="needHealingUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHealingUrgentNo" name="needHealingUrgency">
+                                            <label for="needHealingUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedHousingShort" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedHousingShort" class="form-labels-check-radio">housing (short-term)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for short-term housing so people can directly reach out to you.</legend>
+                                        <label for="explainNeedHousingShort" class="form-labels-subtext">Examples: How many people are you looking for housing for? What living arangements would you like to find? How long do you need housing for? What precautions are you taking around the COVID-19 virus? What precautions would you expect a neighbor providing short-term housing to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedHousingShort" name="explainNeedHousingShort"></textarea>
+                                    </div>                    
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHousingShortUrgentYes" name="needHousingShortUrgency">
+                                            <label for="needHousingShortUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHousingShortUrgentNo" name="needHousingShortUrgency">
+                                            <label for="needHousingShortUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedHousingLong" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedHousingLong" class="form-labels-check-radio">housing (long-term)</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for long-term housing so people can directly reach out to you.</legend>
+                                        <label for="explainNeedHousingLong" class="form-labels-subtext">Examples: How many people are you looking for housing for? What living arangements would you like to find? How long do you need housing for? What precautions are you taking around the COVID-19 virus? What precautions would you expect a neighbor providing long-term-term housing to be taking?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedHousingLong" name="explainNeedHousingLong"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHousingLongUrgentYes" name="needHousingLongUrgency">
+                                            <label for="needHousingLongUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needHousingLongUrgentNo" name="needHousingLongUrgency">
+                                            <label for="needHousingLongUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="checkbox" id="formNeedOther" class="contains-hidden-div" name="formNeeds">
+                                    <label for="formNeedOther" class="form-labels-check-radio">other</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your ask for something other than those checkboxes above so people can directly reach out to you.</legend>
+                                        <label for="explainNeedOther" class="form-labels-subtext">Examples: What other need are you requesting neighbors to fulfill?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedOther" name="explainNeedOther"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How often would you like this need fulfilled?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherFrequencyMoreThanWeekly" name="needOtherFrequency">
+                                            <label for="needOtherFrequencyMoreThanWeekly" class="form-labels-check-radio">more than once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherFrequencyWeekly" name="needOtherFrequency">
+                                            <label for="needOtherFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherFrequencyBiWeekly" name="needOtherFrequency">
+                                            <label for="needOtherFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherFrequencyMonthly" name="needOtherFrequency">
+                                            <label for="needOtherFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherFrequencyInfrequent" name="needOtherFrequency">
+                                            <label for="needOtherFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherFrequencyOnce" name="needOtherFrequency">
+                                            <label for="needOtherFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherUrgentYes" name="needOtherUrgency">
+                                            <label for="needOtherUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needOtherUrgentNo" name="needOtherUrgency">
+                                            <label for="needOtherUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>
+                            <br>
+                        </fieldset> <!-- Needs Checkboxes Fieldset ends here -->
+                        <fieldset> <!-- Financial Needs Fieldset starts here -->
+                            <legend class="sub-field-legend">Do you have a financial need?</legend>
+                            <div>
+                                <div class="input-container-check-radio">
+                                    <input type="radio" id="formYesFinancialNeed" name="formFinancialNeed" class="contains-hidden-div">
+                                    <label for="formYesFinancialNeed" class="form-labels-check-radio">Yes, I have a financial need.</label>
+                                </div>
+                                <fieldset class="initially-display-none-explain-more-container">
+                                    <div class="input-containers">
+                                        <legend class="sub-field-legend">Please elaborate on your financial needs so we can better assist you.</legend>
+                                        <label for="explainNeedFinancial" class="form-labels-subtext">Examples: How much money is needed (exact # or range)? What's the best method of receiving money (Venmo, CashApp, Paypal, cash only, etc.)?</label>
+                                        <textarea class="text-inputs" placeholder="Explain here" id="explainNeedFinancial" name="explainNeedFinancial"></textarea>
+                                    </div>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">How does this financial need come up?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialFrequencyWeekly" name="needFinancialFrequency">
+                                            <label for="needFinancialFrequencyWeekly" class="form-labels-check-radio">once per week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialFrequencyBiWeekly" name="needFinancialFrequency">
+                                            <label for="needFinancialFrequencyBiWeekly" class="form-labels-check-radio">every other week</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialFrequencyMonthly" name="needFinancialFrequency">
+                                            <label for="needFinancialFrequencyMonthly" class="form-labels-check-radio">once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialFrequencyInfrequent" name="needFinancialFrequency">
+                                            <label for="needFinancialFrequencyInfrequent" class="form-labels-check-radio">infrequently: less than once per month</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialFrequencyOnce" name="needFinancialFrequency">
+                                            <label for="needFinancialFrequencyOnce" class="form-labels-check-radio">one-time need</label>
+                                        </div>
+                                    </fieldset>
+                                    <br>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Is this need urgent?</legend>
+                                        <span class="form-labels-subtext">(choose one)</span>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialUrgentYes" name="needFinancialUrgency">
+                                            <label for="needFinancialUrgentYes" class="form-labels-check-radio">Yes, this need is urgent.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialUrgentNo" name="needFinancialUrgency">
+                                            <label for="needFinancialUrgentNo" class="form-labels-check-radio">No, this need is not urgent.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                    <fieldset>
+                                        <legend class="sub-field-legend">Would you like to keep your financial need private and accessible only to block coordinators or is it okay to include this information on the Needs and Offerings page?</legend>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio" id="needFinancialPublicYes" name="needFinancialPublic">
+                                            <label for="needFinancialPublicYes" class="form-labels-check-radio">Yes, it is okay to display my financial need on the Needs and Offerings page.</label>
+                                        </div>
+                                        <div class="input-container-check-radio">
+                                            <input type="radio"   id="needFinancialPublicNo" name="needFinancialPublic">
+                                            <label for="needFinancialPublicNo" class="form-labels-check-radio">No, please do not display my financial need.</label>
+                                        </div>
+                                        <br>
+                                    </fieldset>
+                                </fieldset>
+                            </div>  
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="formNoFinancialNeedPublic" name="formFinancialNeed">
+                                <label for="formNoFinancialNeedPublic" class="form-labels-check-radio">No, I do not have a financial need.</label>
+                            </div>
+                        </fieldset> <!-- Financial Needs Fieldset ends here -->
+                    </fieldset> <!-- Needs Fieldset ends here -->
+                    <br>
+                    <br>
+                    <hr>
+                    <fieldset> <!-- Other Questions Section starts here-->
+                        <legend class="header-legend">OTHER QUESTIONS</legend>
+                        <div class="input-containers">
+                            <label for="explainNeighborConnections" class="form-labels">Have you already been connecting with your neighbors? Tell us a little bit about what your relationships to neighbors and/or your neighborhood coordination has looked like before COVID-19 pandemic and during it. We would like to figure out how best to connect with you and support you!</label>
+                            <textarea class="text-inputs" id="explainNeighborConnections" name="explainNeighborConnections" placeholder="Explain here"></textarea>
+                        </div>
+                        <br>
+                        <fieldset>
+                            <legend class="sub-field-legend">Are you interested in becoming a block coordinator?</legend>
+                            <span class="form-labels-subtext">This means you’d take on the responsibility of reaching out to your neighbors, coordinating a neighborhood group chat or phone tree, and staying in touch with the other coordinators for resource sharing. <br>(choose one)</span>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="blockCoordYes" name="blockCoord">
+                                <label for="blockCoordYes" class="form-labels-check-radio">Yes, let's chat!</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="blockCoordNo" name="blockCoord">
+                                <label for="blockCoordNo" class="form-labels-check-radio">No</label> 
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="blockCoordMaybe" name="blockCoord">
+                                <label for="blockCoordMaybe" class="form-labels-check-radio">Maybe. I need more information.</label>
+                            </div>
+                            <br>
+                        </fieldset>
+                        <fieldset>
+                            <legend class="sub-field-legend">Do you want to help build and continue this emerging network without becoming a block coordinator? Do you want to understand how this network works and where you can fit it?</legend>
+                            <span class="form-labels-subtext">(choose one)</span>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="networkHelpYes" name="networkHelp">
+                                <label for="networkHelpYes" class="form-labels-check-radio">Yes, follow up with me about what the network needs!</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="networkHelpMaybe" name="networkHelp">
+                                <label for="networkHelpMaybe" class="form-labels-check-radio">Maybe. I need more information and/or I don't have much time.</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" id="networkHelpNo" name="networkHelp">
+                                <label for="networkHelpNo" class="form-labels-check-radio">No</label>
+                            </div>
+                            <br>
+                        </fieldset>
+                        <div class="input-containers">
+                            <label for="formExplainCheckIn" class="form-labels">We want to know how you are! Feel free to share how the coronavirus has impacted your life and anything else that you want to share.</label>
+                            <textarea class="text-inputs" id="formExplainCheckIn" name="formExplainCheckIn" placeholder="Explain here"></textarea>
+                        </div>
+                    </fieldset> <!-- Other Questions Section ends here-->
+                    <br>
+                    <input type="submit" class="palette-a button">
+                </form>
+            </div> <!-- Form Container Ends Here -->
+        </div> <!-- Large Content Ccontainer with Palette-B Ends Here-->
+    </div>  <!-- Page Container Ends Here-->
+       
         
         <script src="../scripts/scripts.js"></script>
 </body>

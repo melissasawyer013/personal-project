@@ -9,68 +9,75 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <div class="whole-page-container">
-        <!-- Whole Navigation Bar Begins -->
-        <nav class="navbar"> 
-            <!-- Top Navigation Bar Begins -->
-            <div class="navbar-top">
-                <div class="navbar-home-icon-container">
-                    <a href="../index.html">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </a>
+<!-- Whole Navigation Bar Begins -->
+    <nav class="navbar" role="navigation"> 
+<!-- Top Navigation Bar Begins -->
+        <div class="navbar-top">
+            <div class="navbar-home-icon-container">
+                <a href="../index.html">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </a>
+            </div>     
+            <div class="navbar-logo-container">
+                <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+            </div>
+            <div class="navbar-top-links-container">
+                <div class="navbar-top-links-donate">
+                    <a href="./donate.html">Donate</a>
                 </div>
-                <div class="navbar-logo-container">
-                    <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+                <div class="navbar-top-links">
+                    <a href="./login.html">Login</a>
                 </div>
-                <div class="navbar-top-list">
-                    <div class="navbar-top-links-donate">
-                        <a href="./donate.html">Donate</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./login.html">Login</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./help.html">Help</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="#">Translate</a>
-                    </div>
+                <div class="navbar-top-links">
+                    <a href="./help.html">Help</a>
                 </div>
-            </div> <!-- End Top Navigation Bar -->   
-            <!-- Bottom Navigation Bar Begins-->
-            <div class="navbar-bottom-list"> 
-                <ul class="navbar-bottom-list-links">
-                    <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
-                    <li><a href="./update-form.html">Update<br>Form</a></li>
-                    <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
-                    <li class="navigation-current-border"><a href="./community-resources.html">Community<br>Resources</a></li>
-                    <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
-                    <li><a href="./about-us.html">About Us</a></li>
-                </ul>
-            </div> <!-- End Bottom Navigation Bar -->
-        </nav> <!-- End Whole Navigation Bar -->
-        <div class="resources-page-container">
-            <div class="resources-page-top-container">
-                <div class="resources-info-container">
-                    <h1>COMMUNITY RESOURCES</h1>
-                    <p>Many organizations are doing mutual aid work at a larger scale than at the individual level. Below, you can find out more information about these organizations, what they’re offering, how to sign up for assistance, and how you can contribute as a volunteer.</p>
-                </div>
-                <div class="resources-add-org-container">
-                    <h1 class="resources-add-link-header"><a href="./community-resources-add-organization.html">ADD AN ORGANIZATION</a></h1>
-                    <p>Want to add a resource to this page? <span class="resources-add-link"><a href="./community-resources-add-organization.html">Click here </a></span>to complete the form and submit it to our organizers for review. <br>Criteria for review:</p>
-                    <ul>
-                        <li>must be offering services in Dorchester and Mattapan</li>
-                        <br>
-                        <li>must have directions or sign-up procedure for residents</li>
-                    </ul>
+                <div class="navbar-top-links">
+                    <a href="#">Translate</a>
                 </div>
             </div>
-            <div class="resources-organization-profile-container">
-                <div class="resources-org-profile-logo-container">
-                    <img src="../Images/BPSLogo.jpg" alt="">
+        </div> <!-- End Top Navigation Bar -->   
+<!-- Bottom Navigation Bar Begins-->
+        <div class="navbar-bottom-container"> 
+            <ul class="navbar-bottom-list-links">
+                <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
+                <li><a href="./update-form.html">Update<br>Form</a></li>
+                <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
+                <div class="dropdown">
+                    <li class="navigation-current-border">
+                        <a href="./community-resources.html">Community<br>Resources</a>
+                        <div class="dropdown-content">
+                            <a href="./community-resources-add-organization.html">Add a <br>Resource</a>
+                        </div>
+                    </li>
                 </div>
-                <div class="resources-org-profile-text-container">
-                    <h1>Boston Public Schools Meal Program</h1>
+                <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+            </ul>
+        </div> <!-- End Bottom Navigation Bar -->
+    </nav> <!-- End Whole Navigation Bar -->
+<!-- Page Content Starts -->
+    <div class="page-container-row">
+        <div class="narrow-content-container-column palette-b">
+            <h1>COMMUNITY RESOURCES</h1>
+            <p>Many organizations are doing mutual aid work at a larger scale than at the individual level. Below, you can find out more information about these organizations, what they’re offering, how to sign up for assistance, and how you can contribute as a volunteer.</p>
+        </div>
+        <div class="narrow-content-container-column palette-a">
+            <h1><a style="font-weight: bold;" href="./community-resources-add-organization.html">ADD AN ORGANIZATION</a></h1>
+            <p>Want to add a resource to this page? <a href="./community-resources-add-organization.html">Click here</a> to complete the form and submit it to our organizers for review. <br>Criteria for review:</p>
+                <ul>
+                    <li>must be offering services in Dorchester and Mattapan</li>
+                    <br>
+                    <li>must have directions or sign-up procedure for residents</li>
+                </ul>
+        </div>
+    </div>
+    <div class="page-container-column">
+        <div class="medium-content-container-row palette-c">
+            <div class="logo-container">
+                <img src="../Images/BPSLogo.jpg" alt="Boston Public Schools logo ">
+            </div>
+            <div class="text-container-column">
+                <h1>Boston Public Schools Meal Program</h1>
                     <p>BPS will continue to provide free breakfast and lunch meals to all Boston children beginning Tuesday, March 17. Locations will be open Monday - Friday from 8:30 am - 11:30 am <a href="https://www.bostonpublicschools.org/Page/8098" target="_blank" aria-label="click here to go to the BPS page with the list of schools offering meal pick-ups">at the schools listed here.</a> A variety of packaged meal options will be available for pick-up. 
                     <br> <br>
                     The schools offering meal-pickups in Dorchester and Mattapan are:
@@ -82,9 +89,9 @@
                         <li>Frederick - 270 Columbia Rd, Dorchester</li>
                         <li>Mildred Ave School - 5 Mildred Ave, Mattapan</li>
                     </ul>
-                </div>
             </div>
         </div>
+    </div>
         <script src="../scripts/scripts.js"></script>
 </body>
 </html>

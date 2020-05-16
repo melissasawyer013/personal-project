@@ -9,50 +9,57 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <div class="whole-page-container">
-        <!-- Whole Navigation Bar Begins -->
-        <nav class="navbar"> 
-            <!-- Top Navigation Bar Begins -->
-            <div class="navbar-top">
-                <div class="navbar-home-icon-container">
-                    <a href="../index.html">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </a>
+<!-- Whole Navigation Bar Begins -->
+    <nav class="navbar" role="navigation"> 
+<!-- Top Navigation Bar Begins -->
+        <div class="navbar-top">
+            <div class="navbar-home-icon-container">
+                <a href="../index.html">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </a>
+            </div>     
+            <div class="navbar-logo-container">
+                <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+            </div>
+            <div class="navbar-top-links-container">
+                <div class="navbar-top-links-donate">
+                    <a href="./donate.html">Donate</a>
                 </div>
-                <div class="navbar-logo-container">
-                    <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+                <div class="navbar-top-links">
+                    <a href="./login.html">Login</a>
                 </div>
-                <div class="navbar-top-list">
-                    <div class="navbar-top-links-donate">
-                        <a href="./donate.html">Donate</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./login.html">Login</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./help.html">Help</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="#">Translate</a>
-                    </div>
+                <div class="navbar-top-links">
+                    <a href="./help.html">Help</a>
                 </div>
-            </div> <!-- End Top Navigation Bar -->   
-            <!-- Bottom Navigation Bar Begins-->
-            <div class="navbar-bottom-list"> 
-                <ul class="navbar-bottom-list-links">
-                    <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
-                    <li><a href="./update-form.html">Update<br>Form</a></li>
-                    <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
-                    <li><a href="./community-resources.html">Community<br>Resources</a></li>
-                    <li class="navigation-current-border"><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
-                    <li><a href="./about-us.html">About Us</a></li>
-                </ul>
-            </div> <!-- End Bottom Navigation Bar -->
-        </nav> <!-- End Whole Navigation Bar -->
-        <div class="coordinator-page-container">
-            <div class="coordinator-responsibilities-container">
-                <h1>Block Coordinator Responsibilities</h1>
-                <p>Block coordinators are individuals who have agreed to be a point-person on coordinating need fulfillment within the sub-neighborhood they are a part of.</p>
+                <div class="navbar-top-links">
+                    <a href="#">Translate</a>
+                </div>
+            </div>
+        </div> <!-- End Top Navigation Bar -->   
+<!-- Bottom Navigation Bar Begins-->
+        <div class="navbar-bottom-container"> 
+            <ul class="navbar-bottom-list-links">
+                <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
+                <li><a href="./update-form.html">Update<br>Form</a></li>
+                <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
+                <div class="dropdown">
+                    <li>
+                        <a href="./community-resources.html">Community<br>Resources</a>
+                        <div class="dropdown-content">
+                            <a href="./community-resources-add-organization.html">Add a <br>Resource</a>
+                        </div>
+                    </li>
+                </div>
+                <li class="navigation-current-border"><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+            </ul>
+        </div> <!-- End Bottom Navigation Bar -->
+    </nav> <!-- End Whole Navigation Bar -->
+<!-- Page Content Starts -->
+    <div class="page-container-row">
+        <div class="narrow-content-container-column palette-b">
+            <h1>BLOCK COORDINATOR RESPONSIBILITIES</h1>
+                <p>Block coordinators are individuals who have agreed to be a point-person on coordinating need fulfillment within the sub-neighborhood they are a part of. Duties include:</p>
                 <ul>
                    <li>
                        check the Needs & Offerings page regularly for needs and offerings on block
@@ -71,38 +78,36 @@
                    </li>
                    <br>
                 </ul>
-            </div>
-            <div class="coordinator-form-container">
-                <h1>
-                    Interested in becoming a block coordinator?
-                    <br>
-                    <span class="coordinator-form-container-subheading">Complete the form below.</span>
-                </h1>
-                <form class="coordinator-page-form" action="">
-                    <div class="input-containers">
-                        <label for="coordinatorName" class="form-labels">Full Name </label>
-                        <input type="text" placeholder="full name" id="coordinatorName" class="text-inputs">
-                    </div>
-                    <div class="input-containers">
-                        <label for="coordinatorPhoneNumber" class="form-labels">Phone Number</label>
-                        <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789" id="coordinatorPhoneNumber" class="text-inputs">
-                    </div>
-                    <div class="input-containers">
-                        <label for="coordinatorEmailAddress" class="form-labels">Email Address</label>
-                        <input type="email" placeholder="YourEmail@email.com" id="coordinatorEmailAddress" class="text-inputs">
-                    </div>
-                    <br>
-                    <div class="input-containers">
-                        <label for="coordinatorExplain" class="form-labels">Tell us about yourself and your experiences.<br><span class="form-labels-subtext">What is your connection to Dorchester? Why do you want to become a block coordinator? What organizing experience do you have? (no prior experience necessary)</span></label>
-                        <textarea class="text-inputs" id="coordinatorExplain" placeholder="Explain here"></textarea>
-                    </div>
-                    <br>
-                    <input type="submit" class="form-submit-button">
+        </div>
+        <div class="narrow-content-container-column palette-a">
+            <h1>WANT TO BE A BLOCK COORDINATOR?</h1>
+            <div class="form-container">
+                <form action="/addCoordinatorData" method="POST">
+                    <fieldset>
+                        <legend class="sub-field-legend">Complete the form below.<br><span class="form-labels-subtext">Fields marked with an asterisk * are required.</span></legend>
+                        <div class="input-containers">
+                            <label for="coordinatorName" class="form-labels">Full Name *</label>
+                            <input type="text" placeholder="full name" id="coordinatorName" name="coordinatorName" class="text-inputs" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="coordinatorPhoneNumber" class="form-labels">Phone Number *</label>
+                            <input type="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="012-345-6789" id="coordinatorPhoneNumber" name="coordinatorPhoneNumber" class="text-inputs" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="coordinatorEmailAddress" class="form-labels">Email Address *</label>
+                            <input type="email" placeholder="YourEmail@email.com" id="coordinatorEmailAddress" name="coordinatorEmailAddress" class="text-inputs" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="coordinatorExplain" class="form-labels">Tell us about yourself and your experiences. *<br><span class="form-labels-subtext">What is your connection to Dorchester? Why do you want to become a block coordinator? What organizing experience do you have? (no prior experience necessary)</span></label>
+                            <textarea class="text-inputs" id="coordinatorExplain" name="coordinatorExplain" placeholder="Explain here" required></textarea>
+                        </div>
+                        <br>
+                        <input type="submit" class="palette-b button">
+                    </fieldset>
                 </form>
             </div>
         </div>
-
-
-        <script src="../scripts/scripts.js"></script>
+    </div>
+    <script src="../scripts/scripts.js"></script>
 </body>
 </html>

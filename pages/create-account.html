@@ -9,78 +9,89 @@
     <title>Dorchester Community Care Network</title>
 </head>
 <body>
-    <div class="whole-page-container">
-        <!-- Whole Navigation Bar Begins -->
-        <nav class="navbar"> 
-            <!-- Top Navigation Bar Begins -->
-            <div class="navbar-top">
-                <div class="navbar-home-icon-container">
-                    <a href="../index.html">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </a>
+<!-- Whole Navigation Bar Begins -->
+    <nav class="navbar" role="navigation"> 
+    <!-- Top Navigation Bar Begins -->
+        <div class="navbar-top">
+            <div class="navbar-home-icon-container">
+                <a href="../index.html">
+                    <i class="fas fa-home" aria-hidden="true"></i>
+                </a>
+            </div>     
+            <div class="navbar-logo-container">
+                <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+            </div>
+            <div class="navbar-top-links-container">
+                <div class="navbar-top-links-donate">
+                    <a href="./donate.html">Donate</a>
                 </div>
-                <div class="navbar-logo-container">
-                    <a href="../index.html" title="navigates to homepage">DORCHESTER <br> COMMUNITY CARE NETWORK</a>
+                <div class="navbar-top-links">
+                    <a href="./login.html">Login</a>
                 </div>
-                <div class="navbar-top-list">
-                    <div class="navbar-top-links-donate">
-                        <a href="./donate.html">Donate</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./login.html">Login</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="./help.html">Help</a>
-                    </div>
-                    <div class="navbar-top-links">
-                        <a href="#">Translate</a>
-                    </div>
+                <div class="navbar-top-links">
+                    <a href="./help.html">Help</a>
                 </div>
-            </div> <!-- End Top Navigation Bar -->   
-            <!-- Bottom Navigation Bar Begins-->
-            <div class="navbar-bottom-list"> 
-                <ul class="navbar-bottom-list-links">
-                    <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
-                    <li><a href="./update-form.html">Update<br>Form</a></li>
-                    <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
-                    <li><a href="./community-resources.html">Community<br>Resources</a></li>
-                    <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
-                    <li><a href="./about-us.html">About Us</a></li>
-                </ul>
-            </div> <!-- End Bottom Navigation Bar -->
-        </nav> <!-- End Whole Navigation Bar -->
-        <div class="page-container">
-            <div class="green-large-content-container">
-                <h1 class="login-header">Create an Account</h1>
-                <span class="form-labels-subtext">Sign up using Gmail or Facebook</span>
-                <div class="login-button-row-container">
-                    <!-- <div id="my-signin2">  FOR GOOGLE API? -->
-                        <button>Sign Up with Gmail</button>
-                        <button>Sign Up with Facebook</button>
-                    <!-- </div> -->
+                <div class="navbar-top-links">
+                    <a href="#">Translate</a>
                 </div>
-                <br>
-                <div class="separator-green-background">&nbsp OR &nbsp</div>
-                <br>
-                <form action="">
+            </div>
+        </div> <!-- End Top Navigation Bar -->   
+<!-- Bottom Navigation Bar Begins-->
+        <div class="navbar-bottom-container"> 
+            <ul class="navbar-bottom-list-links">
+                <li><a href="../index.html#formTarget">Complete<br>Form</a></li>
+                <li><a href="./update-form.html">Update<br>Form</a></li>
+                <li><a href="./needs-and-offerings.html">Needs and <br> Offerings</a></li>
+                <div class="dropdown">
+                    <li>
+                        <a href="./community-resources.html">Community<br>Resources</a>
+                        <div class="dropdown-content">
+                            <a href="./community-resources-add-organization.html">Add a <br>Resource</a>
+                        </div>
+                    </li>
+                </div>
+                <li><a href="./block-coordinator.html">Become a Block<br>Coordinator</a></li>
+                <li><a href="./about-us.html">About Us</a></li>
+            </ul>
+        </div> <!-- End Bottom Navigation Bar -->
+    </nav> <!-- End Whole Navigation Bar -->
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-a">
+            <h1>CREATE AN ACCOUNT</h1>
+            <span class="form-labels-subtext">Sign up using Gmail or Facebook</span>
+            <div class="container-row" style="justify-content: flex-start;">
+                <button class="palette-b">Sign Up with Gmail</button>
+                <button class="palette-b">Sign Up with Facebook</button>
+            </div>
+            <br>
+            <div class="separator-palette-a">&nbsp OR &nbsp</div>
+            <br>
+            <form action="/signUp" method="POST">
+                <fieldset>
+                    <legend>Enter in your information below.</legend>
                     <div class="input-containers">
-                        <label for="signUpUsernameEmail" class="form-labels">Enter your email address </label>
-                        <input type="email" placeholder="YourEmail@email.com" id="signUpUsernameEmail" class="text-inputs">
+                        <label for="signUpUsernameEmail" class="form-labels">Enter your email address *</label>
+                        <input type="email" placeholder="YourEmail@email.com" id="signUpUsernameEmail" name="signUpUsernameEmail" class="text-inputs" required>
                     </div>
             
                     <div class="input-containers">   
-                        <label for="signUpPassword" class="form-labels">Password </label>
-                        <input type="password" placeholder="password" id="signUpPassword" class="text-inputs">
+                        <label for="signUpPassword" class="form-labels">Password *</label>
+                        <input type="password" placeholder="password" id="signUpPassword" name="signUpPassword" class="text-inputs" required>
                     </div>
                     <div class="input-containers">   
-                        <label for="signUpPasswordVerify" class="form-labels">Re-enter Password </label>
-                        <input type="password" placeholder="re-enter password" id="signUpPasswordVerify" class="text-inputs">
+                        <label for="signUpPasswordVerify" class="form-labels">Re-enter Password *</label>
+                        <input type="password" placeholder="re-enter password" id="signUpPasswordVerify" name="signUpPasswordVerify" class="text-inputs" required>
                         <div class="short-line-break"><br></div> 
                     </div>
-                    <input type="submit" class="form-submit-button">
-                </form>
-            </div>
+                </fieldset>
+                <br>
+                <input type="submit" class="button palette-b">
+                <br>
+            </form>
+            <a href="./login.html" aria-label="Click here to navigate to the password recovery page.">Back to login screen</a>
         </div>
-        <script src="../scripts/scripts.js"></script>
+    </div>
+    <script src="../scripts/scripts.js"></script>
 </body>
 </html>
