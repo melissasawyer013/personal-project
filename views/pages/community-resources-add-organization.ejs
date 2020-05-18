@@ -1,0 +1,48 @@
+<%- include('../partials/header')-%>
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-b">
+            <h1>NOMINATE A COMMUNITY RESOURCE</h1>
+                <p>Criteria for review:</p>
+                <ul>
+                    <li>must be offering services in Dorchester and Mattapan</li>
+                    <br>
+                    <li>must have directions or sign-up procedure for residents</li>
+                </ul>
+            <div class="form-container">
+                <form action="/addResourceData" method="POST">
+                    <fieldset>
+                        <legend class="sub-field-legend">Tell us as much as you can about the community resource below and submit it for our organizers to review.<br><span class="form-labels-subtext">Fields marked with an asterisk * are required.</span></legend>
+                        <div class="input-containers">
+                            <label for="nomResourceName" class="form-labels">Organization's Name *</label>
+                            <input type="text" placeholder="name" id="nomResourceName" name="nomResourceName" class="text-inputs" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="nomResourceURL" class="form-labels">Organization's Website</label>
+                            <input type="url" placeholder="website url" id="nomResourceURL" name="nomResourceURL" class="text-inputs">
+                        </div>
+                        <br>
+                        <div class="input-containers">
+                            <label for="nomResourceInfo" class="form-labels">Tell us more about this organization. *<br><span class="form-labels-subtext">What services are they providing? Where are they providing services? How do people access these services?</span></label>
+                            <textarea class="text-inputs" id="nomResourceInfo" name="nomResourceInfo" placeholder="Explain here" required></textarea>
+                        </div>
+                        <br>
+                        <div class="input-containers">
+                            <label for="nomResourceConnection" class="form-labels">Tell us about your connection to this organization<br><span class="form-labels-subtext">What is your experience with this organization? Are you a member, volunteer, or recipient of their services? Explain how you know about them.</span></label>
+                            <textarea class="text-inputs" id="nomResourceConnection" name="nomResourceConnection" placeholder="Explain here"></textarea>
+                        </div>
+                        <br>
+                        <div class="input-containers">
+                            <label for="nomResourceConnection" class="form-labels">Share any contact information you have for this organization.<br><span class="form-labels-subtext">Do you know the name and contact information of someone within the organization that can tell us more?</span></label>
+                            <textarea class="text-inputs" id="nomResourceConnection" name="nomResourceConnecion" placeholder="Explain here"></textarea>
+                        </div>
+                        <br>
+                        <input type="submit" class="button palette-a">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<%- include('../partials/header')-%>
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-a">
+            <h1>CREATE AN ACCOUNT</h1>
+            <span class="form-labels-subtext">Sign up using Gmail or Facebook</span>
+            <div class="container-row" style="justify-content: flex-start;">
+                <button class="palette-b">Sign Up with Gmail</button>
+                <button class="palette-b">Sign Up with Facebook</button>
+            </div>
+            <br>
+            <div class="separator-palette-a">&nbsp OR &nbsp</div>
+            <br>
+            <form action="/signUp" method="POST">
+                <fieldset>
+                    <legend>Enter in your information below.</legend>
+                    <div class="input-containers">
+                        <label for="signUpUsernameEmail" class="form-labels">Enter your email address *</label>
+                        <input type="email" placeholder="YourEmail@email.com" id="signUpUsernameEmail" name="signUpUsernameEmail" class="text-inputs" required>
+                    </div>
+            
+                    <div class="input-containers">   
+                        <label for="signUpPassword" class="form-labels">Password *</label>
+                        <input type="password" placeholder="password" id="signUpPassword" name="signUpPassword" class="text-inputs" required>
+                    </div>
+                    <div class="input-containers">   
+                        <label for="signUpPasswordVerify" class="form-labels">Re-enter Password *</label>
+                        <input type="password" placeholder="re-enter password" id="signUpPasswordVerify" name="signUpPasswordVerify" class="text-inputs" required>
+                        <div class="short-line-break"><br></div> 
+                    </div>
+                </fieldset>
+                <br>
+                <input type="submit" class="button palette-b">
+                <br>
+            </form>
+            <a href="./login" aria-label="Click here to navigate to the password recovery page.">Back to login screen</a>
+        </div>
+    </div>
+    <script src="../scripts/scripts.js"></script>
+</body>
+</html>

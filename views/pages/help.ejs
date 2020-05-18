@@ -1,0 +1,31 @@
+<%- include('../partials/header')-%>
+<!-- Page Content Starts -->
+    <div class="page-container-column">
+        <div class="large-content-container-column palette-b">
+            <h1>NEED HELP?</h1>
+            <form action="/submitHelp" method="POST">
+                <div class="input-containers">
+                    <label for="helpMessageName" class="form-labels">Full Name </label>
+                    <input type="text" placeholder="full name" id="helpMessageName" name="helpMessageName" class="text-inputs">
+                </div>
+                <div class="input-containers">
+                    <label for="helpMessageEmail" class="form-labels">Enter your email address </label>
+                    <input type="email" placeholder="YourEmail@email.com" id="helpMessageEmail" name="helpMessageEmail" class="text-inputs">
+                </div>
+                <div class="short-line-break"><br></div>
+                <div class="input-containers">
+                    <label for="helpMessageText" class="form-labels">Send a question or a concern to our leaders:</label>
+                    <textarea class="text-inputs" id="helpMessageText" name="helpMessageText" placeholder="Enter question or concern here." style="margin-top: 0;"></textarea>
+                </div>
+                <br>
+                <input type="submit" class="button palette-a">
+                <br>
+            </form>
+            <div class="separator-palette-b">&nbsp OR &nbsp</div>
+            <p>Call the Dorchester Community Care Helpline at (###)###-####. (number coming soon)</p>
+        </div>
+
+    </div>
+    <script src="../scripts/scripts.js"></script>
+</body>
+</html>
