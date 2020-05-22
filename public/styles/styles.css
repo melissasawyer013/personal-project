@@ -175,7 +175,7 @@ body {
 .large-content-container-column {
     display: flex;
     flex-direction: column;
-    width: 75%;
+    max-width: 75vw;
     font-size: 1.25em;
     padding: 20px 50px;
     margin: 50px 0 30px 0;
@@ -183,6 +183,9 @@ body {
     font-weight: 300;
     line-height: 1.7;
     border: 3px solid #ffffff;
+    flex-wrap: wrap;
+    width: 75vw;
+    /* min-width: fit-content; */
 }
 
 .large-content-container-row {
@@ -196,6 +199,8 @@ body {
     font-weight: 300;
     line-height: 1.7;
     border: 3px solid #ffffff;
+    flex-wrap: wrap;
+    min-width: fit-content;
 }
 
 .medium-content-container-column {
@@ -209,6 +214,8 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
     border: solid 3px #ffffff;
+    /* flex-wrap: wrap;
+    min-width: fit-content; */
 }
 
 .medium-content-container-row {
@@ -222,6 +229,8 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
     border: solid 3px #ffffff;
+    /* flex-wrap: wrap;
+    min-width: fit-content; */
 }
 
 .half-width-content-container-column {
@@ -231,21 +240,27 @@ body {
     align-items: flex-start;
     width: 50%;
     padding: 20px;
+    /* flex-wrap: wrap;
+    min-width: fit-content; */
 }
 
 .slim-content-container-column {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    max-width: 30%;
+    width: 28%;
     padding-left: 20px;
     padding-right: 20px;
     font-size: 1em;
+    flex-wrap: wrap;
+    min-width: min-content;
 }
 
 .narrow-content-container-column {
     display: flex;
     flex-direction: column;
-    max-width: 38%;
+    max-width: 38vw;
+    /* width: 38%; */
     font-size: 1.2em;
     letter-spacing: .02em;
     font-weight: 300;
@@ -253,6 +268,24 @@ body {
     margin: 50px 20px 50px 10px;
     padding: 20px 50px;
     border: 3px solid #ffffff;
+    flex-wrap: wrap;
+    min-width: 385px;
+    /* min-width: fit-content; */
+    /* max-width: 38vw; */
+
+
+    /* display: flex;
+    flex-direction: column;
+    max-width: 75vw;
+    font-size: 1.25em;
+    padding: 20px 50px;
+    margin: 50px 0 30px 0;
+    letter-spacing: .02em;
+    font-weight: 300;
+    line-height: 1.7;
+    border: 3px solid #ffffff;
+    flex-wrap: wrap; */
+
 }
 
 .text-container-column {
@@ -262,6 +295,8 @@ body {
     margin: 0 0 0 40px;
     text-align: left;
     align-items: flex-start;
+    /* flex-wrap: wrap;
+    min-width: fit-content; */
 }
 
 .container-row {
@@ -272,9 +307,22 @@ body {
     text-align: left;
     justify-content: center;
     align-items: stretch;
+    flex-wrap: wrap;
+    min-width: fit-content;
 }
 
-.container-row button{
+.container-row-no-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 0 0 0;
+    text-align: left;
+    justify-content: center;
+    align-items: stretch;
+    min-width: fit-content;
+}
+
+.container-row-no-wrap button{
     margin: 0 20px 0 0;
     width: 300px;
     padding: 10px;
@@ -307,6 +355,15 @@ body {
     font-family: 'Noto Sans SC', sans-serif;
     font-weight: 300;
     font-size: 1.1em;
+}
+
+.search-result-textarea {
+    height: 4em;
+    font-size: 1em;
+    font-weight: 300;
+    letter-spacing: .05em;
+    width: 90%;
+    max-width: 600px;
 }
 
 /* FORGOT PASSWORD PAGE */
@@ -456,7 +513,7 @@ input[type="checkbox"]:checked:after {
 input:active,
 input:focus {
     border: .15em solid ;
-    color: #EBC043;
+    color: #000000;
     outline: 0;
 }
 
@@ -700,6 +757,17 @@ input[type='submit'] {
     border: #EBC043 solid 2px;
     text-decoration: underline;
 }
+
+@viewport {
+    width: device-width ;
+    zoom: 1.0 ;
+  }
+
+@-ms-viewport {
+    width: device-width ;
+  }
+
+
 
 /* What I've Tried to Get Checkboxes and Radios to outline when they're tabbed through */
 /* :host /deep/ [type=checkbox],
