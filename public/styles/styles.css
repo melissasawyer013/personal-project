@@ -767,6 +767,14 @@ input[type='submit'] {
     width: device-width ;
   }
 
+@media only screen and (max-width: 900px) {
+    .narrow-content-container-column {
+        padding: 0 0.5em;
+        min-width: 95%;
+    }
+}
+
+/* 2 or 3 media queries probably */
 
 
 /* What I've Tried to Get Checkboxes and Radios to outline when they're tabbed through */

@@ -44,39 +44,63 @@ app.listen(PORT, function() {
 });
 
 
-app.post('/searchNeedsOfferings', (req, res) => {
-    dbHandler.collection(collectionUserForm).find({formOfferings: 'offerChildcare'}, {projection: {formFirstName: 1, formLastName:1, formOfferings: 1, explainOfferChildcare: 1}}).toArray((err, result) => {
+app.get('/searchNeedsOfferings', (req, res) => {
+    dbHandler.collection(collectionUserForm).find({formOfferings: 'formOfferPetCare'}, {projection: {formFirstName: 1, formLastName:1, formOfferings: 1, explainOfferPetCare: 1}}).toArray((err, result) => {
         if (err) {
             console.log(`ERROR: ${err}`);
         } else {
             console.log(result);
-            res.redirect('/needs-and-offerings');
+            let data = {}; //attribute is the category name (ex. childcare)
+            // value is an array of the listing that belong only to that category
+            result.forEach( (singleMatch) => {
+                const category = singleMatch.searchOfferings; //How I want to group the categories
+                if (!category in data) {
+                    data[category] = [];
+                } 
+                data[category].push(singleMatch)
+            })
+            res.render('listings', {
+                categorizedData: data
+            });
         }
     })
 })
 
+// app.get('/searchNeedsOfferings', (req, res) => {
+//     dbHandler.collection(collectionUserForm).find({formOfferings: 'formOfferPetCare'}, {projection: {formFirstName: 1, formLastName:1, formOfferings: 1, explainOfferPetCare: 1}}).toArray((err, result) => {
+//         if (err) {
+//             console.log(`ERROR: ${err}`);
+//         } else {
+//             console.log(result);
+//             res.redirect('/needs-and-offerings', {
+//                 'allMatches' : result
+//             }
+//             );
+//         }
+//     })
+// })
+
 
 app.post('/addFormData', (req, res) => {
     const formData = req.body;
-    const formFirstName = formData['formFirstName'];
-    const formLastName = formData['formLastName'];
+    let formFirstName = formData['formFirstName'];
+    let formLastName = formData['formLastName'];
     const formPublicDisplayName = formData['formPublicDisplayName'];
-        let publicDisplayName;
-        if (formPublicDisplayName === "formFullNamePublic") {
-            publicDisplayName = `${formFirstName} ${formLastName}`;
-        } else if (formPublicDisplayName === "firstNameOnlyPublic") {
+    let publicDisplayName = `${formFirstName} ${formLastName}`;   
+    // (formData['formPublicDisplayName'] === "formFullNamePublic")
+        if (formData['formPublicDisplayName'] === "firstNameOnlyPublic") {
             publicDisplayName = `${formFirstName}`;
-        } else if (formPublicDisplayName === "formLastNameOnlyPublic") {
+        } else if (formData['formPublicDisplayName'] === "formLastNameOnlyPublic") {
             publicDisplayName = `${formLastName}`;
         } else {
             publicDisplayName = `Anonymous Neighbor`;
-        }
+        };
     const formPhoneNumber = formData['formPhoneNumber'];
     const formEmail = formData['formEmail'];
     const formPublicDisplayContact = formData['formPublicDisplayContact'];
-        let publicDisplayContact;
+    let publicDisplayContact;
         if (formPublicDisplayContact = "formPhoneAndEmailPublic") {
-            publicDisplayContact = `${formPhoneNumber} or ${formEmail}`
+            publicDisplayContact = `${formPhoneNumber} or ${formEmail}`;
         } else if (formPublicDisplayContact === "formPhoneNumberOnlyPublic") {
             publicDisplayContact = `${formPhoneNumber}`;
         } else if (formPublicDisplayContact === "formEmailOnlyPublic") {
@@ -89,12 +113,14 @@ app.post('/addFormData', (req, res) => {
     const formAddressApartmentNumber = formData['formAddressApartmentNumber'];
     const formNeighborhood = formData['formNeighborhood'];
     const formPublicDisplayAddress = formData['formPublicDisplayAddress'];
-        // let publicDisplayAddress;
-        // if (formPublicDisplayAddress === "")
-
-
-
-
+    let publicDisplayAddress;
+        if (formPublicDisplayAddress === "formFullAddressPublic") {
+            publicDisplayAddress = `${formNeighborhood}: ${formAddressHouseNumber} ${formAddressStreetName} ${formAddressApartmentNumber}`;
+        } else if (formPublicDisplayAddress === "formStreetNameOnlyPublic") {
+            publicDisplayAddress = `${formNeighborhood}: ${formAddressStreetName}`;
+        } else {
+            publicDisplayAddress = `${formNeighborhood}`;
+        }
     const formOfferings = formData['formOfferings'];
     const explainOfferChildcare = formData['explainOfferChildcare'];
     const explainOfferCooking = formData['explainOfferCooking'];
@@ -178,6 +204,9 @@ app.post('/addFormData', (req, res) => {
     const formExplainCheckIn = formData['formExplainCheckIn'];
 
     const userFormDataObject = {
+        publicDisplayName: publicDisplayName,
+        publicDisplayContact: publicDisplayContact,
+        publicDisplayAddress: publicDisplayAddress,
         formFirstName: formFirstName,
         formLastName: formLastName,
         formPublicDisplayName: formPublicDisplayName,
