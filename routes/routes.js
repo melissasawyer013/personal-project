@@ -75,20 +75,27 @@ router.get('/needs-and-offerings', (req, res) => {
     const userSearchObject = {
         searchNeighborhood: searchNeighborhood,
         searchNeeds: searchNeeds,
-        // searchOffers: searchOffers,
+        searchOffers: searchOffers,
     }
     console.log(userSearchObject)
-
-    
-    // let explainOffer;
     if (searchOffers) {
-    dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray((error, result) => {
+        dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray((error, result) => {
         if (error) {
             console.log(error);
         } else {
             res.render('pages/needs-and-offerings.ejs', {
                 'searchMatchArray': result || [],
                 'offer': searchOffers,
+            });
+        }
+    })
+    } else if (searchNeeds) {
+        dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray((error, result) => {
+        if (error) {
+            console.log(error);
+        } else {
+            res.render('pages/needs-and-offerings.ejs', {
+                'searchMatchArray': result || [],
                 'need': searchNeeds,
             });
         }
@@ -200,9 +207,9 @@ router.post('/addFormData', (req, res) => {
     let needRidesCarFrequency = formData['needRidesCarFrequency'];
     let needRidesCarUrgency = formData['needRidesCarUrgency'];
     let communityUpdateNeedRidesCar = '';
-    let explainNeedPetcare = formData['explainNeedPetcare'];
-    let needPetcareFrequency = formData['needPetcareFrequency'];
-    let needPetcareUrgency = formData['needPetcareUrgency'];
+    let explainNeedPetCare = formData['explainNeedPetCare'];
+    let needPetCareFrequency = formData['needPetCareFrequency'];
+    let needPetCareUrgency = formData['needPetCareUrgency'];
     let communityUpdateNeedPetCare = '';
     let explainNeedInternetSubscriptions = formData['explainNeedInternetSubscriptions'];
     let communityUpdateNeedInternetSubscriptions = '';
@@ -213,7 +220,7 @@ router.post('/addFormData', (req, res) => {
     let explainNeedMedicalAdvice = formData['explainNeedMedicalAdvice'];
     let needMedicalAdviceUrgency = formData['needMedicalAdviceUrgency'];
     let communityUpdateNeedMedicalAdvice = '';
-    let explainNeedneedStorage = formData['explainNeedneedStorage'];
+    let explainNeedStorage = formData['explainNeedStorage'];
     let needStorageUrgency = formData['needStorageUrgency'];
     let communityUpdateNeedStorage = '';
     let explainNeedArt = formData['explainNeedArt'];
@@ -338,9 +345,9 @@ router.post('/addFormData', (req, res) => {
         needRidesCarFrequency: needRidesCarFrequency,
         needRidesCarUrgency: needRidesCarUrgency,
         communityUpdateNeedRidesCar: communityUpdateNeedRidesCar,
-        explainNeedPetcare: explainNeedPetcare,
-        needPetcareFrequency: needPetcareFrequency,
-        needPetcareUrgency: needPetcareUrgency,
+        explainNeedPetCare: explainNeedPetCare,
+        needPetCareFrequency: needPetCareFrequency,
+        needPetCareUrgency: needPetCareUrgency,
         communityUpdateNeedPetCare: communityUpdateNeedPetCare,
         explainNeedInternetSubscriptions: explainNeedInternetSubscriptions,
         communityUpdateNeedInternetSubscriptions: communityUpdateNeedInternetSubscriptions,
@@ -351,7 +358,7 @@ router.post('/addFormData', (req, res) => {
         explainNeedMedicalAdvice: explainNeedMedicalAdvice,
         needMedicalAdviceUrgency: needMedicalAdviceUrgency,
         communityUpdateNeedMedicalAdvice: communityUpdateNeedMedicalAdvice,
-        explainNeedneedStorage: explainNeedneedStorage,
+        explainNeedStorage: explainNeedStorage,
         needStorageUrgency: needStorageUrgency,
         communityUpdateNeedStorage: communityUpdateNeedStorage,
         explainNeedArt: explainNeedArt,

@@ -89,7 +89,7 @@
                                     <label for="searchNeedRidesCar" class="form-labels-check-radio">rides or access to a vehicle</label>
                                 </div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Petcare / Dog-Walking" id="searchNeedPetcare" name="searchNeeds">
+                                    <input type="checkbox" value="Need: PetCare / Dog-Walking" id="searchNeedPetCare" name="searchNeeds">
                                     <label for="searchNeedPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
                                 </div>
                                 <div class="input-container-check-radio">
@@ -105,7 +105,7 @@
                                     <label for="searchNeedMedicalAdvice" class="form-labels-check-radio">medical advice</label>
                                 </div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Storage Spcae" id="searchNeedStorage" name="searchNeeds">
+                                    <input type="checkbox" value="Need: Storage Space" id="searchNeedStorage" name="searchNeeds">
                                     <label for="searchNeedStorage" class="form-labels-check-radio">storage space</label>
                                 </div>
                                 <div class="input-container-check-radio">
@@ -121,7 +121,7 @@
                                     <label for="searchNeedCompanionship" class="form-labels-check-radio">conversation/companionship</label>
                                 </div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Legal Respresentation / Advocacy" id="searchNeedLegal" name="searchNeeds">
+                                    <input type="checkbox" value="Need: Legal Representation / Advocacy" id="searchNeedLegal" name="searchNeeds">
                                     <label for="searchNeedLegal" class="form-labels-check-radio">legal representation/advocacy</label>
                                 </div>
                                 <div class="input-container-check-radio">
@@ -133,7 +133,7 @@
                                     <label for="searchNeedSocialServices" class="form-labels-check-radio">social service guidance</label>
                                 </div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Healing / Ritural / Herbal Medicine" id="searchNeedHealing" name="searchNeeds">
+                                    <input type="checkbox" value="Need: Healing / Ritual / Herbal Medicine" id="searchNeedHealing" name="searchNeeds">
                                     <label for="searchNeedHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
                                 </div>
                                 <div class="input-container-check-radio">
@@ -181,7 +181,7 @@
                                     <label for="searchOfferRidesCar" class="form-labels-check-radio">give rides or access to a vehicle</label>
                                 </div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Petcare / Dog-Walking" id="searchOfferPetcare" name="searchOffers">
+                                    <input type="checkbox" value="Offer: PetCare / Dog-Walking" id="searchOfferPetCare" name="searchOffers">
                                     <label for="searchOfferPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
                                 </div>
                                 <div class="input-container-check-radio">
@@ -258,74 +258,107 @@
             
 
             <% if (searchMatchArray === undefined) {
-
-            } else {
-            searchMatchArray.forEach ((singleMatchedUser) => {
-                let explainOffer = ''; 
-                let communityUpdate = '';
-                if (offer === 'Offer: Cooking') {
-                    explainOffer = singleMatchedUser.explainOfferCooking; 
-                    communityUpdate = singleMatchedUser.communityUpdateOfferCooking; 
-                } else if (offer === 'Offer: Childcare') {
-                    explainOffer = singleMatchedUser.explainOfferChildcare; 
-                    communityUpdate = singleMatchedUser.communityUpdateOfferChildcare; 
-                } else if (offer === 'Offer: Food and Supplies') {
-                    explainOffer = singleMatchedUser.explainOfferFoodAndSupplies; 
-                    communityUpdate = singleMatchedUser.communityUpdateFoodAndSupplies;
-                } else if (offer === 'Offer: Rides or Access to a Vehicle') {
-                    explainOffer = singleMatchedUser.explainOfferRidesCar; 
-                    communityUpdate = singleMatchedUser.communityUpdateRidesCar;
-                } else if (offer === 'Offer: Petcare / Dog-Walking') {
-                    explainOffer = singleMatchedUser.explainOfferPetCare; 
-                    communityUpdate = singleMatchedUser.communityUpdatePetCare;
-                } else if (offer === 'Offer: Internet Subscriptions') {
-                    explainOffer = singleMatchedUser.explainOfferInternetSubs; 
-                    communityUpdate = singleMatchedUser.communityUpdateInternetSubs;
-                } else if (offer === 'Offer: Medical Support') {
-                    explainOffer = singleMatchedUser.explainOfferMedicalSupport; 
-                    communityUpdate = singleMatchedUser.communityUpdateMedicalSupport;
-                } else if (offer === 'Offer: Medical Advice') {
-                    explainOffer = singleMatchedUser.explainOfferMedicalAdvice; 
-                    communityUpdate = singleMatchedUser.communityUpdateMedicalAdvice;
-                } else if (offer === 'Offer: Storage Space') {
-                    explainOffer = singleMatchedUser.explainOfferStorage; 
-                    communityUpdate = singleMatchedUser.communityUpdateStorage;
-                } else if (offer === 'Offer: Art / Music / Writing') {
-                    explainOffer = singleMatchedUser.explainOfferArt; 
-                    communityUpdate = singleMatchedUser.communityUpdateArt;
-                } else if (offer === 'Offer: Mental Health Couseling / Resources') {
-                    explainOffer = singleMatchedUser.explainOfferMentalHealth; 
-                    communityUpdate = singleMatchedUser.communityUpdateMentalHealth;
-                } else if (offer === 'Offer: Conversation / Companionship') {
-                    explainOffer = singleMatchedUser.explainOfferCompanionship; 
-                    communityUpdate = singleMatchedUser.communityUpdateCompanionship;
-                } else if (offer === 'Offer: Legal Representation / Advocacy') {
-                    explainOffer = singleMatchedUser.explainOfferLegal; 
-                    communityUpdate = singleMatchedUser.communityUpdateLegal;
-                } else if (offer === 'Offer: Interpretation / Translation') {
-                    explainOffer = singleMatchedUser.explainOfferInterpretation; 
-                    communityUpdate = singleMatchedUser.communityUpdateInterpretation;
-                } else if (offer === 'Offer: Social Service Guidance') {
-                    explainOffer = singleMatchedUser.explainOfferSocialServices; 
-                    communityUpdate = singleMatchedUser.communityUpdateSocialServices;
-                } else if (offer === 'Offer: Healing / Ritual / Herbal Medicine') {
-                    explainOffer = singleMatchedUser.explainOfferHealing; 
-                    communityUpdate = singleMatchedUser.communityUpdateHealing;
-                } else if (offer === 'Offer: Housing (short-term)') {
-                    explainOffer = singleMatchedUser.explainOfferHousingShort; 
-                    communityUpdate = singleMatchedUser.communityUpdateHousingShort;
-                } else if (offer === 'Offer: Housing (long-term)') {
-                    explainOffer = singleMatchedUser.explainOfferHousingLong; 
-                    communityUpdate = singleMatchedUser.communityUpdateHousingLong;
-                } else if (offer === 'Offer: Other') {
-                    explainOffer = singleMatchedUser.explainOfferOther; 
-                    communityUpdate = singleMatchedUser.communityUpdateOther;
-                }
+            
+            } else if (searchMatchArray) {
+                searchMatchArray.forEach((singleMatchedUser) => {
+                let explainNeed = ''; 
+                let communityUpdateNeed = ''; 
+                let needFrequency = ''; 
+                let needUrgency = ''; 
+                    if (need === 'Need: Cooking') {
+                        explainNeed = singleMatchedUser.explainNeedCooking; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedCooking;
+                        needFrequency = singleMatchedUser.needCookingFrequency;
+                        needUrgency = singleMatchedUser.needCookingUrgency; 
+                    } else if (need === 'Need: Childcare') {
+                        explainNeed = singleMatchedUser.explainNeedChildcare; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedChildcare; 
+                        needFrequency = singleMatchedUser.needChildcareFrequency;
+                        needUrgency = singleMatchedUser.needChildcareUrgency; 
+                    } else if (need === 'Need: Food and Supplies') {
+                        explainNeed = singleMatchedUser.explainNeedFoodAndSupplies; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedFoodAndSupplies;
+                        needFrequency = singleMatchedUser.needFoodAndSuppliesFrequency;
+                        needUrgency = singleMatchedUser.needFoodAndSuppliesUrgency; 
+                    } else if (need === 'Need: Rides or Access to a Vehicle') {
+                        explainNeed = singleMatchedUser.explainNeedRidesCar; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedRidesCar;
+                        needFrequency = singleMatchedUser.needRidesCarFrequency;
+                        needUrgency = singleMatchedUser.needRidesCarUrgency; 
+                    } else if (need === 'Need: PetCare / Dog-Walking') {
+                        explainNeed = singleMatchedUser.explainNeedPetCare; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedPetCare;
+                        needFrequency = singleMatchedUser.needPetCareFrequency;
+                        needUrgency = singleMatchedUser.needPetCareUrgency; 
+                    } else if (need === 'Need: Internet Subscriptions') {
+                        explainNeed = singleMatchedUser.explainNeedInternetSubscriptions; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedInternetSubscriptions;
+                    } else if (need === 'Need: Medical Support') {
+                        explainNeed = singleMatchedUser.explainNeedMedicalSupport; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedMedicalSupport;
+                        needFrequency = singleMatchedUser.needMedicalSupportFrequency;
+                        needUrgency = singleMatchedUser.needMedicalSupportUrgency; 
+                    } else if (need === 'Need: Medical Advice') {
+                        explainNeed = singleMatchedUser.explainNeedMedicalAdvice; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedMedicalAdvice;
+                        needUrgency = singleMatchedUser.needMedicalAdviceUrgency; 
+                    } else if (need === 'Need: Storage Space') {
+                        explainNeed = singleMatchedUser.explainNeedStorage; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedStorage;
+                        needUrgency = singleMatchedUser.needStorageUrgency; 
+                    } else if (need === 'Need: Art / Music / Writing') {
+                        explainNeed = singleMatchedUser.explainNeedArt; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedArt;
+                        needFrequency = singleMatchedUser.needArtFrequency;
+                        needUrgency = singleMatchedUser.needArtUrgency; 
+                    } else if (need === 'Need: Mental Health Counseling') {
+                        explainNeed = singleMatchedUser.explainNeedMentalHealth; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedMentalHealth;
+                        needFrequency = singleMatchedUser.needMentalHealthFrequency;
+                        needUrgency = singleMatchedUser.needMentalHealthUrgency; 
+                    } else if (need === 'Need: Conversation / Companionship') {
+                        explainNeed = singleMatchedUser.explainNeedCompanionship; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedCompanionship;
+                        needFrequency = singleMatchedUser.needCompanionshipFrequency;
+                        needUrgency = singleMatchedUser.needCompanionshipUrgency; 
+                    } else if (need === 'Need: Legal Representation / Advocacy') {
+                        explainNeed = singleMatchedUser.explainNeedLegal; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedLegal;
+                        needUrgency = singleMatchedUser.needLegalUrgency; 
+                    } else if (need === 'Need: Interpretation / Translation') {
+                        explainNeed = singleMatchedUser.explainNeedInterpretation; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedInterpretation;
+                        needFrequency = singleMatchedUser.needInterpretationFrequency;
+                        needUrgency = singleMatchedUser.needInterpretationUrgency; 
+                    } else if (need === 'Need: Social Service Guidance') {
+                        explainNeed = singleMatchedUser.explainNeedSocialServices; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedSocialServices;
+                        needFrequency = singleMatchedUser.needSocialServicesFrequency;
+                        needUrgency = singleMatchedUser.needSocialServicesUrgency; 
+                    } else if (need === 'Need: Healing / Ritual / Herbal Medicine') {
+                        explainNeed = singleMatchedUser.explainNeedHealing; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedHealing;
+                        needFrequency = singleMatchedUser.needHealingFrequency;
+                        needUrgency = singleMatchedUser.needHealingUrgency; 
+                    } else if (need === 'Need: Housing (short-term)') {
+                        explainNeed = singleMatchedUser.explainNeedHousingShort; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedHousingShort;
+                        needUrgency = singleMatchedUser.needHousingShortUrgency; 
+                    } else if (need === 'Need: Housing (long-term)') {
+                        explainNeed = singleMatchedUser.explainNeedHousingLong; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedHousingLong;
+                        needUrgency = singleMatchedUser.needHousingLongUrgency; 
+                    } else if (need === 'Need: Other') {
+                        explainNeed = singleMatchedUser.explainNeedOther; 
+                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedOther;
+                        needFrequency = singleMatchedUser.needOtherFrequency;
+                        needUrgency = singleMatchedUser.needOtherUrgency; 
+                    }
                 %> 
 
                 <div class="medium-content-container-column palette-c" style="font-size: 1em;">
                         
-                    <h2> <%= offer %> </h2>
+                    <h2> <%= need %> </h2>
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Neighbor's Name:</span>
@@ -346,12 +379,30 @@
                     </div>
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
+                            <span>Urgency:</span>
+                        </div>   
+                        <div class="search-result-row-result">
+                            <span> <%= needUrgency %>  </span>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="container-row-no-wrap">
+                        <div class="search-result-row-label">
+                            <span>Frequency:</span>
+                        </div>   
+                        <div class="search-result-row-result">
+                            <span> <%= needFrequency %>  </span>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="container-row-no-wrap">
+                        <div class="search-result-row-label">
                             <span>More Information from Neighbor:</span>
                         </div>   
                         <div class="search-result-row-result">
                             
                             <!-- need to do some Looping here to get the correct explainOffer -->
-                            <span> <%= explainOffer %> </span>
+                            <span> <%= explainNeed %> </span>
                             <br><br>
                         </div>
                     </div>
@@ -370,7 +421,7 @@
                             <span>Community Update:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= communityUpdate %> </span>
+                            <span> <%= communityUpdateNeed %> </span>
                             <br><br>
                         </div>
                     </div>
@@ -382,7 +433,7 @@
                                     <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
                                 </div>   
                                 <div class="search-result-row-result">
-                                    <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes"> <%= communityUpdate %> </textarea>
+                                    <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes"> <%= communityUpdateNeed %> </textarea>
                                     <br><br>
                                     <input type="submit" class="button palette-a">
                                     <br>
@@ -391,191 +442,18 @@
                         </fieldset>  
                     </form>  
                 </div>  
-                    
-                    <% })} %>
-
+                
+                    <%  } 
+                        ) 
+            } 
+            
+                    %>
         </div>  
 
        
 
 
 
-        <!-- <div class="medium-content-container-column palette-c" style="font-size: 1em;">
-            <h2>Need or Offering (Example)</h2>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Neighbor's Name:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>Neighbor 4</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Category:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>childcare</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Neighborhood:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>Codman</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>More Information from Neighbor:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>I am looking for childcare outside of my home on the days my partner and I both work (usually only 1-2 afternoons per week). We have an outgoing 2-year-old who plays well with children. Please send references if you respond to this request.</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Frequency:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>weekly, varying schedule</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Contact Information:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>thisperson@email.com</span><br>
-                    <span>(720) 894-2076</span><br>
-                    <span>Street Name</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Community Update:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>This is where information that is updated on the form below gets put. </span>
-                    <br><br>
-                </div>
-            </div>
-            <form action="/addCommunityNotes" method="POST">
-                <fieldset>
-                    <div class="container-row-no-wrap">
-                        <div class="search-result-row-label">
-                            <legend>Update this need or offering:</legend>
-                            <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
-                        </div>   
-                        <div class="search-result-row-result">
-                            <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes"></textarea>
-                            <br><br>
-                            <input type="submit" class="button palette-a">
-                            <br>
-                        </div>
-                    </div>
-                </fieldset>  
-            </form>
-        </div> -->
-
-       
-        <!-- searchMatchArray -->
-        
-        
-
-        <!-- <div class="medium-content-container-column palette-c" style="font-size: 1em;">
-            <h2>Need or Offering (Example)</h2>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Neighbor's Name:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>Neighbor 4</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Category:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>childcare</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Neighborhood:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>Codman</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>More Information from Neighbor:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>I am looking for childcare outside of my home on the days my partner and I both work (usually only 1-2 afternoons per week). We have an outgoing 2-year-old who plays well with children. Please send references if you respond to this request.</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Frequency:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>weekly, varying schedule</span>
-                    <br><br>
-                </div>
-            </div>
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Contact Information:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>thisperson@email.com</span><br>
-                    <span>(720) 894-2076</span><br>
-                    <span>Street Name</span>
-                    <br><br>
-                </div>
-            </div>
-
-
-            <div class="container-row-no-wrap">
-                <div class="search-result-row-label">
-                    <span>Community Update:</span>
-                </div>   
-                <div class="search-result-row-result">
-                    <span>This is where information that is updated on the form below gets put. </span>
-                    <br><br>
-                </div>
-            </div>
-            <form action="/addCommunityNotes" method="POST">
-                <fieldset>
-                    <div class="container-row-no-wrap">
-                        <div class="search-result-row-label">
-                            <legend>Update this need or offering:</legend>
-                            <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
-                        </div>   
-                        <div class="search-result-row-result">
-                            <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes"></textarea>
-                            <br><br>
-                            <input type="submit" class="button palette-a">
-                            <br>
-                        </div>
-                    </div>
-                </fieldset>  
-            </form>
-        </div> -->
 
 
 

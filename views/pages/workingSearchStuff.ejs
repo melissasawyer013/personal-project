@@ -1,0 +1,144 @@
+<div id="searchResultsContainer">
+            
+
+    <% if (searchMatchArray === undefined) {
+    
+    } else if (searchMatchArray) {
+        searchMatchArray.forEach((singleMatchedUser) => {
+        let explainOffer = ''; 
+        let communityUpdate = '';   
+            if (offer === 'Offer: Cooking') {
+                explainOffer = singleMatchedUser.explainOfferCooking; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferCooking; 
+            } else if (offer === 'Offer: Childcare') {
+                explainOffer = singleMatchedUser.explainOfferChildcare; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferChildcare; 
+            } else if (offer === 'Offer: Food and Supplies') {
+                explainOffer = singleMatchedUser.explainOfferFoodAndSupplies; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferFoodAndSupplies;
+            } else if (offer === 'Offer: Rides or Access to a Vehicle') {
+                explainOffer = singleMatchedUser.explainOfferRidesCar; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferRidesCar;
+            } else if (offer === 'Offer: PetCare / Dog-Walking') {
+                explainOffer = singleMatchedUser.explainOfferPetCare; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferPetCare;
+            } else if (offer === 'Offer: Internet Subscriptions') {
+                explainOffer = singleMatchedUser.explainOfferInternetSubs; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferInternetSubs;
+            } else if (offer === 'Offer: Medical Support') {
+                explainOffer = singleMatchedUser.explainOfferMedicalSupport; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferMedicalSupport;
+            } else if (offer === 'Offer: Medical Advice') {
+                explainOffer = singleMatchedUser.explainOfferMedicalAdvice; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferMedicalAdvice;
+            } else if (offer === 'Offer: Storage Space') {
+                explainOffer = singleMatchedUser.explainOfferStorage; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferStorage;
+            } else if (offer === 'Offer: Art / Music / Writing') {
+                explainOffer = singleMatchedUser.explainOfferArt; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferArt;
+            } else if (offer === 'Offer: Mental Health Counseling / Resources') {
+                explainOffer = singleMatchedUser.explainOfferMentalHealth; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferMentalHealth;
+            } else if (offer === 'Offer: Conversation / Companionship') {
+                explainOffer = singleMatchedUser.explainOfferCompanionship; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferCompanionship;
+            } else if (offer === 'Offer: Legal Representation / Advocacy') {
+                explainOffer = singleMatchedUser.explainOfferLegal; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferLegal;
+            } else if (offer === 'Offer: Interpretation / Translation') {
+                explainOffer = singleMatchedUser.explainOfferInterpretation; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferOfferInterpretation;
+            } else if (offer === 'Offer: Social Service Guidance') {
+                explainOffer = singleMatchedUser.explainOfferSocialServices; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferSocialServices;
+            } else if (offer === 'Offer: Healing / Ritual / Herbal Medicine') {
+                explainOffer = singleMatchedUser.explainOfferHealing; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferHealing;
+            } else if (offer === 'Offer: Housing (short-term)') {
+                explainOffer = singleMatchedUser.explainOfferHousingShort; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferHousingShort;
+            } else if (offer === 'Offer: Housing (long-term)') {
+                explainOffer = singleMatchedUser.explainOfferHousingLong; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferHousingLong;
+            } else if (offer === 'Offer: Other') {
+                explainOffer = singleMatchedUser.explainOfferOther; 
+                communityUpdate = singleMatchedUser.communityUpdateOfferOther;
+            }
+        %> 
+
+        <div class="medium-content-container-column palette-c" style="font-size: 1em;">
+                
+            <h2> <%= offer %> </h2>
+            <div class="container-row-no-wrap">
+                <div class="search-result-row-label">
+                    <span>Neighbor's Name:</span>
+                </div>   
+                <div class="search-result-row-result">
+                    <span> <%= singleMatchedUser.publicDisplayName %> </span>
+                    <br><br>
+                </div>
+            </div>
+            <div class="container-row-no-wrap">
+                <div class="search-result-row-label">
+                    <span>Neighborhood:</span>
+                </div>   
+                <div class="search-result-row-result">
+                    <span> <%= singleMatchedUser.formNeighborhood %> </span>
+                    <br><br>
+                </div>
+            </div>
+            <div class="container-row-no-wrap">
+                <div class="search-result-row-label">
+                    <span>More Information from Neighbor:</span>
+                </div>   
+                <div class="search-result-row-result">
+                    
+                    <!-- need to do some Looping here to get the correct explainOffer -->
+                    <span> <%= explainOffer %> </span>
+                    <br><br>
+                </div>
+            </div>
+            <div class="container-row-no-wrap">
+                <div class="search-result-row-label">
+                    <span>Contact Information:</span>
+                </div>   
+                <div class="search-result-row-result">
+                    <span> <%= singleMatchedUser.publicDisplayContact %> </span><br>
+                    
+                    <br><br>
+                </div>
+            </div>
+            <div class="container-row-no-wrap">
+                <div class="search-result-row-label">
+                    <span>Community Update:</span>
+                </div>   
+                <div class="search-result-row-result">
+                    <span> <%= communityUpdate %> </span>
+                    <br><br>
+                </div>
+            </div>
+            <form action="/addCommunityNotes" method="PUT">
+                <fieldset>
+                    <div class="container-row-no-wrap">
+                        <div class="search-result-row-label">
+                            <legend>Update this need or offering:</legend>
+                            <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
+                        </div>   
+                        <div class="search-result-row-result">
+                            <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes"> <%= communityUpdate %> </textarea>
+                            <br><br>
+                            <input type="submit" class="button palette-a">
+                            <br>
+                        </div>
+                    </div>
+                </fieldset>  
+            </form>  
+        </div>  
+        
+            <%  } 
+                ) 
+    } 
+    
+            %>
+</div>  
