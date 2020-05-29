@@ -72,37 +72,585 @@ router.get('/needs-and-offerings', (req, res) => {
     let searchNeighborhood = formDataSearch['searchNeighborhood'];
     let searchNeeds = formDataSearch['searchNeeds'];
     let searchOffers = formDataSearch['searchOffers'];
-    const userSearchObject = {
-        searchNeighborhood: searchNeighborhood,
-        searchNeeds: searchNeeds,
-        searchOffers: searchOffers,
-    }
-    console.log(userSearchObject)
-    if (searchOffers) {
+    if (searchOffers != undefined) {
         dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray((error, result) => {
         if (error) {
             console.log(error);
         } else {
             res.render('pages/needs-and-offerings.ejs', {
                 'searchMatchArray': result || [],
-                'offer': searchOffers,
+                'offer': searchOffers || [],
+                'need': searchNeeds || [],
             });
         }
     })
-    } else if (searchNeeds) {
+    } else {
+        res.render('pages/needs-and-offerings.ejs', {
+            'searchMatchArray': [],
+            'offer': [],
+            'need': []
+        });
+    }
+    if (searchNeeds != undefined) {
         dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray((error, result) => {
         if (error) {
             console.log(error);
         } else {
             res.render('pages/needs-and-offerings.ejs', {
                 'searchMatchArray': result || [],
-                'need': searchNeeds,
+                'need': searchNeeds || [],
+                'offer': searchOffers || []
             });
         }
     })
 } else {
-    res.render('pages/needs-and-offerings', {searchMatchArray: []});
+    res.render('pages/needs-and-offerings', {'searchMatchArray': []});
 }});
+
+
+
+//EXPERIMENTING WITH A PAGE
+router.get('/experimentalSearchStuffNoPromises', (req, res) => {
+    let formDataSearch = req.query;
+    let searchMatchArray = [];
+    let searchNeighborhood = formDataSearch['searchNeighborhood'];
+    let searchNeeds = formDataSearch['searchNeeds'];
+    let searchOffers = formDataSearch['searchOffers'];
+    console.log(`fomrDataSearch: ${JSON.stringify(formDataSearch)}`)
+    if (searchOffers != undefined) {
+        dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray((error, result) => {
+        if (error) {
+            console.log(error);
+        } else {
+            res.render('pages/experimentalSearchStuffNoPromises.ejs', {
+                'searchMatchArray': result || [],
+                'offer': searchOffers || [],
+                'need': searchNeeds || [],
+            });
+        }
+    })
+    } else {
+        res.render('pages/experimentalSearchStuffNoPromises.ejs', {
+            'searchMatchArray': [],
+            'offer': [],
+            'need': []
+        });
+    }
+    if (searchNeeds != undefined) {
+        dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray((error, result) => {
+        if (error) {
+            console.log(error);
+        } else {
+            res.render('pages/experimentalSearchStuffNoPromises.ejs', {
+                'searchMatchArray': result || [],
+                'need': searchNeeds || [],
+                'offer': searchOffers || []
+            });
+        }
+    })
+} else {
+    res.render('pages/experimentalSearchStuffNoPromises.ejs', {
+        'searchMatchArray': [],
+        'offer': [],
+        'need': []
+    });
+}});
+
+
+
+
+
+
+
+
+router.get('/experimentalSearchStuff.ejs', async(req, res) => {
+    let formDataSearchObject;
+    let searchNeighborhood;
+    let searchNeeds;
+    let searchOffers;
+    let searchesArray = [];
+    let needMatches = [];
+    let offerMatches = [];
+
+    let searchQueryPromise = new Promise(async function(resolve, reject) {
+        formDataSearchObject = req.query;
+        console.log (`formDataSearchObject: ${formDataSearchObject}`)
+        res.render('pages/experimentalSearchStuff.ejs')
+        setTimeout(() => resolve(console.log('Done with promise')), 1000);
+        
+    })
+
+    searchQueryPromise.then(
+        result => setVariablesWithQueryResults, 
+        console.log("Promies #1 kept! Oh yeah."), 
+        error => console.log(error)
+    );
+    
+    let setVariablesWithQueryResults = new Promise(async function(resolve, reject) {
+        searchNeighborhood = await formDataSearchObject['searchNeighborhood']; //The neighborhood(s) the user selects with checkbox to search
+        searchNeeds = await formDataSearchObject['searchNeeds']; //The need(s) the user selects with checkbox to search
+        searchOffers = await formDataSearchObject['searchOffers']; //The offer(s) the user selects with checkbox to search
+        // searchesArray //searchesArray should equal [[searchNeighborhood results], [searchNeeds results], [searchOffers results]]
+        needMatches = [];
+        offerMatches = [];
+        console.log(`part 1 of promise # 2 kept - variables set except searchesArray`)
+        if (searchNeighborhood) {
+            //If only one neighborhood checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            if (Array.isArray(searchNeighborhood) === false) {
+                searchNeighborhood = [searchNeighborhood];
+            };
+            searchesArray.push(searchNeighborhood);
+            console.log('the Neighborhood checkboxes have been pushed to the searchesArray')
+            console.log(JSON.stringify(searchNeighborhood));
+        };
+        if (searchNeeds) {
+            //If only one need checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            if (Array.isArray(searchNeeds) === false) {
+                searchNeeds = [searchNeeds];
+            };
+            searchesArray.push(searchNeeds);
+            console.log(`Step 3: the needscheckboxes have been pushed to the searchesArray as an array`);
+            console.log(JSON.stringify(searchNeeds));
+            
+        };
+       
+        if (searchOffers) {
+            //If only one offer checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            if (Array.isArray(searchOffers) === false) {
+                searchOffers = [searchOffers];
+            };
+            searchesArray.push(searchOffers);
+            console.log(`Step 4: the offers checkboxes have been pushed to the searchesArray as an object`);
+            console.log(JSON.stringify(searchOffers));
+            
+        };
+        console.log(`searchesArray: ${JSON.stringify(searchesArray)}`);
+        setTimeout(() => resolve(console.log('Done with promise #2!')), 1000);
+    })
+
+    setVariablesWithQueryResults.then(
+        result => searchDatabaseAgainstQuery,
+        console.log('setVariables function completed'), 
+    )
+    
+    let searchDatabaseAgainstQuery = new Promise (async function(resolve, reject) {
+        await searchesArray[1].forEach(async function(need){
+            await dbHandler.collection(collectionUserForm)
+            .find({formNeeds: need}) 
+            .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+            .toArray((error, result) => {
+                if (error) {
+                    console.log(error)
+                } else {
+                    needMatches.push(result);
+                    console.log('the elements in searchesArray[1] have been looped through, the collection has been searched based on the element in searchesArray[1], and the matches have been pushed to the variable needMatches. Content in needMatches is:')
+                    
+                }
+            })
+        });
+        console.log(`needMatches: ${JSON.stringify(needMatches)}`)
+
+
+
+        await searchesArray[2].forEach(async function(offer){
+            await dbHandler.collection(collectionUserForm)
+            .find({formOfferings: offer})
+            .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+            .toArray((error, result) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    offerMatches.push(result);
+                    console.log('the elements in searchesArray[2] have been looped through, the collection has been searched based on the element in searchesArray[2], and the matches have been pushed to the variable offerMatches. Content in offerMatches is:')
+                    
+                }
+            })
+        }) 
+        console.log(`offerMatches: ${JSON.stringify(offerMatches)}`)
+        console.log(`searchesArray: ${JSON.stringify(searchesArray)}`);
+        setTimeout(() => resolve(console.log('Done with promise #3!')), 1000);
+        
+    })
+})//end of experimental route 
+
+
+
+
+
+
+// router.get('/experimentalSearchStuff.ejs', async(req, res) => {
+//     let formDataSearchObject = await req.query;
+//     let searchNeighborhood = await formDataSearchObject['searchNeighborhood']; //The neighborhood(s) the user selects with checkbox to search
+//     let searchNeeds = await formDataSearchObject['searchNeeds']; //The need(s) the user selects with checkbox to search
+//     let searchOffers = await formDataSearchObject['searchOffers']; //The offer(s) the user selects with checkbox to search
+//     let searchesArray = await []; ///searchesArray should equal [[searchNeighborhood results], [searchNeeds results], [searchOffers results]]
+//     let needMatches = await [];
+//     let offerMatches = await [];
+//     await console.log('Step 1: the variables are set')
+    
+//     const compileSearchParameters = async () => {
+//         await console.log('Step 2: The compileSearchParameters function has initiated')
+//         if (searchNeighborhood != undefined) {
+            //If only one neighborhood checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+        //     if (Array.isArray(searchNeighborhood) === false) {
+        //         searchNeighborhood = await [searchNeighborhood];
+        //     };
+        //     await searchesArray.push(searchNeighborhood);
+        //     await console.log('Step 3: the Neighborhood checkboxes have been pushed to the searchesArray')
+        // };
+        
+        // if (searchNeeds != undefined) {
+            //If only one need checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+        //     if (Array.isArray(searchNeeds) === false) {
+        //         searchNeeds = await [searchNeeds];
+        //     };
+        //     await searchesArray.push(searchNeeds);
+        //     await console.log('Step 4: the needs checkboxes have been pushed to the searchesArray')
+        // };
+        // if (searchOffers != undefined) {
+            //If only one offer checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+        //     if (Array.isArray(searchOffers) === false) {
+        //         searchOffers = await [searchOffers];
+        //     };
+        //     await searchesArray.push(searchOffers);
+        //     await console.log('Step 5: the offers checkboxes have been pushed to the searchesArray')
+        // };
+        // await console.log('completed the compileSearchParameters function');
+        // await console.log(searchesArray[0]);
+        // await console.log(searchesArray[1]);
+        // await console.log(searchesArray[2]);
+    //     await compileSearchResults();
+    // }
+    
+    
+    // const compileSearchResults = async () => {
+    //     await console.log('Step 6: The compileSearchResults function has initiated')
+    //     for (const need of searchesArray[1]) {
+    //         await dbHandler.collection(collectionUserForm)
+    //         .find({formNeeds: need}) 
+    //         .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+    //         .toArray(async(error, result) => {
+    //             if (error) {
+    //                 await console.log(error)
+    //             } else {
+    //                 await needMatches.push(result);
+    //                 await console.log('Step 7: the elements in searchesArray[1] have been looped through, the collection has been searched based on the element in searchesArray[1], and the matches have been pushed to the variable needMatches. Content in needMatches is:')
+    //                 await console.log(needMatches);
+    //             }
+    //         })
+    //     }
+        // await searchesArray[1].forEach(async function(need){
+        //     await dbHandler.collection(collectionUserForm)
+        //     .find({formNeeds: need}) 
+        //     .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+        //     .toArray(async(error, result) => {
+        //         if (error) {
+        //             await console.log(error)
+        //         } else {
+        //             await needMatches.push(result);
+        //             await console.log('Step 7: the elements in searchesArray[1] have been looped through, the collection has been searched based on the element in searchesArray[1], and the matches have been pushed to the variable needMatches. Content in needMatches is:')
+        //             await console.log(needMatches);
+        //         }
+        //     })
+        // });
+        // for (const offer of searchesArray[2]) {
+        //     await dbHandler.collection(collectionUserForm)
+        //     .find({formOfferings: offer})
+        //     .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+        //     .toArray(async(error, result) => {
+        //         if (error) {
+        //             console.log(error);
+        //         } else {
+        //             await offerMatches.push(result);
+        //             await console.log('Step 8: the elements in searchesArray[2] have been looped through, the collection has been searched based on the element in searchesArray[2], and the matches have been pushed to the variable offerMatches. Content in offerMatches is:')
+        //             await console.log(offerMatches);
+        //         }
+        //     })
+        // }
+        // await searchesArray[2].forEach(async function(offer){
+        //     await dbHandler.collection(collectionUserForm)
+        //     .find({formOfferings: offer})
+        //     .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+        //     .toArray(async(error, result) => {
+        //         if (error) {
+        //             console.log(error);
+        //         } else {
+        //             await offerMatches.push(result);
+        //             await console.log('Step 8: the elements in searchesArray[2] have been looped through, the collection has been searched based on the element in searchesArray[2], and the matches have been pushed to the variable offerMatches. Content in offerMatches is:')
+        //             await console.log(offerMatches);
+        //         }
+        //     })
+        // }) 
+        // await console.log('completed the compileSearchParameters function');
+        // await console.log(searchesArray[0]);
+        // await console.log(searchesArray[1]);
+        // await console.log(searchesArray[2]);
+        // await renderPage();
+    // }
+
+    // const renderPage = async () => { 
+    //     await console.log('Step 9: The renderPage function has initiated');
+    //     await res.render('pages/experimentalSearchStuff.ejs', {
+    //         'offerMatches': offerMatches || [],
+    //         'needMatches': needMatches || [],
+    //         'offer': searchesArray[2] || [],
+    //         'need': searchesArray[1] || [],
+    //     });
+    //     await console.log('Step 10: The page has been rendered with the variable availble to the EJS file: offerMatches, needMatches, offer, need');
+        // await needMatches.forEach(async(element)=> {
+        //     await console.log('the element is');
+        //     await console.log(element);
+        // });
+        // await console.log('the needMatches is: ');
+        // await console.log(needMatches);
+        // await console.log('the offerMatches is: ');
+        // await console.log(offerMatches);
+        // await console.log('the offer is: ');
+        // await console.log(searchesArray[2]);
+        // await console.log('the need is: ');
+        // await console.log(searchesArray[1]);
+        // await console.log('Step 11: completed renderPage function')
+    // }
+    
+
+    // await compileSearchParameters();
+    // await console.log('the get route is now finished running')
+    // await console.log(searchesArray)
+
+// }) 
+//end of experimental route
+
+
+
+
+
+
+
+// router.get('/experimentalSearchStuff.ejs', (req, res) => {
+//     let formDataSearchObject = req.query;
+//     console.log(formDataSearchObject);
+//     res.render('pages/experimentalSearchStuff.ejs');
+//     let searchNeighborhood = formDataSearchObject['searchNeighborhood'];
+//     let searchNeeds = formDataSearchObject['searchNeeds'];
+//     let searchOffers = formDataSearchObject['searchOffers'];
+//     let searchesArray = [];
+//     let needMatches = [];
+//     console.log('the status of the formDataSearchObject is: ')
+//     console.log(formDataSearchObject);
+//     if (formDataSearchObject === {}){
+//         res.render('pages/experimentalSearchStuff.ejs');
+//     } else {
+//         if (searchNeighborhood != undefined) {
+            //If only one neighborhood checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+        //     if (Array.isArray(searchNeighborhood) === false) {
+        //         searchNeighborhood = [searchNeighborhood];
+        //     };
+        //     searchesArray.push(searchNeighborhood);
+        // };
+        // if (searchNeeds != undefined) {
+            //If only one need checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            // if (Array.isArray(searchNeeds) === false) {
+            //     searchNeeds = [searchNeeds];
+            // };
+            // searchesArray.push(searchNeeds);
+            // searchesArray[1].forEach(function(need){
+            //     dbHandler.collection(collectionUserForm)
+            //     .find({formNeeds: need}) 
+                // .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+                // .toArray((error, result) => {
+                //     if (error) {
+                //         console.log(error)
+                //     } else {
+                        // console.log('the need being iterated through is:')
+                        // console.log(need);
+                        // console.log(`loop completed for: ${need}`);
+                        // console.log(result);
+                        // needMatches.push(result);
+                        // console.log('the value of needMatches is: ')
+                        // console.log(needMatches);
+                        // console.log('needMatches length is: ');
+                        // console.log(needMatches.length);
+                        // for (let i=0; i<needMatches.length; i++) {
+                        //     console.log(`Iteration ${i}: ${needMatches[i]}`);
+                        // }
+                        // for (let i=0; i<needMatches[0].length; i++) {
+                        //     console.log('inner-needMatches:')
+                        //     console.log(needMatches[0][i])
+                        // }
+                        // console.log('objects in needMatches: ')
+                        // console.log(needMatches[0][0])
+                        // console.log(needMatches[0].length)
+        //             }
+        //         })
+        //     });
+        // };
+    
+    //     if (searchOffers != undefined) {
+    //         //If only one offer checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+    //         if (Array.isArray(searchOffers) === false) {
+    //             searchOffers = [searchOffers];
+    //         };
+    //         searchesArray.push(searchOffers);
+    
+           
+    //     };
+    // }
+    
+    
+    
+    
+    // console.log('searchesArray is: ')
+    // console.log(searchesArray);
+    
+    
+    // console.log('searchesArray[1] is')
+    // console.log(searchesArray[1])
+    
+    //WHY DOES THIS STUFF HAPPEN BEFORE MY FOREACH LOOP ABOVE?
+    // console.log('Is needMatches an array?')
+    // console.log(Array.isArray(needMatches));
+    // console.log('needMatches length is: ')
+    // console.log(needMatches.length)
+    // console.log('needMatchesis: ')
+    // console.log(needMatches)
+
+
+// }) //end of experimental route
+
+
+
+
+
+//     let searchNeighborhood = formDataSearch['searchNeighborhood'];
+//     let searchNeeds = formDataSearch['searchNeeds'];
+//     let searchOffers = formDataSearch['searchOffers'];
+//     const userSearchObject = {
+//         searchNeighborhood: searchNeighborhood,
+//         searchNeeds: searchNeeds,
+//         searchOffers: searchOffers,
+//     }
+//     console.log(`userSearchObject: ${userSearchObject}`)
+//     if (searchOffers || searchNeeds){
+//         dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers, formNeeds: searchNeeds}).toArray((error, result) => {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             res.render('pages/experimentalSearchStuff.ejs', {
+//                 'userSearchObject': userSearchObject,
+//                 'searchMatchArray': result || [],
+//                 'offer': searchOffers,
+//                 'need': searchNeeds,
+                
+//             });
+//             console.log(`Search Needs: ${searchNeeds}`);
+//             console.log(`Search Offerings: ${searchOffers}`)
+//             // console.log(`searchMatchArray: ${searchMatchArray}`)
+//         }
+//     })
+// } else {
+//     res.render('pages/experimentalSearchStuff.ejs', {searchMatchArray: []});
+// }});
+
+
+
+
+// router.get('/experimentalSearchStuff.ejs', (req, res) => {
+//     let formDataSearch = req.query;
+//     let searchNeighborhood = formDataSearch['searchNeighborhood'];
+//     let searchNeeds = formDataSearch['searchNeeds'];
+//     let searchOffers = formDataSearch['searchOffers'];
+//     const userSearchArray = [searchNeighborhood, searchNeeds, searchOffers,];
+//     console.log(userSearchArray);
+    //loop through userSearchArray, 
+    // if i[1] != undefined, dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray
+    // if i[2] !=undefined, dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray
+    // in ejs, make two separate for each loops? (for needs and for offerings)?
+    // let allSearchParams = [];
+    
+    // if (formDataSearch === undefined) {
+    //     res.render('pages/experimentalSearchStuff.ejs', {userSearchArray: []});
+    // }
+    // function searchNeedsAdd() {
+    //     dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray((error, result) => {
+    //         if (error) {
+    //             console.log(error);
+    //         } else {
+    //             allSearchParams.push(result);
+    //         }
+    //     })
+    // }
+
+    // function searchOffersAdd() {
+    //     dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray((error, result) => {
+    //         if (error) {
+    //             console.log(error);
+    //         } else {
+    //             allSearchParams.push(result)
+    //         }
+    //     })
+    // }
+    // if (userSearchArray[1] != undefined) {
+    //     searchOffersAdd();
+    //     console.log(allSearchParams);
+    // };
+
+    // if(userSearchArray[2] != undefined) {
+    //     searchNeedsAdd();
+    //     console.log(allSearchParams);
+    // };
+// })
+    
+
+    // if (userSearchArray[2] != undefined) {
+    //     dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray((error, result) => {
+    //         if (error) {
+    //             console.log(error);
+    //         } else {
+    //             res.render('pages/experimentalSearchStuff.ejs', {
+    //                 'searchMatchArray': result || [],
+    //                 'need': searchNeeds,
+    //             });
+    //         }
+    //     })
+    // } else {
+    //     res.render('pages/experimentalSearchStuff', {searchMatchArray: []});
+    // }})
+    
+//     for (let i=0; i<userSearchArray.length; i++) {
+
+//     }
+//     if ((searchOffers)&&(searchNeeds === undefined)) {
+//         dbHandler.collection(collectionUserForm).find({formOfferings: searchOffers}).toArray((error, result) => {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             res.render('pages/experimentalSearchStuff.ejs', {
+//                 'userSearchObject': userSearchObject,
+//                 'searchMatchArray': result || [],
+//                 'offer': searchOffers,
+//             });
+//         }
+//     })
+//     } else if ((searchNeeds)&&(searchOffers === undefined)) {
+//         dbHandler.collection(collectionUserForm).find({formNeeds: searchNeeds}).toArray((error, result) => {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             res.render('pages/experimentalSearchStuff.ejs', {
+//                 'searchMatchArray': result || [],
+//                 'need': searchNeeds,
+//             });
+//         }
+//     })
+// } else {
+//     res.render('pages/experimentalSearchStuff', {searchMatchArray: []});
+// }})
+
+
+
+
+
+
 
 router.get('/update-form', (req, res) => {
     res.render('pages/update-form');
@@ -153,6 +701,7 @@ router.post('/addFormData', (req, res) => {
     let formOfferings = formData['formOfferings'];
     let explainOfferChildcare = formData['explainOfferChildcare'];
     let communityUpdateOfferChildcare = '';
+    
     let explainOfferCooking = formData['explainOfferCooking'];
     let communityUpdateOfferCooking = '';
     let explainOfferFoodAndSupplies = formData['explainOfferFoodAndSupplies'];
@@ -270,6 +819,7 @@ router.post('/addFormData', (req, res) => {
     let blockCoord = formData['blockCoord'];
     let networkHelp = formData['networkHelp'];
     let formExplainCheckIn = formData['formExplainCheckIn'];
+
 
     
 

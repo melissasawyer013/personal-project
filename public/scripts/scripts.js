@@ -17,6 +17,7 @@ function displayHiddenDiv(e) {
 }
 
 
+
 // let searchForm = document.querySelector("#searchForm");
 // searchForm.addEventListener('click', addJS, false);
 

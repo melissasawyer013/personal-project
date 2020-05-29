@@ -1,0 +1,118 @@
+
+
+EJS THAT GOES WITH THE ROUTE THAT FOLLOWS
+<p>Offers</p>
+        <% offer.forEach((element) => { %>
+        <p><%= element %>   </p>
+        <%})%>
+<p>Needs</p>
+        <% need.forEach((element) => { %>
+            <p><%= element %>   </p>
+            <%})%>
+<p>Offer Matches:</p>
+            <% offerMatches.forEach((element) => { %>
+                <p><%= element %>   </p>
+                <%})%>
+
+LAST ROUTE I HAD BEFORE KHALID CALL - FOREACH LOOPS NOT EXECUTING AT THE RIGHT TIME
+router.get('/experimentalSearchStuff.ejs', async(req, res) => {
+    let formDataSearchObject = await req.query;
+    let searchNeighborhood = await formDataSearchObject['searchNeighborhood']; //The neighborhood(s) the user selects with checkbox to search
+    let searchNeeds = await formDataSearchObject['searchNeeds']; //The need(s) the user selects with checkbox to search
+    let searchOffers = await formDataSearchObject['searchOffers']; //The offer(s) the user selects with checkbox to search
+    let searchesArray = await []; ///searchesArray should equal [[searchNeighborhood results], [searchNeeds results], [searchOffers results]]
+    let needMatches = await [];
+    let offerMatches = await [];
+    await console.log('Step 1: the variables are set')
+    
+    const compileSearchResults = async () => {
+        await console.log('Step 2: The compileSearchResults function has initiated')
+        if (searchNeighborhood != undefined) {
+            //If only one neighborhood checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            if (Array.isArray(searchNeighborhood) === false) {
+                searchNeighborhood = await [searchNeighborhood];
+            };
+            await searchesArray.push(searchNeighborhood);
+            await console.log('Step 3: the Neighborhood checkboxes have been pushed to the searchesArray')
+        };
+        if (searchNeeds != undefined) {
+            //If only one need checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            if (Array.isArray(searchNeeds) === false) {
+                searchNeeds = await [searchNeeds];
+            };
+            await searchesArray.push(searchNeeds);
+            await console.log('Step 4: the needs checkboxes have been pushed to the searchesArray')
+            await searchesArray[1].forEach(async function(need){
+                await dbHandler.collection(collectionUserForm)
+                .find({formNeeds: need}) 
+                .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+                .toArray((error, result) => {
+                    if (error) {
+                        console.log(error)
+                    } else {
+                        needMatches.push(result);
+                        console.log('Step 5: the elements in searchesArray[1] have been looped through, the collection has been searched based on the element in searchesArray[1], and the matches have been pushed to the variable needMatches. Content in needMatches is:')
+                        console.log(needMatches);
+                    }
+                })
+            });
+        };
+        if (searchOffers != undefined) {
+            //If only one offer checkbox is selected, the data is not stored as an array. This makes it into an array for storage in the searchesArray variable
+            if (Array.isArray(searchOffers) === false) {
+                searchOffers = await [searchOffers];
+            };
+            await searchesArray.push(searchOffers);
+            await console.log('Step 6: the offers checkboxes have been pushed to the searchesArray')
+            await searchesArray[2].forEach(async function(offer){
+                await dbHandler.collection(collectionUserForm)
+                .find({formOfferings: offer})
+                .project({'publicDisplayName': 1, 'publicDisplayContact': 1, 'publicDisplayAddress': 1,})
+                .toArray((error, result) => {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        offerMatches.push(result);
+                        console.log('Step 7: the elements in searchesArray[2] have been looped through, the collection has been searched based on the element in searchesArray[2], and the matches have been pushed to the variable offerMatches. Content in offerMatches is:')
+                        console.log(offerMatches);
+                    }
+                })
+            }) 
+        };
+        await console.log('completed the compileSearchParameters function');
+        // await console.log(searchesArray[0]);
+        // await console.log(searchesArray[1]);
+        // await console.log(searchesArray[2]);
+        await renderPage();
+    }
+    
+    const renderPage = async () => { 
+        await console.log('Step 8: The renderPage function has initiated');
+        await res.render('pages/experimentalSearchStuff.ejs', {
+            'offerMatches': offerMatches || [],
+            'needMatches': needMatches || [],
+            'offer': searchesArray[2] || [],
+            'need': searchesArray[1] || [],
+        });
+        await console.log('Step 9: The page has been rendered with the variable availble to the EJS file: offerMatches, needMatches, offer, need');
+        // await needMatches.forEach(async(element)=> {
+        //     await console.log('the element is');
+        //     await console.log(element);
+        // });
+        // await console.log('the needMatches is: ');
+        // await console.log(needMatches);
+        // await console.log('the offerMatches is: ');
+        // await console.log(offerMatches);
+        // await console.log('the offer is: ');
+        // await console.log(searchesArray[2]);
+        // await console.log('the need is: ');
+        // await console.log(searchesArray[1]);
+        await console.log('Step 10: completed renderPage function')
+    }
+    
+
+    await compileSearchResults();
+    await console.log('the get route is now finished running')
+    // await console.log(searchesArray)
+
+}) //end of experimental route 

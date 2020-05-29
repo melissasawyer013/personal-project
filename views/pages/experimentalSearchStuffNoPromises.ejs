@@ -3,7 +3,8 @@
     <div class="page-container-column">
         <div class="large-content-container-column palette-a">
             <h1>BROWSE NEEDS & OFFERINGS</h1>
-            <form id="searchForm" action="/needs-and-offerings" method="GET">
+            <h1>EXPERIMENTS IN SERACHES WITHOUT PROMISES</h1>
+            <form id="searchForm" action="/experimentalSearchStuffNoPromises" method="GET">
                 <fieldset>
                     <legend>Narrow your search by selecting from the filters below.</legend>
                     <div class="container-row">
@@ -259,101 +260,103 @@
         <div id="searchResultsContainer">
             
 
-            <% 
-            if (searchMatchArray) {
-                searchMatchArray.forEach((singleMatchedUser) => {
+            <% if (searchMatchArray === undefined) {
+                console.log(searchMatchArray)
+            } 
+            if (searchMatchArray != undefined) {
+                searchMatchArray.forEach((singleMatchedUserNeed) => {
                 let explainNeed = ''; 
                 let communityUpdateNeed = ''; 
                 let needFrequency = ''; 
                 let needUrgency = ''; 
                     if (need === 'Need: Cooking') {
-                        explainNeed = singleMatchedUser.explainNeedCooking; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedCooking;
-                        needFrequency = singleMatchedUser.needCookingFrequency;
-                        needUrgency = singleMatchedUser.needCookingUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedCooking; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedCooking;
+                        needFrequency = singleMatchedUserNeed.needCookingFrequency;
+                        needUrgency = singleMatchedUserNeed.needCookingUrgency; 
                     } else if (need === 'Need: Childcare') {
-                        explainNeed = singleMatchedUser.explainNeedChildcare; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedChildcare; 
-                        needFrequency = singleMatchedUser.needChildcareFrequency;
-                        needUrgency = singleMatchedUser.needChildcareUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedChildcare; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedChildcare; 
+                        needFrequency = singleMatchedUserNeed.needChildcareFrequency;
+                        needUrgency = singleMatchedUserNeed.needChildcareUrgency; 
                     } else if (need === 'Need: Food and Supplies') {
-                        explainNeed = singleMatchedUser.explainNeedFoodAndSupplies; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedFoodAndSupplies;
-                        needFrequency = singleMatchedUser.needFoodAndSuppliesFrequency;
-                        needUrgency = singleMatchedUser.needFoodAndSuppliesUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedFoodAndSupplies; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedFoodAndSupplies;
+                        needFrequency = singleMatchedUserNeed.needFoodAndSuppliesFrequency;
+                        needUrgency = singleMatchedUserNeed.needFoodAndSuppliesUrgency; 
                     } else if (need === 'Need: Rides or Access to a Vehicle') {
-                        explainNeed = singleMatchedUser.explainNeedRidesCar; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedRidesCar;
-                        needFrequency = singleMatchedUser.needRidesCarFrequency;
-                        needUrgency = singleMatchedUser.needRidesCarUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedRidesCar; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedRidesCar;
+                        needFrequency = singleMatchedUserNeed.needRidesCarFrequency;
+                        needUrgency = singleMatchedUserNeed.needRidesCarUrgency; 
                     } else if (need === 'Need: PetCare / Dog-Walking') {
-                        explainNeed = singleMatchedUser.explainNeedPetCare; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedPetCare;
-                        needFrequency = singleMatchedUser.needPetCareFrequency;
-                        needUrgency = singleMatchedUser.needPetCareUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedPetCare; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedPetCare;
+                        needFrequency = singleMatchedUserNeed.needPetCareFrequency;
+                        needUrgency = singleMatchedUserNeed.needPetCareUrgency; 
                     } else if (need === 'Need: Internet Subscriptions') {
-                        explainNeed = singleMatchedUser.explainNeedInternetSubscriptions; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedInternetSubscriptions;
+                        explainNeed = singleMatchedUserNeed.explainNeedInternetSubscriptions; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedInternetSubscriptions;
                     } else if (need === 'Need: Medical Support') {
-                        explainNeed = singleMatchedUser.explainNeedMedicalSupport; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedMedicalSupport;
-                        needFrequency = singleMatchedUser.needMedicalSupportFrequency;
-                        needUrgency = singleMatchedUser.needMedicalSupportUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedMedicalSupport; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedMedicalSupport;
+                        needFrequency = singleMatchedUserNeed.needMedicalSupportFrequency;
+                        needUrgency = singleMatchedUserNeed.needMedicalSupportUrgency; 
                     } else if (need === 'Need: Medical Advice') {
-                        explainNeed = singleMatchedUser.explainNeedMedicalAdvice; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedMedicalAdvice;
-                        needUrgency = singleMatchedUser.needMedicalAdviceUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedMedicalAdvice; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedMedicalAdvice;
+                        needUrgency = singleMatchedUserNeed.needMedicalAdviceUrgency; 
                     } else if (need === 'Need: Storage Space') {
-                        explainNeed = singleMatchedUser.explainNeedStorage; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedStorage;
-                        needUrgency = singleMatchedUser.needStorageUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedStorage; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedStorage;
+                        needUrgency = singleMatchedUserNeed.needStorageUrgency; 
                     } else if (need === 'Need: Art / Music / Writing') {
-                        explainNeed = singleMatchedUser.explainNeedArt; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedArt;
-                        needFrequency = singleMatchedUser.needArtFrequency;
-                        needUrgency = singleMatchedUser.needArtUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedArt; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedArt;
+                        needFrequency = singleMatchedUserNeed.needArtFrequency;
+                        needUrgency = singleMatchedUserNeed.needArtUrgency; 
                     } else if (need === 'Need: Mental Health Counseling') {
-                        explainNeed = singleMatchedUser.explainNeedMentalHealth; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedMentalHealth;
-                        needFrequency = singleMatchedUser.needMentalHealthFrequency;
-                        needUrgency = singleMatchedUser.needMentalHealthUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedMentalHealth; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedMentalHealth;
+                        needFrequency = singleMatchedUserNeed.needMentalHealthFrequency;
+                        needUrgency = singleMatchedUserNeed.needMentalHealthUrgency; 
                     } else if (need === 'Need: Conversation / Companionship') {
-                        explainNeed = singleMatchedUser.explainNeedCompanionship; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedCompanionship;
-                        needFrequency = singleMatchedUser.needCompanionshipFrequency;
-                        needUrgency = singleMatchedUser.needCompanionshipUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedCompanionship; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedCompanionship;
+                        needFrequency = singleMatchedUserNeed.needCompanionshipFrequency;
+                        needUrgency = singleMatchedUserNeed.needCompanionshipUrgency; 
                     } else if (need === 'Need: Legal Representation / Advocacy') {
-                        explainNeed = singleMatchedUser.explainNeedLegal; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedLegal;
-                        needUrgency = singleMatchedUser.needLegalUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedLegal; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedLegal;
+                        needUrgency = singleMatchedUserNeed.needLegalUrgency; 
                     } else if (need === 'Need: Interpretation / Translation') {
-                        explainNeed = singleMatchedUser.explainNeedInterpretation; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedInterpretation;
-                        needFrequency = singleMatchedUser.needInterpretationFrequency;
-                        needUrgency = singleMatchedUser.needInterpretationUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedInterpretation; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedInterpretation;
+                        needFrequency = singleMatchedUserNeed.needInterpretationFrequency;
+                        needUrgency = singleMatchedUserNeed.needInterpretationUrgency; 
                     } else if (need === 'Need: Social Service Guidance') {
-                        explainNeed = singleMatchedUser.explainNeedSocialServices; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedSocialServices;
-                        needFrequency = singleMatchedUser.needSocialServicesFrequency;
-                        needUrgency = singleMatchedUser.needSocialServicesUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedSocialServices; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedSocialServices;
+                        needFrequency = singleMatchedUserNeed.needSocialServicesFrequency;
+                        needUrgency = singleMatchedUserNeed.needSocialServicesUrgency; 
                     } else if (need === 'Need: Healing / Ritual / Herbal Medicine') {
-                        explainNeed = singleMatchedUser.explainNeedHealing; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedHealing;
-                        needFrequency = singleMatchedUser.needHealingFrequency;
-                        needUrgency = singleMatchedUser.needHealingUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedHealing; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedHealing;
+                        needFrequency = singleMatchedUserNeed.needHealingFrequency;
+                        needUrgency = singleMatchedUserNeed.needHealingUrgency; 
                     } else if (need === 'Need: Housing (short-term)') {
-                        explainNeed = singleMatchedUser.explainNeedHousingShort; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedHousingShort;
-                        needUrgency = singleMatchedUser.needHousingShortUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedHousingShort; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedHousingShort;
+                        needUrgency = singleMatchedUserNeed.needHousingShortUrgency; 
                     } else if (need === 'Need: Housing (long-term)') {
-                        explainNeed = singleMatchedUser.explainNeedHousingLong; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedHousingLong;
-                        needUrgency = singleMatchedUser.needHousingLongUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedHousingLong; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedHousingLong;
+                        needUrgency = singleMatchedUserNeed.needHousingLongUrgency; 
                     } else if (need === 'Need: Other') {
-                        explainNeed = singleMatchedUser.explainNeedOther; 
-                        communityUpdateNeed = singleMatchedUser.communityUpdateNeedOther;
-                        needFrequency = singleMatchedUser.needOtherFrequency;
-                        needUrgency = singleMatchedUser.needOtherUrgency; 
+                        explainNeed = singleMatchedUserNeed.explainNeedOther; 
+                        communityUpdateNeed = singleMatchedUserNeed.communityUpdateNeedOther;
+                        needFrequency = singleMatchedUserNeed.needOtherFrequency;
+                        needUrgency = singleMatchedUserNeed.needOtherUrgency; 
                     }
                 %> 
 
@@ -365,7 +368,7 @@
                             <span>Neighbor's Name:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleMatchedUser.publicDisplayName %> </span>
+                            <span> <%= singleMatchedUserNeed.publicDisplayName %> </span>
                             <br><br>
                         </div>
                     </div>
@@ -374,7 +377,7 @@
                             <span>Neighborhood:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleMatchedUser.formNeighborhood %> </span>
+                            <span> <%= singleMatchedUserNeed.formNeighborhood %> </span>
                             <br><br>
                         </div>
                     </div>
@@ -412,7 +415,7 @@
                             <span>Contact Information:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleMatchedUser.publicDisplayContact %> </span><br>
+                            <span> <%= singleMatchedUserNeed.publicDisplayContact %> </span><br>
                             
                             <br><br>
                         </div>
@@ -447,7 +450,7 @@
                     <%  } 
                         ) 
                            } 
-                if (offer) {
+                if (offer != undefined) {
                 searchMatchArray.forEach((singleMatchedUser) => {
                 let explainOffer = ''; 
                 let communityUpdate = '';   
