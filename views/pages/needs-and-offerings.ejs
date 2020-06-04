@@ -263,19 +263,10 @@
                 if (needsToDisplay) {
                     needsToDisplay.forEach(singleNeedToDisplay => { %>
                 <div class="medium-content-container-column palette-c" style="font-size: 1em;">  
-                    <h2> <%= singleNeedToDisplay[0] %> </h2>
+                    <h2> <%= singleNeedToDisplay[1] %> </h2>
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Neighbor's Name:</span>
-                        </div>   
-                        <div class="search-result-row-result">
-                            <span> <%= singleNeedToDisplay[3] %> </span>
-                            <br><br>
-                        </div>
-                    </div>
-                    <div class="container-row-no-wrap">
-                        <div class="search-result-row-label">
-                            <span>Neighborhood:</span>
                         </div>   
                         <div class="search-result-row-result">
                             <span> <%= singleNeedToDisplay[4] %> </span>
@@ -284,10 +275,19 @@
                     </div>
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
+                            <span>Neighborhood:</span>
+                        </div>   
+                        <div class="search-result-row-result">
+                            <span> <%= singleNeedToDisplay[5] %> </span>
+                            <br><br>
+                        </div>
+                    </div>
+                    <div class="container-row-no-wrap">
+                        <div class="search-result-row-label">
                             <span>Urgency:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleNeedToDisplay[9] %>  </span>
+                            <span> <%= singleNeedToDisplay[11] %>  </span>
                             <br><br>
                         </div>
                     </div>
@@ -296,10 +296,10 @@
                             <span>Frequency:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <% if (!singleNeedToDisplay[10]) { %>
+                            <% if (!singleNeedToDisplay[12]) { %>
                                 <span> not available for this need </span>
                             <% } else { %>
-                                <span> <%= singleNeedToDisplay[10] %>  </span>
+                                <span> <%= singleNeedToDisplay[12] %>  </span>
                             <% } %>
                             <br><br>
                         </div>
@@ -309,7 +309,7 @@
                             <span>More Information from Neighbor:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleNeedToDisplay[7] %> </span>
+                            <span> <%= singleNeedToDisplay[8] %> </span>
                             <br><br>
                         </div>
                     </div>
@@ -318,8 +318,8 @@
                             <span>Contact Information:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleNeedToDisplay[5] %> </span><br>
                             <span> <%= singleNeedToDisplay[6] %> </span><br>
+                            <span> <%= singleNeedToDisplay[7] %> </span><br>
                             <br><br>
                         </div>
                     </div>
@@ -328,11 +328,14 @@
                             <span>Community Update:</span>
                         </div>   
                         <div class="search-result-row-result">
-                            <span> <%= singleNeedToDisplay[8] %> </span>
+                        
+                            <% singleNeedToDisplay[9].forEach(communityUpdate => { %>
+                                    <span> <%= communityUpdate %> <br></span>
+                            <%})%>
                             <br><br>
                         </div>
                     </div>
-                    <form action="/addCommunityNotes" method="PUT">
+                    <form action="/addCommunityNotes" method="POST">
                         <fieldset>
                             <div class="container-row-no-wrap">
                                 <div class="search-result-row-label">
@@ -342,11 +345,14 @@
                                 <div class="search-result-row-result">
                                     <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes">add update here</textarea>
                                     <br><br>
+                                    <input type="text" value="<%=singleNeedToDisplay[9]%>" id="hiddenCommunityNotes" name="hiddenCommunityNotes">
+                                    <input  type="text" value="<%=singleNeedToDisplay[0]%>" id="hiddenUserId" name="hiddenUserId">
+                                    <input type="text" value="<%=singleNeedToDisplay[10]%>" id="hiddenUpdateKey" name="hiddenUpdateKey">
+                                    <% console.log(singleNeedToDisplay[0]) %>
                                     <input type="submit" class="button palette-a">
                                     <br>
                                 </div>
                                 <div>
-
                                 </div>
                             </div>
                         </fieldset>  
@@ -357,13 +363,13 @@
                 if (offersToDisplay) {
                     offersToDisplay.forEach(singleOfferToDisplay => { %>
                     <div class="medium-content-container-column palette-c" style="font-size: 1em;">
-                        <h2> <%= singleOfferToDisplay[0] %> </h2>
+                        <h2> <%= singleOfferToDisplay[1] %> </h2>
                         <div class="container-row-no-wrap">
                             <div class="search-result-row-label">
                                 <span>Neighbor's Name:</span>
                             </div>   
                             <div class="search-result-row-result">
-                                <span> <%= singleOfferToDisplay[3] %> </span>
+                                <span> <%= singleOfferToDisplay[2] %> </span>
                                 <br><br>
                             </div>
                         </div>
@@ -372,7 +378,7 @@
                                 <span>Neighborhood:</span>
                             </div>   
                             <div class="search-result-row-result">
-                                <span> <%= singleOfferToDisplay[4] %> </span>
+                                <span> <%= singleOfferToDisplay[5] %> </span>
                                 <br><br>
                             </div>
                         </div>
@@ -383,7 +389,7 @@
                             <div class="search-result-row-result">
                                 
                                 
-                                <span> <%= singleOfferToDisplay[7] %> </span>
+                                <span> <%= singleOfferToDisplay[8] %> </span>
                                 <br><br>
                             </div>
                         </div>
@@ -392,8 +398,8 @@
                                 <span>Contact Information:</span>
                             </div>   
                             <div class="search-result-row-result">
-                                <span> <%= singleOfferToDisplay[5] %> </span><br>
                                 <span> <%= singleOfferToDisplay[6] %> </span><br>
+                                <span> <%= singleOfferToDisplay[7] %> </span><br>
                                 <br><br>
                             </div>
                         </div>
@@ -402,7 +408,7 @@
                                 <span>Community Update:</span>
                             </div>   
                             <div class="search-result-row-result">
-                                <span> <%= singleOfferToDisplay[8] %> </span>
+                                <span> <%= singleOfferToDisplay[9] %> </span>
                                 <br><br>
                             </div>
                         </div>

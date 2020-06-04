@@ -6,6 +6,7 @@ const dbURL = 'mongodb://localhost:27017';
 const dbName = 'DCCN';
 const collectionUserForm = 'userFormData';
 const PORT = 5500;
+router.use(express.urlencoded());
 
 
 //Connects to database
@@ -75,9 +76,46 @@ router.get('/needs-and-offerings', (req, res) => {
     }); 
 }); 
 
-router.post('///', (req, res) => {
+router.post('/addCommunityNotes',(function (req, res) {
+
+    let communityNotes = req.body.hiddenCommunityNotes;
+    let communityNotesArray = communityNotes.split(',');
+    let userId = req.body.hiddenUserId;
+    let notesUpdate = req.body.communityNotes;
+    let communityUpdateKey = req.body.hiddenUpdateKey;
+    communityUpdateKey = `${communityUpdateKey}`
+    communityNotesArray.push(notesUpdate)
+    console.log(notesUpdate);
+    console.log(userId)
+    console.log(typeof userId);
+    console.log(communityNotes);
+    console.log(communityNotesArray);
+    console.log(communityUpdateKey);
+    //cannot pass a variable as the the field name in the .updateOne handler, so have to create an object to pass in
+    let updateObject={};
+    updateObject[communityUpdateKey] = communityNotesArray;
+    console.log(updateObject);
+    let ObjectId = require('mongodb').ObjectID;
+
+    dbHandler.collection(collectionUserForm)
+    .updateOne({"_id" : ObjectId(userId)}, {$set: updateObject}, function(err, res) {
+        if (err) {
+            console.log(err);
+        } else if (res) {
+            console.log('added to the database');
+            console.log(res);
+        } else {
+            console.log('not really added')
+        }
+    });
     
-})
+    
+    res.render('pages/needs-and-offerings', {
+        'needsToDisplay': undefined,
+        'offersToDisplay': undefined,
+    }); 
+}));
+
 
 router.get('/searchForNeedsAndOfferings',(function (req, res) {
     let formDataSearch = req.query;
@@ -143,8 +181,6 @@ function expandSearchResults (allResultsArray, searchedTerms, searchTerm) {
             allEntries[singleTerm] = [];
         }
         if (singleResult[searchTerm].includes(singleTerm)) {
-            // console.log(`allEntries: ${allEntries}`); //New
-            // console.log(`singleResult name: ${singleResult.formFirstName}`)
             allEntries[singleTerm].push(singleResult);
         }
     })
@@ -157,6 +193,7 @@ function getResultSpecifics(matchEntries) {
     for (var key of Object.keys(matchEntries)) {
         matchEntries[key].forEach(matchObject => { 
             let singleMatchArray = [
+                matchObject._id,
                 key,
                 matchObject.formFirstName,
                 matchObject.formLastName,
@@ -292,6 +329,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: PetCare / Dog-Walking':
                     singleMatchArray.push(matchObject.explainNeedPetCare);
                     singleMatchArray.push(matchObject.communityUpdateNeedPetCare);
+                    singleMatchArray.push('communityUpdateNeedPetCare');
                     singleMatchArray.push(matchObject.needPetCareUrgency);
                     singleMatchArray.push(matchObject.needPetCareFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
