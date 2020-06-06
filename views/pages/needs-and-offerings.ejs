@@ -8,7 +8,7 @@
                     <legend>Narrow your search by selecting from the filters below.</legend>
                     <div class="container-row">
 <!-- SUB-NEGEIGBORHOOD SEARCH STARTS HERE -->
-                        <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
+                        <!-- <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
                             <h3>Neighborhood</h3>
                             <fieldset>
                                 <legend class="form-labels">What sub-neighborhood(s) do you want to search in? <br>
@@ -66,7 +66,7 @@
                                     <label for="searchNeighborhoodAll" class="form-labels-check-radio">all neighborhoods</label>
                                 </div>
                             </fieldset>
-                        </div>
+                        </div> -->
 <!-- NEEDS SEARCH STARTS HERE -->
                         <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
                             <h3>Needs</h3>
@@ -343,11 +343,11 @@
                                     <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
                                 </div>   
                                 <div class="search-result-row-result">
-                                    <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes">add update here</textarea>
+                                    <textarea class="search-result-textarea" placeholder="add update here" id="communityNotes" name="communityNotes"></textarea>
                                     <br><br>
-                                    <input type="text" value="<%=singleNeedToDisplay[9]%>" id="hiddenCommunityNotes" name="hiddenCommunityNotes">
-                                    <input  type="text" value="<%=singleNeedToDisplay[0]%>" id="hiddenUserId" name="hiddenUserId">
-                                    <input type="text" value="<%=singleNeedToDisplay[10]%>" id="hiddenUpdateKey" name="hiddenUpdateKey">
+                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[9]%>" id="hiddenCommunityNotes" name="hiddenCommunityNotes">
+                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[0]%>" id="hiddenUserId" name="hiddenUserId">
+                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[10]%>" id="hiddenUpdateKey" name="hiddenUpdateKey">
                                     <% console.log(singleNeedToDisplay[0]) %>
                                     <input type="submit" class="button palette-a">
                                     <br>
@@ -369,7 +369,7 @@
                                 <span>Neighbor's Name:</span>
                             </div>   
                             <div class="search-result-row-result">
-                                <span> <%= singleOfferToDisplay[2] %> </span>
+                                <span> <%= singleOfferToDisplay[4] %> </span>
                                 <br><br>
                             </div>
                         </div>
@@ -387,9 +387,8 @@
                                 <span>More Information from Neighbor:</span>
                             </div>   
                             <div class="search-result-row-result">
+                                <span> <%= singleOfferToDisplay[8] %> </span><br>
                                 
-                                
-                                <span> <%= singleOfferToDisplay[8] %> </span>
                                 <br><br>
                             </div>
                         </div>
@@ -408,11 +407,13 @@
                                 <span>Community Update:</span>
                             </div>   
                             <div class="search-result-row-result">
-                                <span> <%= singleOfferToDisplay[9] %> </span>
+                                <% singleOfferToDisplay[9].forEach(communityUpdate => { %>
+                                    <span> <%= communityUpdate %> <br></span>
+                                <%})%>
                                 <br><br>
                             </div>
                         </div>
-                        <form action="/addCommunityNotes" method="PUT">
+                        <form action="/addCommunityNotes" method="POST">
                             <fieldset>
                                 <div class="container-row-no-wrap">
                                     <div class="search-result-row-label">
@@ -420,8 +421,11 @@
                                         <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
                                     </div>   
                                     <div class="search-result-row-result">
-                                        <textarea class="search-result-textarea" placeholder="Explain here" id="communityNotes" name="communityNotes">add update here</textarea>
+                                        <textarea class="search-result-textarea" placeholder="add update here" id="communityNotes" name="communityNotes"></textarea>
                                         <br><br>
+                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[9]%>" id="hiddenCommunityNotes" name="hiddenCommunityNotes">
+                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[0]%>" id="hiddenUserId" name="hiddenUserId">
+                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[10]%>" id="hiddenUpdateKey" name="hiddenUpdateKey">
                                         <input type="submit" class="button palette-a">
                                         <br>
                                     </div>

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongodb = require('mongodb');
 let dbHandler;
-const dbURL = 'mongodb://localhost:27017';
+const dbURL = 'mongodb+srv://DCCN:passasafeword@dccn-cluster-8swud.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority'|| 'mongodb://localhost:27017';
 const dbName = 'DCCN';
 const collectionUserForm = 'userFormData';
 const PORT = 5500;
@@ -77,20 +77,19 @@ router.get('/needs-and-offerings', (req, res) => {
 }); 
 
 router.post('/addCommunityNotes',(function (req, res) {
-
+    console.log(req.body);
     let communityNotes = req.body.hiddenCommunityNotes;
-    let communityNotesArray = communityNotes.split(',');
+    let communityNotesArray;
+    if (communityNotes === '') {
+       communityNotesArray = [];
+    } else if (communityNotesArray !== '') {
+        communityNotesArray = communityNotes.split(',');
+    }
     let userId = req.body.hiddenUserId;
     let notesUpdate = req.body.communityNotes;
     let communityUpdateKey = req.body.hiddenUpdateKey;
     communityUpdateKey = `${communityUpdateKey}`
     communityNotesArray.push(notesUpdate)
-    console.log(notesUpdate);
-    console.log(userId)
-    console.log(typeof userId);
-    console.log(communityNotes);
-    console.log(communityNotesArray);
-    console.log(communityUpdateKey);
     //cannot pass a variable as the the field name in the .updateOne handler, so have to create an object to pass in
     let updateObject={};
     updateObject[communityUpdateKey] = communityNotesArray;
@@ -103,7 +102,7 @@ router.post('/addCommunityNotes',(function (req, res) {
             console.log(err);
         } else if (res) {
             console.log('added to the database');
-            console.log(res);
+            // console.log(res);
         } else {
             console.log('not really added')
         }
@@ -206,101 +205,121 @@ function getResultSpecifics(matchEntries) {
                 case 'Offer: Childcare':
                     singleMatchArray.push(matchObject.explainOfferChildcare);
                     singleMatchArray.push(matchObject.communityUpdateOfferChildcare);
+                    singleMatchArray.push('communityUpdateOfferChildcare');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Cooking':
                     singleMatchArray.push(matchObject.explainOfferCooking);
                     singleMatchArray.push(matchObject.communityUpdateOfferCooking);
+                    singleMatchArray.push('communityUpdateOfferCooking');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Food and Supplies':
                     singleMatchArray.push(matchObject.explainOfferFoodAndSupplies);
                     singleMatchArray.push(matchObject.communityUpdateOfferFoodAndSupplies);
+                    singleMatchArray.push('communityUpdateOfferFoodAndSupplies');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Rides or Access to a Vehicle':
                     singleMatchArray.push(matchObject.explainOfferRidesCar);
                     singleMatchArray.push(matchObject.communityUpdateOfferRidesCar);
+                    singleMatchArray.push('communityUpdateOfferRidesCar');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: PetCare / Dog-Walking':
                     singleMatchArray.push(matchObject.explainOfferPetCare);
                     singleMatchArray.push(matchObject.communityUpdateOfferPetCare);
+                    singleMatchArray.push('communityUpdateOfferPetCare');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Internet Subscriptions':
                     singleMatchArray.push(matchObject.explainOfferInternetSubs);
                     singleMatchArray.push(matchObject.communityUpdateOfferInternetSubs);
+                    singleMatchArray.push('communityUpdateOfferInternetSubs');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Medical Support':
                     singleMatchArray.push(matchObject.explainOfferMedicalSupport);
                     singleMatchArray.push(matchObject.communityUpdateOfferMedicalSupport);
+                    singleMatchArray.push('communityUpdateOfferMedicalSupport');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Medical Advice':
                     singleMatchArray.push(matchObject.explainOfferMedicalAdvice);
                     singleMatchArray.push(matchObject.communityUpdateOfferMedicalAdvice);
+                    singleMatchArray.push('communityUpdateOfferMedicalAdvice');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Storage Space':
                     singleMatchArray.push(matchObject.explainOfferStorage);
                     singleMatchArray.push(matchObject.communityUpdateOfferStorage);
+                    singleMatchArray.push('communityUpdateOfferStorage');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Art / Music / Writing':
                     singleMatchArray.push(matchObject.explainOfferArt);
                     singleMatchArray.push(matchObject.communityUpdateOfferArt);
+                    singleMatchArray.push('communityUpdateOfferArt');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Mental Health Counseling / Resources':
                     singleMatchArray.push(matchObject.explainOfferMentalHealth);
                     singleMatchArray.push(matchObject.communityUpdateOfferMentalHealth);
+                    singleMatchArray.push('communityUpdateOfferMentalHealth');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Conversation / Companionship':
                     singleMatchArray.push(matchObject.explainOfferCompanionship);
                     singleMatchArray.push(matchObject.communityUpdateOfferCompanionship);
+                    singleMatchArray.push('communityUpdateOfferCompanionship');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Legal Representation / Advocacy':
                     singleMatchArray.push(matchObject.explainOfferLegal);
                     singleMatchArray.push(matchObject.communityUpdateOfferLegal);
+                    singleMatchArray.push('communityUpdateOfferLegal');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Interpretation / Translation':
                     singleMatchArray.push(matchObject.explainOfferInterpretation);
                     singleMatchArray.push(matchObject.communityUpdateOfferInterpretation);
+                    singleMatchArray.push('communityUpdateOfferInterpretation');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Social Service Guidance':
                     singleMatchArray.push(matchObject.explainOfferSocialServices);
                     singleMatchArray.push(matchObject.communityUpdateOfferSocialServices);
+                    singleMatchArray.push('communityUpdateOfferSocialServices');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Healing / Ritual / Herbal Medicine':
                     singleMatchArray.push(matchObject.explainOfferHealing);
                     singleMatchArray.push(matchObject.communityUpdateOfferHealing);
+                    singleMatchArray.push('communityUpdateOfferHealing');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Housing (short-term)':
                     singleMatchArray.push(matchObject.explainOfferHousingShort);
                     singleMatchArray.push(matchObject.communityUpdateOfferHousingShort);
+                    singleMatchArray.push('communityUpdateOfferHousingShort');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Housing (long-term)':
                     singleMatchArray.push(matchObject.explainOfferHousingLong);
                     singleMatchArray.push(matchObject.communityUpdateOfferHousingLong);
+                    singleMatchArray.push('communityUpdateOfferHousingLong');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Offer: Other':
                     singleMatchArray.push(matchObject.explainOfferOther);
                     singleMatchArray.push(matchObject.communityUpdateOfferOther);
+                    singleMatchArray.push('communityUpdateOfferOther');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Childcare':
                     singleMatchArray.push(matchObject.explainNeedChildcare);
                     singleMatchArray.push(matchObject.communityUpdateNeedChildcare);
+                    singleMatchArray.push('communityUpdateNeedChildcare');
                     singleMatchArray.push(matchObject.needChildcareUrgency);
                     singleMatchArray.push(matchObject.needChildcareFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -308,6 +327,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Cooking':
                     singleMatchArray.push(matchObject.explainNeedCooking);
                     singleMatchArray.push(matchObject.communityUpdateNeedCooking);
+                    singleMatchArray.push('communityUpdateNeedCooking');
                     singleMatchArray.push(matchObject.needCookingUrgency);
                     singleMatchArray.push(matchObject.needCookingFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -315,6 +335,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Food and Supplies':
                     singleMatchArray.push(matchObject.explainNeedFoodAndSupplies);
                     singleMatchArray.push(matchObject.communityUpdateNeedFoodAndSupplies);
+                    singleMatchArray.push('communityUpdateNeedFoodAndSupplies');
                     singleMatchArray.push(matchObject.needFoodAndSuppliesUrgency);
                     singleMatchArray.push(matchObject.needFoodAndSuppliesFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -322,6 +343,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Rides or Access to a Vehicle':
                     singleMatchArray.push(matchObject.explainNeedRidesCar);
                     singleMatchArray.push(matchObject.communityUpdateNeedRidesCar);
+                    singleMatchArray.push('communityUpdateNeedRidesCar');
                     singleMatchArray.push(matchObject.needRidesCarUrgency);
                     singleMatchArray.push(matchObject.needRidesCarFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -337,11 +359,13 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Internet Subscriptions':
                     singleMatchArray.push(matchObject.explainNeedInternetSubscriptions);
                     singleMatchArray.push(matchObject.communityUpdateNeedInternetSubscriptions);
+                    singleMatchArray.push('communityUpdateNeedInternetSubscriptions');
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Medical Support':
                     singleMatchArray.push(matchObject.explainNeedMedicalSupport);
                     singleMatchArray.push(matchObject.communityUpdateNeedMedicalSupport);
+                    singleMatchArray.push('communityUpdateNeedMedicalSupport');
                     singleMatchArray.push(matchObject.needMedicalSupportUrgency);
                     singleMatchArray.push(matchObject.needMedicalSupportFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -349,18 +373,21 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Medical Advice':
                     singleMatchArray.push(matchObject.explainNeedMedicalAdvice);
                     singleMatchArray.push(matchObject.communityUpdateNeedMedicalAdvice);
+                    singleMatchArray.push('communityUpdateNeedMedicalAdvice');
                     singleMatchArray.push(matchObject.needMedicalAdviceUrgency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Storage Space':
                     singleMatchArray.push(matchObject.explainNeedStorage);
                     singleMatchArray.push(matchObject.communityUpdateNeedStorage);
+                    singleMatchArray.push('communityUpdateNeedStorage');
                     singleMatchArray.push(matchObject.needStorageUrgency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Art / Music / Writing':
                     singleMatchArray.push(matchObject.explainNeedArt);
                     singleMatchArray.push(matchObject.communityUpdateNeedArt);
+                    singleMatchArray.push('communityUpdateNeedArt');
                     singleMatchArray.push(matchObject.needArtUrgency);
                     singleMatchArray.push(matchObject.needArtFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -368,6 +395,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Mental Health Counseling':
                     singleMatchArray.push(matchObject.explainNeedMentalHealth);
                     singleMatchArray.push(matchObject.communityUpdateNeedMentalHealth);
+                    singleMatchArray.push('communityUpdateNeedMentalHealth');
                     singleMatchArray.push(matchObject.needMentalHealthUrgency);
                     singleMatchArray.push(matchObject.needMentalHealthFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -375,6 +403,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Conversation / Companionship':
                     singleMatchArray.push(matchObject.explainNeedCompanionship);
                     singleMatchArray.push(matchObject.communityUpdateNeedCompanionship);
+                    singleMatchArray.push('communityUpdateNeedCompanionship');
                     singleMatchArray.push(matchObject.needCompanionshipUrgency);
                     singleMatchArray.push(matchObject.needCompanionshipFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -382,12 +411,14 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Legal Representation / Advocacy':
                     singleMatchArray.push(matchObject.explainNeedLegal);
                     singleMatchArray.push(matchObject.communityUpdateNeedLegal);
+                    singleMatchArray.push('communityUpdateNeedLegal');
                     singleMatchArray.push(matchObject.needLegalUrgency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Interpretation / Translation':
                     singleMatchArray.push(matchObject.explainNeedInterpretation);
                     singleMatchArray.push(matchObject.communityUpdateNeedInterpretation);
+                    singleMatchArray.push('communityUpdateNeedInterpretation');
                     singleMatchArray.push(matchObject.needInterpretationUrgency);
                     singleMatchArray.push(matchObject.needInterpretationFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -395,6 +426,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Social Service Guidance':
                     singleMatchArray.push(matchObject.explainNeedSocialServices);
                     singleMatchArray.push(matchObject.communityUpdateNeedSocialServices);
+                    singleMatchArray.push('communityUpdateNeedSocialServices');
                     singleMatchArray.push(matchObject.needSocialServicesUrgency);
                     singleMatchArray.push(matchObject.needSocialServicesFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -402,6 +434,7 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Healing / Ritual / Herbal Medicine':
                     singleMatchArray.push(matchObject.explainNeedHealing);
                     singleMatchArray.push(matchObject.communityUpdateNeedHealing);
+                    singleMatchArray.push('communityUpdateNeedHealing');
                     singleMatchArray.push(matchObject.needHealingUrgency);
                     singleMatchArray.push(matchObject.needHealingFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -409,18 +442,21 @@ function getResultSpecifics(matchEntries) {
                 case 'Need: Housing (short-term)':
                     singleMatchArray.push(matchObject.explainNeedHousingShort);
                     singleMatchArray.push(matchObject.communityUpdateNeedHousingShort);
+                    singleMatchArray.push('communityUpdateNeedHousingShort');
                     singleMatchArray.push(matchObject.needHousingShortUrgency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Housing (long-term)':
                     singleMatchArray.push(matchObject.explainNeedHousingLong);
                     singleMatchArray.push(matchObject.communityUpdateNeedHousingLong);
+                    singleMatchArray.push('communityUpdateNeedHousingLong');
                     singleMatchArray.push(matchObject.needHousingLongUrgency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
                     return
                 case 'Need: Other':
                     singleMatchArray.push(matchObject.explainNeedOther);
                     singleMatchArray.push(matchObject.communityUpdateNeedOther);
+                    singleMatchArray.push('communityUpdateNeedOther');
                     singleMatchArray.push(matchObject.needOtherUrgency);
                     singleMatchArray.push(matchObject.needOtherFrequency);
                     allEntriesDisplayInfoArray.push(singleMatchArray);
@@ -477,119 +513,119 @@ router.post('/addFormData', (req, res) => {
         }
     let formOfferings = formData['formOfferings'];
     let explainOfferChildcare = formData['explainOfferChildcare'];
-    let communityUpdateOfferChildcare = '';
+    let communityUpdateOfferChildcare = [];
     let explainOfferCooking = formData['explainOfferCooking'];
-    let communityUpdateOfferCooking = '';
+    let communityUpdateOfferCooking = [];
     let explainOfferFoodAndSupplies = formData['explainOfferFoodAndSupplies'];
-    let communityUpdateOfferFoodAndSupplies = '';
+    let communityUpdateOfferFoodAndSupplies = [];
     let explainOfferRidesCar = formData['explainOfferRidesCar'];
-    let communityUpdateOfferRidesCar = '';
+    let communityUpdateOfferRidesCar = [];
     let explainOfferPetCare = formData['explainOfferPetCare'];
-    let communityUpdateOfferPetCare = '';
+    let communityUpdateOfferPetCare = [];
     let explainOfferInternetSubs = formData['explainOfferInternetSubs'];
-    let communityUpdateOfferInternetSubs = '';
+    let communityUpdateOfferInternetSubs = [];
     let explainOfferMedicalSupport = formData['explainOfferMedicalSupport'];
-    let communityUpdateOfferMedicalSupport = '';
+    let communityUpdateOfferMedicalSupport = [];
     let explainOfferMedicalAdvice = formData['explainOfferMedicalAdvice'];
-    let communityUpdateOfferMedicalAdvice = '';
+    let communityUpdateOfferMedicalAdvice = [];
     let explainOfferStorage = formData['explainOfferStorage'];
-    let communityUpdateOfferStorage = '';
+    let communityUpdateOfferStorage = [];
     let explainOfferArt = formData['explainOfferArt'];
-    let communityUpdateOfferArt = '';
+    let communityUpdateOfferArt = [];
     let explainOfferMentalHealth = formData['explainOfferMentalHealth'];
-    let communityUpdateOfferMentalHealth = '';
+    let communityUpdateOfferMentalHealth = [];
     let explainOfferCompanionship = formData['explainOfferCompanionship'];
-    let communityUpdateOfferCompanionship = '';
+    let communityUpdateOfferCompanionship = [];
     let explainOfferLegal = formData['explainOfferLegal'];
-    let communityUpdateOfferLegal = '';
+    let communityUpdateOfferLegal = [];
     let explainOfferInterpretation = formData['explainOfferInterpretation'];
-    let communityUpdateOfferInterpretation = '';
+    let communityUpdateOfferInterpretation = [];
     let explainOfferSocialServices = formData['explainOfferSocialServices'];
-    let communityUpdateOfferSocialServices = '';
+    let communityUpdateOfferSocialServices = [];
     let explainOfferHealing = formData['explainOfferHealing'];
-    let communityUpdateOfferHealing = '';
+    let communityUpdateOfferHealing = [];
     let explainOfferHousingShort = formData['explainOfferHousingShort'];
-    let communityUpdateOfferHousingShort = '';
+    let communityUpdateOfferHousingShort = [];
     let explainOfferHousingLong = formData['explainOfferHousingLong'];
-    let communityUpdateOfferHousingLong = '';
+    let communityUpdateOfferHousingLong = [];
     let explainOfferOther = formData['explainOfferOther'];
-    let communityUpdateOfferOther = '';
+    let communityUpdateOfferOther = [];
     let formGiveMoney = formData['formGiveMoney'];
     let formNeeds = formData['formNeeds'];
     let explainNeedChildcare = formData['explainNeedChildcare'];
     let needChildcareFrequency = formData['needChildcareFrequency'];
     let needChildcareUrgency = formData['needChildcareUrgency'];
-    let communityUpdateNeedChildcare = '';
+    let communityUpdateNeedChildcare = [];
     let explainNeedCooking = formData['explainNeedCooking'];
     let needCookingFrequency = formData['needCookingFrequency'];
     let needCookingUrgency = formData['needCookingUrgency'];
-    let communityUpdateNeedCooking = '';
+    let communityUpdateNeedCooking = [];
     let explainNeedFoodAndSupplies = formData['explainNeedFoodAndSupplies'];
     let needFoodAndSuppliesFrequency = formData['needFoodAndSuppliesFrequency'];
     let needFoodAndSuppliesUrgency = formData['needFoodAndSuppliesUrgency'];
-    let communityUpdateNeedFoodAndSupplies = '';
+    let communityUpdateNeedFoodAndSupplies = [];
     let explainNeedRidesCar = formData['explainNeedRidesCar'];
     let needRidesCarFrequency = formData['needRidesCarFrequency'];
     let needRidesCarUrgency = formData['needRidesCarUrgency'];
-    let communityUpdateNeedRidesCar = '';
+    let communityUpdateNeedRidesCar = [];
     let explainNeedPetCare = formData['explainNeedPetCare'];
     let needPetCareFrequency = formData['needPetCareFrequency'];
     let needPetCareUrgency = formData['needPetCareUrgency'];
-    let communityUpdateNeedPetCare = '';
+    let communityUpdateNeedPetCare = [];
     let explainNeedInternetSubscriptions = formData['explainNeedInternetSubscriptions'];
-    let communityUpdateNeedInternetSubscriptions = '';
+    let communityUpdateNeedInternetSubscriptions = [];
     let explainNeedMedicalSupport = formData['explainNeedMedicalSupport'];
     let needMedicalSupportFrequency = formData['needMedicalSupportFrequency'];
     let needMedicalSupportUrgency = formData['needMedicalSupportUrgency'];
-    let communityUpdateNeedMedicalSupport = '';
+    let communityUpdateNeedMedicalSupport = [];
     let explainNeedMedicalAdvice = formData['explainNeedMedicalAdvice'];
     let needMedicalAdviceUrgency = formData['needMedicalAdviceUrgency'];
-    let communityUpdateNeedMedicalAdvice = '';
+    let communityUpdateNeedMedicalAdvice = [];
     let explainNeedStorage = formData['explainNeedStorage'];
     let needStorageUrgency = formData['needStorageUrgency'];
-    let communityUpdateNeedStorage = '';
+    let communityUpdateNeedStorage = [];
     let explainNeedArt = formData['explainNeedArt'];
     let needArtFrequency = formData['needArtFrequency'];
     let needArtUrgency = formData['needArtUrgency'];
-    let communityUpdateNeedArt = '';
+    let communityUpdateNeedArt = [];
     let explainNeedMentalHealth = formData['explainNeedMentalHealth'];
     let needMentalHealthFrequency = formData['needMentalHealthFrequency'];
     let needMentalHealthUrgency = formData['needMentalHealthUrgency'];
-    let communityUpdateNeedMentalHealth = '';
+    let communityUpdateNeedMentalHealth = [];
     let explainNeedCompanionship = formData['explainNeedCompanionship'];
     let needCompanionshipFrequency = formData['needCompanionshipFrequency'];
     let needCompanionshipUrgency = formData['needCompanionshipUrgency'];
-    let communityUpdateNeedCompanionship = '';
+    let communityUpdateNeedCompanionship = [];
     let explainNeedLegal = formData['explainNeedLegal'];
     let needLegalUrgency = formData['needLegalUrgency'];
-    let communityUpdateNeedLegal = '';
+    let communityUpdateNeedLegal = [];
     let explainNeedInterpretation = formData['explainNeedInterpretation'];
     let needInterpretationFrequency = formData['needInterpretationFrequency'];
     let needInterpretationUrgency = formData['needInterpretationUrgency'];
-    let communityUpdateNeedInterpretation = '';
+    let communityUpdateNeedInterpretation = [];
     let explainNeedSocialServices = formData['explainNeedSocialServices'];
     let needSocialServicesFrequency = formData['needSocialServicesFrequency'];
     let needSocialServicesUrgency = formData['needSocialServicesUrgency'];
-    let communityUpdateNeedSocialServices = '';
+    let communityUpdateNeedSocialServices = [];
     let explainNeedHealing = formData['explainNeedHealing'];
     let needHealingFrequency = formData['needHealingFrequency'];
     let needHealingUrgency = formData['needHealingUrgency'];
-    let communityUpdateNeedHealing = '';
+    let communityUpdateNeedHealing = [];
     let explainNeedHousingShort = formData['explainNeedHousingShort'];
     let needHousingShortUrgency = formData['needHousingShortUrgency'];
-    let communityUpdateNeedHousingShort = '';
+    let communityUpdateNeedHousingShort = [];
     let explainNeedHousingLong = formData['explainNeedHousingLong'];
     let needHousingLongUrgency = formData['needHousingLongUrgency'];
-    let communityUpdateNeedHousingLong = '';
+    let communityUpdateNeedHousingLong = [];
     let explainNeedOther = formData['explainNeedOther'];
     let needOtherFrequency = formData['needOtherFrequency'];
     let needOtherUrgency = formData['needOtherUrgency'];
-    let communityUpdateNeedOther = '';
+    let communityUpdateNeedOther = [];
     let formFinancialNeed = formData['formFinancialNeed'];
     let explainNeedFinancial = formData['explainNeedFinancial'];
     let needFinancialFrequency = formData['needFinancialFrequency'];
     let needFinancialUrgency = formData['needFinancialUrgency'];
-    let communityUpdateNeedFinancial = '';
+    let communityUpdateNeedFinancial = [];
     let needFinancialPublic = formData['needFinancialPublic'];
     let explainNeighborConnections = formData['explainNeighborConnections'];
     let blockCoord = formData['blockCoord'];
@@ -742,7 +778,5 @@ router.post('/addFormData', (req, res) => {
     })
     
 })
-
-
 
 module.exports = router;
