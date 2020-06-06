@@ -2,11 +2,13 @@ const express = require('express');
 const router = express.Router();
 const mongodb = require('mongodb');
 let dbHandler;
-const dbURL = 'mongodb+srv://DCCN:passasafeword@dccn-cluster-8swud.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority'|| 'mongodb://localhost:27017';
-const dbName = 'DCCN';
-const collectionUserForm = 'userFormData';
-const PORT = 5500;
+const dbURL = process.env.dbURL;
+const dbName = process.env.dbName;
+const collectionUserForm = process.env.collectionUserForm;
+const PORT = process.env.PORT || 5500;
 router.use(express.urlencoded());
+const dotenv = require('dotenv');
+dotenv.config();
 
 
 //Connects to database

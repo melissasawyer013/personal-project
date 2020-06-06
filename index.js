@@ -5,15 +5,15 @@ const router = express.Router();
 const PATH = require('path');
 const bodyParser = require('body-parser');
 const mongodb = require('mongodb');
+const dotenv = require('dotenv');
 
 const app = express();
-const PORT = 5500;
+const PORT = process.env.PORT || 5500;
 
 
-
-//configuring EJS
-// This is the function that is triggered each time our server receives a request from the client
 app.set('view engine', 'ejs');
+
+dotenv.config();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
@@ -24,10 +24,10 @@ const route = require('./routes/routes');
 app.use('/', route);
 
 let dbHandler;
-const dbURL = 'mongodb://localhost:27017';
-const dbName = 'DCCN';
-const collectionUserForm = 'userFormData';
-const collectionDataSearch = 'dataSearch';
+const dbURL = process.env.dbURL;
+const dbName = process.env.dbName;
+const collectionUserForm = process.env.collectionUserForm;
+
 
 // Starts the app's server by listening to port 5500
 app.listen(PORT, function() {
