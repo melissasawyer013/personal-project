@@ -1,8 +1,11 @@
 <%- include('../partials/header')-%>
 
 <!-- Page Content Starts -->
+
     <div class="page-container-column">
+        
         <div class="large-content-container-column palette-b">
+            
             <p>
                 The Dorchester Community Care Network is working to make sure you and your neighbors have everything you need during the COVID-19 pandemic and beyond. In these fast-moving and uncertain times, it’s important that we show up for each other and remember that we are not alone. We love our neighborhood and the people in it, and that is why we are committed to taking care of every member. 
             </p>
@@ -66,7 +69,7 @@
                         </div>
                         <div class="input-containers">
                             <label for="formEmail" class="form-labels">Email Address *</label>
-                            <input type="email" placeholder="YourEmail@email.com" id="formEmail" class="text-inputs" name="formEmail" required>
+                            <input oninput="check(this)" type="email" placeholder="YourEmail@email.com" id="formEmail" class="text-inputs  emailA" name="formEmail" required>
                         </div>
                         <br>
                         <fieldset>
@@ -76,8 +79,6 @@
                                 <input type="radio" value="formPhoneAndEmailPublic" id="formPhoneAndEmailPublic" name="formPublicDisplayContact" required>
                                 <label for="formPhoneAndEmailPublic" class="form-labels-check-radio">phone number and email</label>
                             </div>
-
-
                             <div class="input-container-check-radio">
                                 <input type="radio" value="formPhoneNumberOnlyPublic" id="formPhoneNumberOnlyPublic" name="formPublicDisplayContact" required>
                                 <label for="formPhoneNumberOnlyPublic" class="form-labels-check-radio">phone number only</label>
@@ -1481,6 +1482,28 @@
                             <textarea class="text-inputs" id="formExplainCheckIn" name="formExplainCheckIn" placeholder="Explain here"></textarea>
                         </div>
                     </fieldset> <!-- Other Questions Section ends here-->
+                    <br>
+                    <br>
+                    <hr>
+<!-- Login Section Starts Here -->
+                    <fieldset>
+                        <legend class="header-legend">LOGIN SIGNUP</legend>
+                        <span class="form-labels-subtext">You will be able to use this information to login in the future in order to change or update this form information.  </span>
+                        <div class="input-containers">
+                            <label for="username" class="form-labels">Email Address *</label>
+                            <span class="form-labels-subtext">Please re-enter your email address from the Contact Information section at the top.   </span>
+                            <input type="email" placeholder="YourEmail@email.com" id="username" class="text-inputs emailB" name="username" required>
+                            <span class="form-labels-subtext" id="emailMatchMessage">Email must match what is listed in the Contact Information section above.</span>
+                        </div>
+                        <div class="input-containers">
+                            <label for="password" class="form-labels">Password *</label>
+                            <input type="text" placeholder="password" id="password" name="password" class="text-inputs passA" required>
+                        </div>
+                        <div class="input-containers">
+                            <label for="formPasswordB" class="form-labels">Re-Enter Password *</label>
+                            <input type="text" placeholder="confirm password" id="formPasswordB" name="formPasswordB" class="text-inputs passB" required>
+                        </div>
+                    </fieldset> <!-- Login Section ends here-->
                     <br>
                     <input type="submit" class="palette-b button">
                 </form>

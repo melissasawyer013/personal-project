@@ -1,3 +1,14 @@
+code for index.ejs at top of first div
+<% if ((!user) || (user === undefined)) {
+                console.log('user not signed in');
+            } else { %>
+                <p>Hello, <%= user.formFirstName %>. </p>
+            <% } %>
+
+
+
+
+
 const fetch = require()
 
 

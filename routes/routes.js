@@ -6,9 +6,16 @@ const dbURL = process.env.dbURL;
 const dbName = process.env.dbName;
 const collectionUserForm = process.env.collectionUserForm;
 const PORT = process.env.PORT || 5500;
-router.use(express.urlencoded());
 const dotenv = require('dotenv');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
+const PATH = require('path');
+const bcrypt = require('bcryptjs')
+const session = require('express-session')
+
 dotenv.config();
+
 
 
 //Connects to database
@@ -22,13 +29,34 @@ mongoClient.connect(dbURL, { useUnifiedTopology: true }, (err, dbClient) => {
     };
 });
 
+router.use(express.urlencoded());
+router.use(session({
+    secret: 'codesquad',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {secure: true}
+}));
+// router.use(require('express-session')({
+//     secret: 'codesquad',
+//     resave: false,
+//     saveUninitialized: false
+// }));
+router.use(flash());
+router.use(passport.initialize());
+router.use(passport.session());
+// require(PATH.join(__dirname, '../node_modules/passport-local/auth.config'))(passport); 
+
 
 router.get('/', (req, res) => {
-    res.render('pages/index');  
+    res.render('pages/index', {
+        user: req.user,
+    });  
 });
 
 router.get('/index', (req, res) => {
-    res.render('pages/index');  
+    res.render('pages/index', {
+        user: req.user,
+    });  
 });
 
 router.get('/about-us/', (req, res) => {
@@ -67,9 +95,76 @@ router.get('/login', (req, res) => {
     res.render('pages/login');
 });
 
-router.get('/update-form', (req, res) => {
-    res.render('pages/update-form');
+router.post('/sendLogin',
+    passport.authenticate('local', {
+        failureRedirect: '/login',
+        successRedirect: '/'
+    })
+);
+
+// router.get('/update-form', (req, res) => {
+//     res.render('pages/update-form');
+// });
+
+router.get('/update-form', require('connect-ensure-login').ensureLoggedIn(),
+(req, res) => {
+    dbHandler.collection(collectionUserForm).findOne({username: req.user.username}).toArray((err, user) => {
+        if(err) return console.log(err)
+        let userObject = user[0]
+        console.log(userObject)
+        if(user) res.render('pages/update-form', {user: userObject})
+    })
 });
+
+
+// bcrypt.genSalt(10, (err, salt) => 
+//             bcrypt.hash(userFormDataObject.password, salt, (err, hash) => {
+//                 if(err) throw err;
+//                 //Set password to hashed
+//                 userFormDataObject.password = hash;
+//                 //Save user
+//                 dbHandler.collection(collectionUserForm).insertOne(userFormDataObject, (error, result) => {
+//                     if (error) {
+//                         console.log(`There was an error adding the information to the database. The error is: ${error}`);
+//                     } else {
+//                         console.log(`Yes! The data was added. Here it is: ${result}`);
+//                         res.redirect('/index');
+//                         req.flash('successMsg', "You are now registered and able to login.");
+//                     }
+//                 })
+//         }))  
+passport.use(new LocalStrategy((username, password, done) => {
+        dbHandler.collection(collectionUserForm).find({username: username}).toArray((err, user) => {
+            if(err) {
+                console.log(`there was an error`);
+                return err;
+            }
+            if(!user){
+                console.log('no user')
+                return done(null, false);
+            }
+            
+            if(user[0].password != password) {
+                console.log('password error')
+                return done(null, false)
+            }
+            let userObject = user[0];
+            if(user) {
+                console.log('success')
+                console.log(user)
+                return done(null, userObject)
+            }
+        })
+    }
+));
+
+passport.serializeUser((user, done) => {
+    done(null, user.username);
+});
+
+passport.deserializeUser((username, done) => {
+    done(null, {username: username});
+})
 
 router.get('/needs-and-offerings', (req, res) => {
     res.render('pages/needs-and-offerings', {
@@ -633,6 +728,9 @@ router.post('/addFormData', (req, res) => {
     let blockCoord = formData['blockCoord'];
     let networkHelp = formData['networkHelp'];
     let formExplainCheckIn = formData['formExplainCheckIn'];
+    let username = formData['username'];
+    let password = formData['password'];
+    let formPasswordB = formData['formPasswordB'];
     const userFormDataObject = {
         publicDisplayName: publicDisplayName,
         publicDisplayContact: publicDisplayContact,
@@ -768,17 +866,46 @@ router.post('/addFormData', (req, res) => {
         blockCoord: blockCoord,
         networkHelp: networkHelp,
         formExplainCheckIn: formExplainCheckIn,
+        username: username,
+        password: password,
     }
-    console.log(userFormDataObject);
-    dbHandler.collection(collectionUserForm).insertOne(userFormDataObject, (error, result) => {
-        if (error) {
-            console.log(`There was an error adding the information to the database. The error is: ${error}`);
-        } else {
-            console.log(`Yes! The data was added. Here it is: ${result}`);
-            res.redirect('/index');
-        }
-    })
-    
+
+    let errors = [];
+    if (formEmail != username) {
+        errors.push({msg: 'Email addresses must match.'});
+    }
+    if (password != formPasswordB) {
+        errors.push({msg: "Password entries do not match."})
+    }
+
+    if (password.length < 6) {
+        errors.push({msg: "Password should be at least 6 characters."})
+    }
+
+    if (errors.length > 0) {
+        res.render('pages/index', {
+            errors,
+            formData,
+        });
+    } else {
+        console.log(userFormDataObject);
+        bcrypt.genSalt(10, (err, salt) => 
+            bcrypt.hash(userFormDataObject.password, salt, (err, hash) => {
+                if(err) throw err;
+                //Set password to hashed
+                userFormDataObject.password = hash;
+                //Save user
+                dbHandler.collection(collectionUserForm).insertOne(userFormDataObject, (error, result) => {
+                    if (error) {
+                        console.log(`There was an error adding the information to the database. The error is: ${error}`);
+                    } else {
+                        console.log(`Yes! The data was added. Here it is: ${result}`);
+                        res.redirect('/index');
+                        req.flash('successMsg', "You are now registered and able to login.");
+                    }
+                })
+        }))  
+    } 
 })
 
 module.exports = router;

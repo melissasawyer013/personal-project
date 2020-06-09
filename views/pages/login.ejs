@@ -2,6 +2,7 @@
 <!-- Page Content Starts -->
     <div class="page-container-column">
         <div class="large-content-container-column palette-a">
+            
             <h1>LOGIN</h1>
             <span class="form-labels-subtext">Login using Gmail or Facebook</span>
             <div class="container-row-no-wrap" style="justify-content: flex-start;">
@@ -11,14 +12,14 @@
             <br>
             <div class="separator-palette-a">&nbsp OR &nbsp</div>
             <br>
-            <form action="/sendLogin" method="POST">
+            <form id="loginForm" action="/sendLogin" method="POST">
                 <div class="input-containers">
-                    <label for="loginUsernameEmail" class="form-labels">Enter your email address * </label>
-                    <input type="email" placeholder="YourEmail@email.com" id="loginUsernameEmail" name="loginUsernameEmail" class="text-inputs" required>
+                    <label for="username" class="form-labels">Enter your email address * </label>
+                    <input type="text" placeholder="YourEmail@email.com" id="username" name="username" class="text-inputs" required>
                 </div>
                 <div class="input-containers">
-                    <label for="loginPassword" class="form-labels">Password *</label>
-                    <input type="password" placeholder="password" id="loginPassword" name="loginPassword" class="text-inputs" required>
+                    <label for="password" class="form-labels">Password *</label>
+                    <input type="password" placeholder="password" id="password" name="password" class="text-inputs" required>
                 </div>
                 <br>
                 <input type="submit" class="button palette-b">
