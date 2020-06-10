@@ -16,6 +16,16 @@ function displayHiddenDiv(e) {
   }
 }
 
+/* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+function toggleResponsive() {
+  var x = document.getElementByClass("navbar-top");
+  if (x.className === "navbar-top") {
+    x.className += " responsive";
+  } else {
+    x.className = "navbar-top";
+  }
+}
+
 // let emailA = document.querySelector(".emailA");
 // let emailB = document.querySelector('.emailB');
 // let emailMatchMessage = document.querySelector('#emailMatchMessage');

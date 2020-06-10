@@ -254,7 +254,7 @@
             </form>
 <!-- SEARCH FORM ENDS HERE -->
         </div>
-        <div id="searchResultsContainer">
+        <div id="searchResultsContainer" class="search-results-container">
             <% if (needsToDisplay === undefined && offersToDisplay === undefined) { %>
                 <div class="medium-content-container-column palette-c" style="font-size: 1em;">
                     <h2>Please search using the checkboxes above.</h2>
@@ -267,6 +267,7 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Neighbor's Name:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
                             <span> <%= singleNeedToDisplay[4] %> </span>
@@ -276,6 +277,7 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Neighborhood:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
                             <span> <%= singleNeedToDisplay[5] %> </span>
@@ -285,6 +287,7 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Urgency:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
                             <span> <%= singleNeedToDisplay[11] %>  </span>
@@ -294,6 +297,7 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Frequency:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
                             <% if (!singleNeedToDisplay[12]) { %>
@@ -307,6 +311,7 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>More Information from Neighbor:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
                             <span> <%= singleNeedToDisplay[8] %> </span>
@@ -316,6 +321,7 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Contact Information:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
                             <span> <%= singleNeedToDisplay[6] %> </span><br>
@@ -326,9 +332,9 @@
                     <div class="container-row-no-wrap">
                         <div class="search-result-row-label">
                             <span>Community Update:</span>
+                            <br><br>
                         </div>   
                         <div class="search-result-row-result">
-                        
                             <% singleNeedToDisplay[9].forEach(communityUpdate => { %>
                                     <span> <%= communityUpdate %> <br></span>
                             <%})%>
@@ -367,6 +373,7 @@
                         <div class="container-row-no-wrap">
                             <div class="search-result-row-label">
                                 <span>Neighbor's Name:</span>
+                                <br><br>
                             </div>   
                             <div class="search-result-row-result">
                                 <span> <%= singleOfferToDisplay[4] %> </span>
@@ -376,6 +383,7 @@
                         <div class="container-row-no-wrap">
                             <div class="search-result-row-label">
                                 <span>Neighborhood:</span>
+                                <br><br>
                             </div>   
                             <div class="search-result-row-result">
                                 <span> <%= singleOfferToDisplay[5] %> </span>
@@ -385,6 +393,7 @@
                         <div class="container-row-no-wrap">
                             <div class="search-result-row-label">
                                 <span>More Information from Neighbor:</span>
+                                <br><br>
                             </div>   
                             <div class="search-result-row-result">
                                 <span> <%= singleOfferToDisplay[8] %> </span><br>
@@ -395,6 +404,7 @@
                         <div class="container-row-no-wrap">
                             <div class="search-result-row-label">
                                 <span>Contact Information:</span>
+                                <br><br>
                             </div>   
                             <div class="search-result-row-result">
                                 <span> <%= singleOfferToDisplay[6] %> </span><br>
@@ -405,6 +415,7 @@
                         <div class="container-row-no-wrap">
                             <div class="search-result-row-label">
                                 <span>Community Update:</span>
+                                <br><br>
                             </div>   
                             <div class="search-result-row-result">
                                 <% singleOfferToDisplay[9].forEach(communityUpdate => { %>
