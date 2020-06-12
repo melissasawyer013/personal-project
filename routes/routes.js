@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const mongodb = require('mongodb');
-let dbHandler;
 const dbURL = process.env.dbURL;
 const dbName = process.env.dbName;
 const collectionUserForm = process.env.collectionUserForm;
@@ -11,8 +10,12 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 const PATH = require('path');
-const bcrypt = require('bcryptjs')
-const session = require('express-session')
+const bcrypt = require('bcryptjs');
+const session = require('express-session');
+const morgan = require('morgan');
+const uuid = require('uuidv4').uuid;
+let dbHandler;
+
 
 dotenv.config();
 
@@ -173,28 +176,23 @@ router.get('/needs-and-offerings', (req, res) => {
     }); 
 }); 
 
-router.post('/addCommunityNotes',(function (req, res) {
+router.put('/addCommunityNotes',(function (req, res) {
     console.log(req.body);
-    let communityNotes = req.body.hiddenCommunityNotes;
-    let communityNotesArray;
-    if (communityNotes === '') {
-       communityNotesArray = [];
-    } else if (communityNotesArray !== '') {
-        communityNotesArray = communityNotes.split(',');
-    }
-    let userId = req.body.hiddenUserId;
-    let notesUpdate = req.body.communityNotes;
-    let communityUpdateKey = req.body.hiddenUpdateKey;
-    communityUpdateKey = `${communityUpdateKey}`
-    communityNotesArray.push(notesUpdate)
-    //cannot pass a variable as the the field name in the .updateOne handler, so have to create an object to pass in
-    let updateObject={};
-    updateObject[communityUpdateKey] = communityNotesArray;
+    let update = req.body;
+    console.log(update['userID']);
+    let userID = update['userID'];
+    console.log(update['arrayToAppend'])
+    let arrayToAppend = update['arrayToAppend'];
+    arrayToAppend = arrayToAppend.split(',');
+    console.log(arrayToAppend);
+    let updateKey = update['updateKey'];
+    console.log(updateKey);
+    let updateObject = {[updateKey]: arrayToAppend};
     console.log(updateObject);
     let ObjectId = require('mongodb').ObjectID;
 
     dbHandler.collection(collectionUserForm)
-    .updateOne({"_id" : ObjectId(userId)}, {$set: updateObject}, function(err, res) {
+    .updateOne({"_id" : ObjectId(userID)}, {$set: updateObject}, function(err, res) {
         if (err) {
             console.log(err);
         } else if (res) {
@@ -204,12 +202,44 @@ router.post('/addCommunityNotes',(function (req, res) {
             console.log('not really added')
         }
     });
+    // console.log(update);
+    // console.log(update['communityUpdateNeedPetCare']);
+    res.end();
+    // let communityNotes = req.body.hiddenCommunityNotes;
+    // let communityNotesArray;
+    // if (communityNotes === '') {
+    //    communityNotesArray = [];
+    // } else if (communityNotes != '') {
+    //     communityNotesArray = communityNotes.split(',');
+    // }
+    // let userId = req.body.hiddenUserId;
+    // let notesUpdate = req.body.communityNotes;
+    // let communityUpdateKey = req.body.hiddenUpdateKey;
+    // communityUpdateKey = `${communityUpdateKey}`
+    // communityNotesArray.push(notesUpdate)
+    //cannot pass a variable as the the field name in the .updateOne handler, so have to create an object to pass in
+    // let updateObject={};
+    // updateObject[communityUpdateKey] = communityNotesArray;
+    // console.log(updateObject);
+    // let ObjectId = require('mongodb').ObjectID;
+
+    // dbHandler.collection(collectionUserForm)
+    // .updateOne({"_id" : ObjectId(userId)}, {$set: updateObject}, function(err, res) {
+    //     if (err) {
+    //         console.log(err);
+    //     } else if (res) {
+    //         console.log('added to the database');
+    //         // console.log(res);
+    //     } else {
+    //         console.log('not really added')
+    //     }
+    // });
+    // res.send(console.log('Update Added'));
     
-    
-    res.render('pages/needs-and-offerings', {
-        'needsToDisplay': undefined,
-        'offersToDisplay': undefined,
-    }); 
+    // res.render('pages/needs-and-offerings', {
+    //     'needsToDisplay': undefined,
+    //     'offersToDisplay': undefined,
+    // }); 
 }));
 
 
@@ -243,8 +273,8 @@ router.get('/searchForNeedsAndOfferings',(function (req, res) {
                 let allOfferEntries = expandSearchResults(offerResult, searchOffersArray, 'formOfferings');
                 //the getResultSpecifics() takes the result of the expandSearchResults() function and uses a switch statement to create an array for each match that contains the data that needs to be displayed on the ejs page
                 let allOfferEntriesDisplayInfoArray = getResultSpecifics(allOfferEntries);
-                console.log(`allOfferEntriesDisplayInfoArray:`);
-                console.log(allOfferEntriesDisplayInfoArray);
+                // console.log(`allOfferEntriesDisplayInfoArray:`);
+                // console.log(allOfferEntriesDisplayInfoArray);
                 //This is where the search needs happens
                 dbHandler.collection(collectionUserForm).find( { formNeeds: { $in: searchNeedsArray} } )
                     .toArray((needError, needResult) => {
@@ -255,8 +285,8 @@ router.get('/searchForNeedsAndOfferings',(function (req, res) {
                             let allNeedEntries = expandSearchResults (needResult, searchNeedsArray, 'formNeeds');   
                             //the getResultSpecifics() takes the result of the expandSearchResults() function and uses a switch statement to create an array for each match that contains the data that needs to be displayed on the ejs page
                             let allNeedEntriesDisplayInfoArray = getResultSpecifics(allNeedEntries);
-                            console.log(`allNeedEntriesDisplayInfoArray:`);
-                            console.log(allNeedEntriesDisplayInfoArray);
+                            // console.log(`allNeedEntriesDisplayInfoArray:`);
+                            // console.log(allNeedEntriesDisplayInfoArray);
                             res.render('pages/needs-and-offerings', {
                                 'needsToDisplay': allNeedEntriesDisplayInfoArray,
                                 'offersToDisplay': allOfferEntriesDisplayInfoArray,

@@ -2,7 +2,7 @@
 // Shows hidden div with additional questions when needs or offerings checked on form
 let checkboxes = document.querySelectorAll(".contains-hidden-div");
 for (let i=0; i<checkboxes.length; i++) {
-  console.log(checkboxes[i]);
+  // console.log(checkboxes[i]);
   checkboxes[i].addEventListener('click', displayHiddenDiv, false);
 };
 
@@ -16,13 +16,50 @@ function displayHiddenDiv(e) {
   }
 }
 
+//fetch function to add a community update to the database
+function addCommunityUpdate(userID, updateKey, priorUpdates) {
+  const formData = new FormData();
+  let textArea = document.getElementsByClassName(`${updateKey}${userID}`);
+  let noteUpdate = textArea[0].value;
+  let communityNotesArray;;
+  communityNotesArray = priorUpdates.split(',');
+  communityNotesArray.push(noteUpdate);
+  formData.append('userID', userID),
+  formData.append('updateKey', updateKey);
+  formData.append('arrayToAppend', communityNotesArray);
+  formData.append(updateKey, Array.from(communityNotesArray));
+
+  fetch(`/addCommunityNotes`, {
+    method: 'PUT',
+    body: new URLSearchParams(formData),
+  })
+  .then (res => {
+    if (res.status === 200) {
+      console.log(`communityNotesArray: ${communityNotesArray}`);
+      let spotToPrint = document.getElementById(`print${updateKey}${userID}`);
+      spotToPrint.innerHTML = '';
+      console.log(spotToPrint.innerHTML);
+      communityNotesArray.forEach(note => {
+        if (note.length != 0) {
+          spotToPrint.innerHTML += '<span>' + note + '</span><br>';
+        }
+      });
+      spotToPrint.innerHTML += '<br>';      
+    }
+  })
+  .catch (err => console.log(err))
+}
+
+
+
+
 /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
 function toggleResponsive() {
-  var x = document.getElementByClass("navbar-top");
-  if (x.className === "navbar-top") {
+  var x = document.getElementById("bottomNav");
+  if (x.className === "bottom-nav") {
     x.className += " responsive";
   } else {
-    x.className = "navbar-top";
+    x.className = "bottom-nav";
   }
 }
 

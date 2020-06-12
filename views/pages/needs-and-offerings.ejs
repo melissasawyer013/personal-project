@@ -5,7 +5,8 @@
             <h1>BROWSE NEEDS & OFFERINGS</h1>
             <form id="searchForm" action="/searchForNeedsAndOfferings" method="GET">
                 <fieldset>
-                    <legend>Narrow your search by selecting from the filters below.</legend>
+                    <legend style="text-align: center;">Narrow your search by selecting from the filters below.</legend>
+                    <br>
                     <div class="container-row">
 <!-- SUB-NEGEIGBORHOOD SEARCH STARTS HERE -->
                         <!-- <div class="slim-content-container-column" style="border: 3px solid #3F2B39;">
@@ -251,6 +252,7 @@
                 <br>
                 <input type="submit" class="button palette-b" id="search-submit-button" value="Search">
                 <br>
+                <span id="target" style="display: none"></span>
             </form>
 <!-- SEARCH FORM ENDS HERE -->
         </div>
@@ -264,9 +266,9 @@
                     needsToDisplay.forEach(singleNeedToDisplay => { %>
                 <div class="medium-content-container-column palette-c" style="font-size: 1em;">  
                     <h2> <%= singleNeedToDisplay[1] %> </h2>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>Neighbor's Name:</span>
+                            <span class="word-wrap">Neighbor's Name:</span>
                             <br><br>
                         </div>   
                         <div class="search-result-row-result">
@@ -274,9 +276,9 @@
                             <br><br>
                         </div>
                     </div>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>Neighborhood:</span>
+                            <span class="word-wrap">Neighborhood:</span>
                             <br><br>
                         </div>   
                         <div class="search-result-row-result">
@@ -284,9 +286,9 @@
                             <br><br>
                         </div>
                     </div>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>Urgency:</span>
+                            <span class="word-wrap">Urgency:</span>
                             <br><br>
                         </div>   
                         <div class="search-result-row-result">
@@ -294,9 +296,9 @@
                             <br><br>
                         </div>
                     </div>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>Frequency:</span>
+                            <span class="word-wrap">Frequency:</span>
                             <br><br>
                         </div>   
                         <div class="search-result-row-result">
@@ -308,9 +310,9 @@
                             <br><br>
                         </div>
                     </div>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>More Information from Neighbor:</span>
+                            <span class="word-wrap">More Information from Neighbor:</span>
                             <br><br>
                         </div>   
                         <div class="search-result-row-result">
@@ -318,51 +320,51 @@
                             <br><br>
                         </div>
                     </div>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>Contact Information:</span>
+                            <span class="word-wrap">Contact Information:</span>
                             <br><br>
                         </div>   
-                        <div class="search-result-row-result">
+                        <div class="search-result-row-result word-wrap">
                             <span> <%= singleNeedToDisplay[6] %> </span><br>
                             <span> <%= singleNeedToDisplay[7] %> </span><br>
                             <br><br>
                         </div>
                     </div>
-                    <div class="container-row-no-wrap">
+                    <div class="container-row-no-wrap no-wrap">
                         <div class="search-result-row-label">
-                            <span>Community Update:</span>
+                            <span class="word-wrap">Community Update:</span>
                             <br><br>
                         </div>   
-                        <div class="search-result-row-result">
-                            <% singleNeedToDisplay[9].forEach(communityUpdate => { %>
+                        <div class="search-result-row-result" id="print<%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>">
+                            <% singleNeedToDisplay[9].forEach(communityUpdate => { 
+                                if (communityUpdate != "") {%>
                                     <span> <%= communityUpdate %> <br></span>
-                            <%})%>
+                            <%}})%>
                             <br><br>
                         </div>
                     </div>
-                    <form action="/addCommunityNotes" method="POST">
+                    <!-- <form action="/addCommunityNotes" method="POST"> -->
                         <fieldset>
-                            <div class="container-row-no-wrap">
+                            <div class="container-row-no-wrap no-wrap">
                                 <div class="search-result-row-label">
-                                    <legend>Update this need or offering:</legend>
-                                    <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
+                                    <legend class="word-wrap">Update this need or offering:</legend>
+                                    <label for="<%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
                                 </div>   
                                 <div class="search-result-row-result">
-                                    <textarea class="search-result-textarea" placeholder="add update here" id="communityNotes" name="communityNotes"></textarea>
+                                    <textarea class="search-result-textarea <%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>" placeholder="add update here, refresh the page after each for multiple submissions on the same user" id="<%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>" name="<%=singleNeedToDisplay[10]%>"></textarea>
                                     <br><br>
-                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[9]%>" id="hiddenCommunityNotes" name="hiddenCommunityNotes">
-                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[0]%>" id="hiddenUserId" name="hiddenUserId">
-                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[10]%>" id="hiddenUpdateKey" name="hiddenUpdateKey">
-                                    <% console.log(singleNeedToDisplay[0]) %>
-                                    <input type="submit" class="button palette-a">
+                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[9]%>" id="hiddenCommunityNotes<%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>" name="hiddenCommunityNotes">
+                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[0]%>" id="hiddenUserId<%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>" name="hiddenUserId">
+                                    <input style="display: none;" type="text" value="<%=singleNeedToDisplay[10]%>" id="hiddenUpdateKey<%=singleNeedToDisplay[10]%><%=singleNeedToDisplay[0]%>" name="hiddenUpdateKey">
+                                    <button class="button-update palette-a" onclick='addCommunityUpdate("<%=singleNeedToDisplay[0]%>", "<%=singleNeedToDisplay[10]%>", "<%=singleNeedToDisplay[9]%>");'>Submit</button>
                                     <br>
                                 </div>
                                 <div>
                                 </div>
                             </div>
                         </fieldset>  
-                    </form>  
+                    <!-- </form>   -->
                 </div>  
                 <%    })   
                 }
@@ -370,9 +372,9 @@
                     offersToDisplay.forEach(singleOfferToDisplay => { %>
                     <div class="medium-content-container-column palette-c" style="font-size: 1em;">
                         <h2> <%= singleOfferToDisplay[1] %> </h2>
-                        <div class="container-row-no-wrap">
+                        <div class="container-row-no-wrap no-wrap">
                             <div class="search-result-row-label">
-                                <span>Neighbor's Name:</span>
+                                <span class="word-wrap">Neighbor's Name:</span>
                                 <br><br>
                             </div>   
                             <div class="search-result-row-result">
@@ -380,9 +382,9 @@
                                 <br><br>
                             </div>
                         </div>
-                        <div class="container-row-no-wrap">
+                        <div class="container-row-no-wrap no-wrap">
                             <div class="search-result-row-label">
-                                <span>Neighborhood:</span>
+                                <span class="word-wrap">Neighborhood:</span>
                                 <br><br>
                             </div>   
                             <div class="search-result-row-result">
@@ -390,9 +392,9 @@
                                 <br><br>
                             </div>
                         </div>
-                        <div class="container-row-no-wrap">
+                        <div class="container-row-no-wrap no-wrap">
                             <div class="search-result-row-label">
-                                <span>More Information from Neighbor:</span>
+                                <span class="word-wrap">More Information from Neighbor:</span>
                                 <br><br>
                             </div>   
                             <div class="search-result-row-result">
@@ -401,48 +403,50 @@
                                 <br><br>
                             </div>
                         </div>
-                        <div class="container-row-no-wrap">
+                        <div class="container-row-no-wrap no-wrap">
                             <div class="search-result-row-label">
-                                <span>Contact Information:</span>
+                                <span class="word-wrap">Contact Information:</span>
                                 <br><br>
                             </div>   
-                            <div class="search-result-row-result">
+                            <div class="search-result-row-result word-wrap">
                                 <span> <%= singleOfferToDisplay[6] %> </span><br>
                                 <span> <%= singleOfferToDisplay[7] %> </span><br>
                                 <br><br>
                             </div>
                         </div>
-                        <div class="container-row-no-wrap">
+                        <div class="container-row-no-wrap no-wrap">
                             <div class="search-result-row-label">
-                                <span>Community Update:</span>
+                                <span class="word-wrap">Community Update:</span>
                                 <br><br>
                             </div>   
-                            <div class="search-result-row-result">
-                                <% singleOfferToDisplay[9].forEach(communityUpdate => { %>
+                            <div class="search-result-row-result" id="print<%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>">
+                                <% singleOfferToDisplay[9].forEach(communityUpdate => { 
+                                    if (communityUpdate != "") {%>
                                     <span> <%= communityUpdate %> <br></span>
-                                <%})%>
+                                <%}})%>
                                 <br><br>
                             </div>
                         </div>
-                        <form action="/addCommunityNotes" method="POST">
+                        <!-- <form action="/addCommunityNotes" method="POST"> -->
                             <fieldset>
-                                <div class="container-row-no-wrap">
+                                <div class="container-row-no-wrap no-wrap">
                                     <div class="search-result-row-label">
-                                        <legend>Update this need or offering:</legend>
-                                        <label for="communityNotes">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
+                                        <legend class="word-wrap">Update this need or offering:</legend>
+                                        <label for="<%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>">Examples: Explain how this need was met and on what date or explain how this offering was accessed and on what date.</label>
                                     </div>   
                                     <div class="search-result-row-result">
-                                        <textarea class="search-result-textarea" placeholder="add update here" id="communityNotes" name="communityNotes"></textarea>
+                                        <textarea class="search-result-textarea <%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>" placeholder="add update here, refresh the page after each for multiple submissions on the same user" id="<%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>" name="<%=singleOfferToDisplay[10]%>"></textarea>
                                         <br><br>
-                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[9]%>" id="hiddenCommunityNotes" name="hiddenCommunityNotes">
-                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[0]%>" id="hiddenUserId" name="hiddenUserId">
-                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[10]%>" id="hiddenUpdateKey" name="hiddenUpdateKey">
-                                        <input type="submit" class="button palette-a">
+                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[9]%>" id="hiddenCommunityNotes<%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>" name="hiddenCommunityNotes">
+                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[0]%>" id="hiddenUserId<%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>" name="hiddenUserId">
+                                        <input style="display: none;" type="text" value="<%=singleOfferToDisplay[10]%>" id="hiddenUpdateKey<%=singleOfferToDisplay[10]%><%=singleOfferToDisplay[0]%>" name="hiddenUpdateKey">
+                                        <button class="button-update palette-a" onclick='addCommunityUpdate("<%=singleOfferToDisplay[0]%>", "<%=singleOfferToDisplay[10]%>", "<%=singleOfferToDisplay[9]%>");'>Submit</button>
+            
                                         <br>
                                     </div>
                                 </div>
                             </fieldset>  
-                        </form>  
+                        <!-- </form>   -->
                     </div>  
                     <%  } 
                     )
