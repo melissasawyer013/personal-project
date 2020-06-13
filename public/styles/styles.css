@@ -849,7 +849,10 @@ input[type='submit'] {
         height: 100%;
         word-wrap: break-word;
     }
-
+    .navbar {
+        /* display: flex; */
+        width: 100vw;
+    }
     .navbar-top {
         flex-wrap: wrap;
     }
@@ -1135,6 +1138,9 @@ input[type='submit'] {
          margin: 15px 10px;
          font-size: .9em;
      }
+     .bottom-nav .nav-link-box-special {
+        width: 300px;
+    }
   
 }
 
@@ -1197,6 +1203,9 @@ input[type='submit'] {
          margin: 15px 10px;
          font-size: .9em;
      }
+     .bottom-nav .nav-link-box-special {
+        width: 300px;
+    }
 }
 
 @media only screen and (min-width:842px) and (max-width:877px) {
@@ -1257,6 +1266,9 @@ input[type='submit'] {
          margin: 15px 10px;
          font-size: .9em;
      }
+     .bottom-nav .nav-link-box-special {
+        width: 300px;
+    }
 }
 
 /* 2 or 3 media queries probably */

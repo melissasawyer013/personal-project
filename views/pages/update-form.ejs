@@ -3,6 +3,10 @@
     <div class="page-container-column">
     <!-- Form Starts Here -->
         <div class="large-content-container-column palette-b">
+            <p> Hello, <%=user.formFirstName%> </p>
+            <form action="/logout?_method=DELETE" method="POST">
+                <button type="submit">Log Out</button>
+            </form>
             <div class="form-container">
                 <form action="/updateFormData" method="POST">
                     <h1>UPDATE THE FORM BELOW</h1>

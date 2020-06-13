@@ -12,14 +12,19 @@ const flash = require('connect-flash');
 const PATH = require('path');
 const bcrypt = require('bcryptjs');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
 const morgan = require('morgan');
 const uuid = require('uuidv4').uuid;
+const ensure = require('connect-ensure-login');
+const mongoose = require('mongoose');
+const passportLocalMongoose = require('passport-local-mongoose');
+// const connectEnsureLogin = require('connect-ensure-login');
+const methodOverride = require('method-override');
+const initializePassport = require('./passport-config');
 let dbHandler;
 
-
 dotenv.config();
-
-
+router.use(express.urlencoded( {extended: false }));
 
 //Connects to database
 mongoClient = mongodb.MongoClient;
@@ -29,26 +34,47 @@ mongoClient.connect(dbURL, { useUnifiedTopology: true }, (err, dbClient) => {
     } else {
         console.log('You are connected to the database through the routes.js file.')
         dbHandler = dbClient.db(dbName);
+        
     };
 });
 
-router.use(express.urlencoded());
-router.use(session({
-    secret: 'codesquad',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {secure: true}
-}));
-// router.use(require('express-session')({
-//     secret: 'codesquad',
-//     resave: false,
-//     saveUninitialized: false
-// }));
 router.use(flash());
-router.use(passport.initialize());
-router.use(passport.session());
-// require(PATH.join(__dirname, '../node_modules/passport-local/auth.config'))(passport); 
 
+router.use(methodOverride('_method'));
+
+router.post('/sendLogin', passport.authenticate('local', {
+    successRedirect: '/update-form',
+    failureRedirect: '/login',
+    failureFlash: true
+}))
+
+router.get('/update-form', checkAuthenticated, (req, res) => {
+    // console.log(req.user);
+    res.render('pages/update-form', {user: req.user})
+})
+
+router.get('/login', checkNotAuthenticated, (req, res) => {
+    res.render('pages/login');
+});
+
+router.delete('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/login')
+})
+
+function checkAuthenticated(req, res, next) {
+    if(req.isAuthenticated()) {
+        return next()
+    }
+    res.redirect('/login')
+}
+
+function checkNotAuthenticated(req, res, next) {
+    if (req.isAuthenticated()) {
+        return res.redirect('/update-form')
+    }
+    next()
+}
 
 router.get('/', (req, res) => {
     res.render('pages/index', {
@@ -94,81 +120,6 @@ router.get('/help', (req, res) => {
     res.render('pages/help');
 });
 
-router.get('/login', (req, res) => {
-    res.render('pages/login');
-});
-
-router.post('/sendLogin',
-    passport.authenticate('local', {
-        failureRedirect: '/login',
-        successRedirect: '/'
-    })
-);
-
-// router.get('/update-form', (req, res) => {
-//     res.render('pages/update-form');
-// });
-
-router.get('/update-form', require('connect-ensure-login').ensureLoggedIn(),
-(req, res) => {
-    dbHandler.collection(collectionUserForm).findOne({username: req.user.username}).toArray((err, user) => {
-        if(err) return console.log(err)
-        let userObject = user[0]
-        console.log(userObject)
-        if(user) res.render('pages/update-form', {user: userObject})
-    })
-});
-
-
-// bcrypt.genSalt(10, (err, salt) => 
-//             bcrypt.hash(userFormDataObject.password, salt, (err, hash) => {
-//                 if(err) throw err;
-//                 //Set password to hashed
-//                 userFormDataObject.password = hash;
-//                 //Save user
-//                 dbHandler.collection(collectionUserForm).insertOne(userFormDataObject, (error, result) => {
-//                     if (error) {
-//                         console.log(`There was an error adding the information to the database. The error is: ${error}`);
-//                     } else {
-//                         console.log(`Yes! The data was added. Here it is: ${result}`);
-//                         res.redirect('/index');
-//                         req.flash('successMsg', "You are now registered and able to login.");
-//                     }
-//                 })
-//         }))  
-passport.use(new LocalStrategy((username, password, done) => {
-        dbHandler.collection(collectionUserForm).find({username: username}).toArray((err, user) => {
-            if(err) {
-                console.log(`there was an error`);
-                return err;
-            }
-            if(!user){
-                console.log('no user')
-                return done(null, false);
-            }
-            
-            if(user[0].password != password) {
-                console.log('password error')
-                return done(null, false)
-            }
-            let userObject = user[0];
-            if(user) {
-                console.log('success')
-                console.log(user)
-                return done(null, userObject)
-            }
-        })
-    }
-));
-
-passport.serializeUser((user, done) => {
-    done(null, user.username);
-});
-
-passport.deserializeUser((username, done) => {
-    done(null, {username: username});
-})
-
 router.get('/needs-and-offerings', (req, res) => {
     res.render('pages/needs-and-offerings', {
         'needsToDisplay': undefined,
@@ -176,7 +127,7 @@ router.get('/needs-and-offerings', (req, res) => {
     }); 
 }); 
 
-router.put('/addCommunityNotes',(function (req, res) {
+router.put('/addCommunityNotes', checkAuthenticated, (function (req, res) {
     console.log(req.body);
     let update = req.body;
     console.log(update['userID']);
@@ -197,49 +148,11 @@ router.put('/addCommunityNotes',(function (req, res) {
             console.log(err);
         } else if (res) {
             console.log('added to the database');
-            // console.log(res);
         } else {
             console.log('not really added')
         }
     });
-    // console.log(update);
-    // console.log(update['communityUpdateNeedPetCare']);
     res.end();
-    // let communityNotes = req.body.hiddenCommunityNotes;
-    // let communityNotesArray;
-    // if (communityNotes === '') {
-    //    communityNotesArray = [];
-    // } else if (communityNotes != '') {
-    //     communityNotesArray = communityNotes.split(',');
-    // }
-    // let userId = req.body.hiddenUserId;
-    // let notesUpdate = req.body.communityNotes;
-    // let communityUpdateKey = req.body.hiddenUpdateKey;
-    // communityUpdateKey = `${communityUpdateKey}`
-    // communityNotesArray.push(notesUpdate)
-    //cannot pass a variable as the the field name in the .updateOne handler, so have to create an object to pass in
-    // let updateObject={};
-    // updateObject[communityUpdateKey] = communityNotesArray;
-    // console.log(updateObject);
-    // let ObjectId = require('mongodb').ObjectID;
-
-    // dbHandler.collection(collectionUserForm)
-    // .updateOne({"_id" : ObjectId(userId)}, {$set: updateObject}, function(err, res) {
-    //     if (err) {
-    //         console.log(err);
-    //     } else if (res) {
-    //         console.log('added to the database');
-    //         // console.log(res);
-    //     } else {
-    //         console.log('not really added')
-    //     }
-    // });
-    // res.send(console.log('Update Added'));
-    
-    // res.render('pages/needs-and-offerings', {
-    //     'needsToDisplay': undefined,
-    //     'offersToDisplay': undefined,
-    // }); 
 }));
 
 
@@ -273,8 +186,6 @@ router.get('/searchForNeedsAndOfferings',(function (req, res) {
                 let allOfferEntries = expandSearchResults(offerResult, searchOffersArray, 'formOfferings');
                 //the getResultSpecifics() takes the result of the expandSearchResults() function and uses a switch statement to create an array for each match that contains the data that needs to be displayed on the ejs page
                 let allOfferEntriesDisplayInfoArray = getResultSpecifics(allOfferEntries);
-                // console.log(`allOfferEntriesDisplayInfoArray:`);
-                // console.log(allOfferEntriesDisplayInfoArray);
                 //This is where the search needs happens
                 dbHandler.collection(collectionUserForm).find( { formNeeds: { $in: searchNeedsArray} } )
                     .toArray((needError, needResult) => {
@@ -285,8 +196,6 @@ router.get('/searchForNeedsAndOfferings',(function (req, res) {
                             let allNeedEntries = expandSearchResults (needResult, searchNeedsArray, 'formNeeds');   
                             //the getResultSpecifics() takes the result of the expandSearchResults() function and uses a switch statement to create an array for each match that contains the data that needs to be displayed on the ejs page
                             let allNeedEntriesDisplayInfoArray = getResultSpecifics(allNeedEntries);
-                            // console.log(`allNeedEntriesDisplayInfoArray:`);
-                            // console.log(allNeedEntriesDisplayInfoArray);
                             res.render('pages/needs-and-offerings', {
                                 'needsToDisplay': allNeedEntriesDisplayInfoArray,
                                 'offersToDisplay': allOfferEntriesDisplayInfoArray,
@@ -898,6 +807,7 @@ router.post('/addFormData', (req, res) => {
         formExplainCheckIn: formExplainCheckIn,
         username: username,
         password: password,
+        formPasswordB: formPasswordB
     }
 
     let errors = [];
