@@ -16,6 +16,64 @@ function displayHiddenDiv(e) {
   }
 }
 
+
+let checkboxesUpdate = document.querySelectorAll(".contains-hidden-div-update");
+
+for (let i=0; i<checkboxesUpdate.length; i++) {
+  // console.log(checkboxesUpdate[i]);
+  checkboxesUpdate[i].addEventListener('click', displayHiddenDivUpdate, false);
+  console.log(checkboxesUpdate[i].checked);
+  
+  
+  
+};
+
+for (let i=0; i<checkboxesUpdate.length; i++) {
+  console.log('second for loop initiated');
+  console.log(`These are the checkboxes being assessed: ${checkboxesUpdate[i]} and is it checked ${checkboxesUpdate[i].checked}`);
+  console.log(checkboxesUpdate[i].checked);
+  if (checkboxesUpdate[i].checked == true) {
+    console.log(`${checkboxesUpdate[i]} is checked`);
+    console.log(`divToShow:`)
+    console.log(checkboxesUpdate[i].parentNode.parentNode.children[1]);
+    let divToShow = checkboxesUpdate[i].parentNode.parentNode.children[1];
+    console.log(`divToShow: ${divToShow}`);
+    divToShow.style.display = 'flex';
+  }
+}
+
+function displayHiddenDivUpdate(e) {
+  let checkboxInputToCheck = e.target;
+  let divToShow = checkboxInputToCheck.parentNode.parentNode.children[1];
+  if (checkboxInputToCheck.checked == true) {
+    divToShow.style.display = "flex";
+  } else {
+    divToShow.style.display = "none";
+  }
+}
+// Shows hidden div with additional questions when needs or offerings checked on form
+// let checkForChecks = document.querySelectorAll(".checkForChecks");
+// for (let i=0; i<checkForChecks.length; i++) {
+//   checkForChecks[i].addEventListener('load', displayHiddenDivUpdate, false);
+//   console.log(`listener engaged for ${checkForChecks[i]}`)
+// };
+
+// function displayHiddenDivUpdate() {
+//   console.log('displayHiddenDivUpdate function engaged')
+//   let updateCheckboxes = document.querySelectorAll(".contains-hidden-div-update");
+//   console.log(updateCheckboxes)
+//   for (let i=0; i<updateCheckboxes.length; i++) {
+//     console.log(updateCheckboxes[1].checked)
+//     if (updateCheckboxes[i].checked == true) {
+//       updateCheckboxes[i].parentNode.parentNode.children[1].style.display = "flex";
+//     }
+//   };
+// }
+// if ($("#some-box").is(':checked')){
+//   $("#main-box").show();
+// }
+
+
 //fetch function to add a community update to the database
 function addCommunityUpdate(userID, updateKey, priorUpdates) {
   const formData = new FormData();
