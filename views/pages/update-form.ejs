@@ -3,14 +3,18 @@
     <div class="page-container-column">
     <!-- Form Starts Here -->
         <div class="large-content-container-column palette-b">
-            <p> Hello, <%=user.formFirstName%> </p>
+            <h1>PROFILE</h1>
+            <p>Hello, <%=user.formFirstName%>! <br>You can update your form entries below.</p>
             <form action="/logout?_method=DELETE" method="POST">
-                <button type="submit">Log Out</button>
+                <input type="submit" class="palette-a button" value="Logout">
+                <!-- <hr> -->
+                <br>
             </form>
             <div class="form-container">
                 <form action="/updateFormData" method="POST">
-                    <h1>UPDATE THE FORM BELOW</h1>
+                    <h2>UPDATE THE FORM BELOW</h2>
                     <p>You can update your answers in the form below. Fields marked with an asterisk * are required. You will be able to choose which information you want to display publicly.</p>
+                    <br>
                     <hr>
     <!-- Name Section Starts Here -->
                     <fieldset>
@@ -182,7 +186,7 @@
                             <span class="form-labels-subtext">This information will be viewable on the Needs and Offerings page along with the personal information you've chosen to share. (check all that apply)</span>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Childcare" id="formOfferChildcare" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Childcare') || ((user.formOfferings).includes("Offer: Childcare"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Childcare" id="formOfferChildcare" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Childcare') || ((user.formOfferings).includes("Offer: Childcare"))) { %> checked<% }} %> >
                                     <label for="formOfferChildcare" class="form-labels-check-radio">childcare</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -196,7 +200,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Cooking" id="formOfferCooking" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Cooking') || ((user.formOfferings).includes("Offer: Cooking"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Cooking" id="formOfferCooking" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Cooking') || ((user.formOfferings).includes('Offer: Cooking'))) { %>checked<% }} %> >
                                     <label for="formOfferCooking" class="form-labels-check-radio">cooking for someone</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -210,7 +214,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Food and Supplies" id="formOfferFoodAndSupplies" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Food and Supplies') || ((user.formOfferings).includes("Offer: Food and Supplies"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Food and Supplies" id="formOfferFoodAndSupplies" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Food and Supplies') || ((user.formOfferings).includes('Offer: Food and Supplies'))) { %>checked<% }} %> >
                                     <label for="formOfferFoodAndSupplies" class="form-labels-check-radio">food & supplies</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -224,7 +228,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Rides or Access to a Vehicle" id="formOfferRidesCar" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Rides or Access to a Vehicle') || ((user.formOfferings).includes("Offer: Rides or Access to a Vehicle"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Rides or Access to a Vehicle" id="formOfferRidesCar" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Rides or Access to a Vehicle') || ((user.formOfferings).includes('Offer: Rides or Access to a Vehicle'))) { %>checked<% }} %> >
                                     <label for="formOfferRidesCar" class="form-labels-check-radio">give rides or access to a vehicle</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -238,7 +242,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: PetCare / Dog-Walking" id="formOfferPetCare" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: PetCare / Dog-Walking') || ((user.formOfferings).includes("Offer: PetCare / Dog-Walking"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: PetCare / Dog-Walking" id="formOfferPetCare" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: PetCare / Dog-Walking') || ((user.formOfferings).includes('Offer: Offer: PetCare / Dog-Walking'))) { %>checked<% }} %> >
                                     <label for="formOfferPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -252,7 +256,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Internet Subscriptions" id="formOfferInternetSubs" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Internet Subscriptions') || ((user.formOfferings).includes("Offer: Internet Subscriptions"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Internet Subscriptions" id="formOfferInternetSubs" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Internet Subscriptions') || ((user.formOfferings).includes('Offer: Internet Subscriptions'))) { %>checked<% }} %> >
                                     <label for="formOfferInternetSubs" class="form-labels-check-radio">internet subscriptions (share your Netflix, Hulu, Prime, HBO, etc.)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -266,7 +270,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Medical Support" id="formOfferMedicalSupport" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Medical Support') || ((user.formOfferings).includes("Offer: Medical Support"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Medical Support" id="formOfferMedicalSupport" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Medical Support') || ((user.formOfferings).includes('Offer: Medical Support'))) { %>checked<% }} %> >
                                     <label for="formOfferMedicalSupport" class="form-labels-check-radio">medical support (pick up prescriptions, help with hotlines, etc.)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -280,7 +284,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Medical Advice" id="formOfferMedicalAdvice" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Medical Advice') || ((user.formOfferings).includes("Offer: Medical Advice"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Medical Advice" id="formOfferMedicalAdvice" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Medical Advice') || ((user.formOfferings).includes('Offer: Medical Advice'))) { %>checked<% }} %> >
                                     <label for="formOfferMedicalAdvice" class="form-labels-check-radio">medical advice (if you are a medical professional only, please)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -294,7 +298,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Storage Space" id="formOfferStorage" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Storage Space') || ((user.formOfferings).includes("Offer: Storage Space"))) { %> checked <%} %>>
+                                    <input type="checkbox" value="Offer: Storage Space" id="formOfferStorage" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Storage Space') || ((user.formOfferings).includes('Offer: Storage Spacee'))) { %>checked<% }} %> >
                                     <label for="formOfferStorage" class="form-labels-check-radio">storage space</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -308,7 +312,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Art / Music / Writing" id="formOfferArt" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Art / Music / Writing') || ((user.formOfferings).includes("Offer: Art / Music / Writing"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Art / Music / Writing" id="formOfferArt" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Art / Music / Writing') || ((user.formOfferings).includes('Offer: Art / Music / Writing'))) { %>checked<% }} %> >
                                     <label for="formOfferArt" class="form-labels-check-radio">art, music, writing</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -322,7 +326,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Mental Health Counseling / Resources" id="formOfferMentalHealth" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Mental Health Counseling / Resources') || ((user.formOfferings).includes("Offer: Mental Health Counseling / Resources"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Mental Health Counseling / Resources" id="formOfferMentalHealth" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Mental Health Counseling / Resources') || ((user.formOfferings).includes('Offer: Mental Health Counseling / Resources'))) { %>checked<% }} %> >
                                     <label for="formOfferMentalHealth" class="form-labels-check-radio">mental health counseling/resources (if you are licensed/qualified to do so only, please)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -336,7 +340,7 @@
                             </div>   
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Conversation / Companionship" id="formOfferCompanionship" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Conversation / Companionship') || ((user.formOfferings).includes("Offer: Conversation / Companionship"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Conversation / Companionship" id="formOfferCompanionship" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Conversation / Companionship') || ((user.formOfferings).includes('Offer: Conversation / Companionship'))) { %>checked<% }} %> >
                                     <label for="formOfferCompanionship" class="form-labels-check-radio">conversation/companionship</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -350,7 +354,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Legal Representation / Advocacy" id="formOfferLegal" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Legal Representation / Advocacy') || ((user.formOfferings).includes("Offer: Legal Representation / Advocacy"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Legal Representation / Advocacy" id="formOfferLegal" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Legal Representation / Advocacy') || ((user.formOfferings).includes('Offer: Legal Representation / Advocacy'))) { %>checked<% }} %> >
                                     <label for="formOfferLegal" class="form-labels-check-radio">legal representation/advocacy (labor, housing, criminal, immigration)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -364,7 +368,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Interpretation / Translation" id="formOfferInterpretation" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Interpretation / Translation') || ((user.formOfferings).includes("Offer: Interpretation / Translation"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Interpretation / Translation" id="formOfferInterpretation" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Interpretation / Translation') || ((user.formOfferings).includes('Offer: Interpretation / Translation'))) { %>checked<% }} %> >
                                     <label for="formOfferInterpretation" class="form-labels-check-radio">interpretation/translation</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -378,7 +382,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Social Service Guidance" id="formOfferSocialServices" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Social Service Guidance') || ((user.formOfferings).includes("Offer: Social Service Guidance"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Social Service Guidance" id="formOfferSocialServices" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Social Service Guidance') || ((user.formOfferings).includes('Offer: Social Service Guidance'))) { %>checked<% }} %> >
                                     <label for="formOfferSocialServices" class="form-labels-check-radio">social service guidance (filing for medicare, unemployment, etc.)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -392,7 +396,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Healing / Ritual / Herbal Medicine" id="formOfferHealing" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Healing / Ritual / Herbal Medicine') || ((user.formOfferings).includes("Offer: Healing / Ritual / Herbal Medicine"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Healing / Ritual / Herbal Medicine" id="formOfferHealing" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Healing / Ritual / Herbal Medicine') || ((user.formOfferings).includes('Offer: Healing / Ritual / Herbal Medicine'))) { %>checked<% }} %> >
                                     <label for="formOfferHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -406,7 +410,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Housing (short-term)" id="formOfferHousingShort" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Housing (short-term)') || ((user.formOfferings).includes("Offer: Housing (short-term)"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Housing (short-term)" id="formOfferHousingShort" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Housing (short-term)') || ((user.formOfferings).includes('Offer: Housing (short-term)'))) { %>checked<% }} %> >
                                     <label for="formOfferHousingShort" class="form-labels-check-radio">housing (short-term)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -420,7 +424,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Housing (long-term)" id="formOfferHousingLong" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Housing (long-term)') || ((user.formOfferings).includes("Offer: Housing (long-term)"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Housing (long-term)" id="formOfferHousingLong" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Housing (long-term)') || ((user.formOfferings).includes('Offer: Housing (long-term)'))) { %>checked<% }} %> >
                                     <label for="formOfferHousingLong" class="form-labels-check-radio">housing (long-term)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -434,7 +438,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Offer: Other" id="formOfferOther" class="contains-hidden-div-update" name="formOfferings" <% if((user.formOfferings === 'Offer: Other') || ((user.formOfferings).includes("Offer: Other"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Offer: Other" id="formOfferOther" class="contains-hidden-div-update" name="formOfferings" <% if(user.formOfferings) {if ((user.formOfferings === 'Offer: Other') || ((user.formOfferings).includes('Offer: Other'))) { %>checked<% }} %> >
                                     <label for="formOfferOther" class="form-labels-check-radio">other</label>
                                 </div> 
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -475,7 +479,7 @@
                             <span class="form-labels-subtext">This information will be viewable on the Needs and Offerings page along with the personal information you've chosen to share. (check all that apply)</span>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Childcare" id="formNeedChildcare" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Childcare') || ((user.formNeeds).includes("Need: Childcare"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Childcare" id="formNeedChildcare" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Childcare') || ((user.formNeeds).includes('Need: Childcare'))) { %>checked<% }} %> >
                                     <label for="formNeedChildcare" class="form-labels-check-radio">childcare</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -531,7 +535,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Cooking" id="formNeedCooking" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Cooking') || ((user.formNeeds).includes("Need: Cooking"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Cooking" id="formNeedCooking" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Cooking') || ((user.formNeeds).includes('Need: Cooking'))) { %>checked<% }} %> >
                                     <label for="formNeedCooking" class="form-labels-check-radio">cooked food</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -587,7 +591,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Food and Supplies" id="formNeedFoodAndSupplies" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Food and Supplies') || ((user.formNeeds).includes("Need: Food and Supplies"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Food and Supplies" id="formNeedFoodAndSupplies" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Food and Supplies') || ((user.formNeeds).includes('Need: Food and Supplies'))) { %>checked<% }} %> >
                                     <label for="formNeedFoodAndSupplies" class="form-labels-check-radio">food & supplies</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -643,7 +647,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Rides or Access to a Vehicle" id="formNeedRidesCar" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Rides or Access to a Vehicle') || ((user.formNeeds).includes("Need: Rides or Access to a Vehicle"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Rides or Access to a Vehicle" id="formNeedRidesCar" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Rides or Access to a Vehicle') || ((user.formNeeds).includes('Need: Rides or Access to a Vehicle'))) { %>checked<% }} %> >
                                     <label for="formNeedRidesCar" class="form-labels-check-radio">rides or access to a vehicle</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -699,7 +703,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: PetCare / Dog-Walking" id="formNeedPetCare" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: PetCare / Dog-Walking') || ((user.formNeeds).includes("Need: PetCare / Dog-Walking"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: PetCare / Dog-Walking" id="formNeedPetCare" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: PetCare / Dog-Walking') || ((user.formNeeds).includes('Need: PetCare / Dog-Walking'))) { %>checked<% }} %> >
                                     <label for="formNeedPetCare" class="form-labels-check-radio">petcare/dog-walking</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -755,7 +759,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Internet Subscriptions" id="formNeedInternetSubscriptions" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Internet Subscriptions') || ((user.formNeeds).includes("Need: Internet Subscriptions"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Internet Subscriptions" id="formNeedInternetSubscriptions" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Internet Subscriptions') || ((user.formNeeds).includes('Need: Internet Subscriptions'))) { %>checked<% }} %> >
                                     <label for="formNeedInternetSubscriptions" class="form-labels-check-radio">internet subscriptions (Netflix, Hulu, Prime, HBO, etc.)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -769,7 +773,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Medical Support" id="formNeedMedicalSupport" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Medical Support') || ((user.formNeeds).includes("Need: Medical Support"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Medical Support" id="formNeedMedicalSupport" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Medical Support') || ((user.formNeeds).includes('Need: Medical Support'))) { %>checked<% }} %> >
                                     <label for="formNeedMedicalSupport" class="form-labels-check-radio">medical support (pick up prescriptions, help with hotlines to call, etc.)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -825,7 +829,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Medical Advice" id="formNeedMedicalAdvice" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Medical Advice') || ((user.formNeeds).includes("Need: Medical Advice"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Medical Advice" id="formNeedMedicalAdvice" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Medical Advice') || ((user.formNeeds).includes('Need: Medical Advice'))) { %>checked<% }} %> >
                                     <label for="formNeedMedicalAdvice" class="form-labels-check-radio">medical advice</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -852,7 +856,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Storage Spcae" id="formNeedStorage" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Storage Spcae') || ((user.formNeeds).includes("Need: Storage Spcae"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Storage Spcae" id="formNeedStorage" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Storage Spcae') || ((user.formNeeds).includes('Need: Storage Spcae'))) { %>checked<% }} %> >
                                     <label for="formNeedStorage" class="form-labels-check-radio">storage space</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -879,7 +883,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Art / Music / Writing" id="formNeedArt" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Art / Music / Writing') || ((user.formNeeds).includes("Need: Art / Music / Writing"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Art / Music / Writing" id="formNeedArt" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Art / Music / Writing') || ((user.formNeeds).includes('Need: Art / Music / Writing'))) { %>checked<% }} %> >
                                     <label for="formNeedArt" class="form-labels-check-radio">art, music, writing</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -935,7 +939,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Mental Health Counseling" id="formNeedMentalHealth" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Mental Health Counseling') || ((user.formNeeds).includes("Need: Mental Health Counseling"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Mental Health Counseling" id="formNeedMentalHealth" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Mental Health Counseling') || ((user.formNeeds).includes('Need: Mental Health Counseling'))) { %>checked<% }} %> >
                                     <label for="formNeedMentalHealth" class="form-labels-check-radio">mental health counseling</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -991,7 +995,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Conversation / Companionship" id="formNeedCompanionship" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Conversation / Companionship') || ((user.formNeeds).includes("Need: Conversation / Companionship"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Conversation / Companionship" id="formNeedCompanionship" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Conversation / Companionship') || ((user.formNeeds).includes('Need: Conversation / Companionship'))) { %>checked<% }} %> >
                                     <label for="formNeedCompanionship" class="form-labels-check-radio">conversation/companionship</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1047,7 +1051,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Legal Respresentation / Advocacy" id="formNeedLegal" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Legal Respresentation / Advocacy') || ((user.formNeeds).includes("Need: Legal Respresentation / Advocacy"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Legal Respresentation / Advocacy" id="formNeedLegal" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Legal Respresentation / Advocacy') || ((user.formNeeds).includes('Need: Legal Respresentation / Advocacy'))) { %>checked<% }} %> >
                                     <label for="formNeedLegal" class="form-labels-check-radio">legal representation/advocacy (labor, housing, criminal, immigration)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1074,7 +1078,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Interpretation / Translation" id="formNeedInterpretation" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Interpretation / Translation') || ((user.formNeeds).includes("Need: Interpretation / Translation"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Interpretation / Translation" id="formNeedInterpretation" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Interpretation / Translation') || ((user.formNeeds).includes('Need: Interpretation / Translation'))) { %>checked<% }} %> >
                                     <label for="formNeedInterpretation" class="form-labels-check-radio">interpretation/translation</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1130,7 +1134,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Social Service Guidance" id="formNeedSocialServices" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Social Service Guidance') || ((user.formNeeds).includes("Need: Social Service Guidance"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Social Service Guidance" id="formNeedSocialServices" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Social Service Guidance') || ((user.formNeeds).includes('Need: Social Service Guidance'))) { %>checked<% }} %> >
                                     <label for="formNeedSocialServices" class="form-labels-check-radio">social service guidance (filing for medicare, unemployment, etc.)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1186,7 +1190,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio"> 
-                                    <input type="checkbox" value="Need: Healing / Ritual / Herbal Medicine" id="formNeedHealing" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Healing / Ritual / Herbal Medicine') || ((user.formNeeds).includes("Need: Healing / Ritual / Herbal Medicine"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Healing / Ritual / Herbal Medicine" id="formNeedHealing" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Healing / Ritual / Herbal Medicine') || ((user.formNeeds).includes('Need: Healing / Ritual / Herbal Medicine'))) { %>checked<% }} %> >
                                     <label for="formNeedHealing" class="form-labels-check-radio">healing, ritual, herbal medicine</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1242,7 +1246,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Housing (short-term)" id="formNeedHousingShort" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Housing (short-term)') || ((user.formNeeds).includes("Need: Housing (short-term)"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Housing (short-term)" id="formNeedHousingShort" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Housing (short-term)') || ((user.formNeeds).includes('Need: Housing (short-term)'))) { %>checked<% }} %> >
                                     <label for="formNeedHousingShort" class="form-labels-check-radio">housing (short-term)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1269,7 +1273,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Housing (long-term)" id="formNeedHousingLong" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'Need: Housing (long-term)') || ((user.formNeeds).includes("Need: Housing (long-term)"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Housing (long-term)" id="formNeedHousingLong" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Housing (long-term)') || ((user.formNeeds).includes('Need: Housing (long-term)'))) { %>checked<% }} %> >
                                     <label for="formNeedHousingLong" class="form-labels-check-radio">housing (long-term)</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1296,7 +1300,7 @@
                             </div>
                             <div>
                                 <div class="input-container-check-radio">
-                                    <input type="checkbox" value="Need: Other" id="formNeedOther" class="contains-hidden-div-update" name="formNeeds" <% if((user.formNeeds === 'formNeedOther') || ((user.formNeeds).includes("formNeedOther"))) { %> checked <%} %> >
+                                    <input type="checkbox" value="Need: Other" id="formNeedOther" class="contains-hidden-div-update" name="formNeeds" <% if(user.formNeeds) {if ((user.formNeeds === 'Need: Other') || ((user.formNeeds).includes('Need: Other'))) { %>checked<% }} %> >
                                     <label for="formNeedOther" class="form-labels-check-radio">other</label>
                                 </div>
                                 <fieldset class="initially-display-none-explain-more-container">
@@ -1442,12 +1446,12 @@
                                 <label for="blockCoordYes" class="form-labels-check-radio">Yes, let's chat!</label>
                             </div>
                             <div class="input-container-check-radio">
-                                <input type="radio" value="blockCoordNo" id="blockCoordNo" name="blockCoord" <% if(user.blockCoord === 'blockCoordNo') { %> checked <%} %> >
-                                <label for="blockCoordNo" class="form-labels-check-radio">No</label> 
-                            </div>
-                            <div class="input-container-check-radio">
                                 <input type="radio" value="blockCoordMaybe" id="blockCoordMaybe" name="blockCoord" <% if(user.blockCoord === 'blockCoordMaybe') { %> checked <%} %> >
                                 <label for="blockCoordMaybe" class="form-labels-check-radio">Maybe. I need more information.</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" value="blockCoordNo" id="blockCoordNo" name="blockCoord" <% if(user.blockCoord === 'blockCoordNo') { %> checked <%} %> >
+                                <label for="blockCoordNo" class="form-labels-check-radio">No</label> 
                             </div>
                             <br>
                         </fieldset>
@@ -1476,7 +1480,7 @@
                     <br>
                     
                     <input type="text" style="display: none;" value="<%= user._id %>" id="userId" name="userId">
-                    <input type="submit" class="palette-a button">
+                    <input type="submit" class="palette-a button" value="Update">
                 </form>
             </div> <!-- Form Container Ends Here -->
         </div> <!-- Large Content Ccontainer with Palette-A Ends Here-->

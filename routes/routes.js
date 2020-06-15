@@ -54,13 +54,16 @@ router.get('/update-form', checkAuthenticated, (req, res) => {
 })
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
-    res.render('pages/login');
+    res.render('pages/login', {
+        user: req.user,
+    });
 });
 
 router.delete('/logout', (req, res) => {
     req.logOut();
     res.redirect('/login')
 })
+
 
 function checkAuthenticated(req, res, next) {
     if(req.isAuthenticated()) {
@@ -89,27 +92,37 @@ router.get('/index', (req, res) => {
 });
 
 router.get('/about-us/', (req, res) => {
-    res.render('pages/about-us');
+    res.render('pages/about-us', {
+        user: req.user,
+    });
 });
 
 router.get('/block-coordinator', (req, res) => {
-    res.render('pages/block-coordinator');
+    res.render('pages/block-coordinator', {
+        user: req.user,
+    });
 });
 
 router.get('/community-resources-add-organization', (req, res) => {
-    res.render('pages/community-resources-add-organization');
+    res.render('pages/community-resources-add-organization', {
+        user: req.user,
+    });
 });
 
 router.get('/community-resources', (req, res) => {
-    res.render('pages/community-resources');
+    res.render('pages/community-resources', {
+        user: req.user,
+    });
 });
 
-router.get('/create-account', (req, res) => {
-    res.render('pages/create-account');
-});
+// router.get('/create-account', (req, res) => {
+//     res.render('pages/create-account');
+// });
 
 router.get('/donate', (req, res) => {
-    res.render('pages/donate');
+    res.render('pages/donate', {
+        user: req.user,
+    });
 });
 
 router.get('/forgot-password', (req, res) => {
@@ -117,13 +130,16 @@ router.get('/forgot-password', (req, res) => {
 });
 
 router.get('/help', (req, res) => {
-    res.render('pages/help');
+    res.render('pages/help', {
+        user: req.user,
+    });
 });
 
 router.get('/needs-and-offerings', (req, res) => {
     res.render('pages/needs-and-offerings', {
         'needsToDisplay': undefined,
         'offersToDisplay': undefined,
+        user: req.user,
     }); 
 }); 
 
@@ -828,7 +844,7 @@ router.post('/addFormData', (req, res) => {
             formData,
         });
     } else {
-        console.log(userFormDataObject);
+        // console.log(userFormDataObject);
         bcrypt.genSalt(10, (err, salt) => 
             bcrypt.hash(userFormDataObject.password, salt, (err, hash) => {
                 if(err) throw err;
@@ -839,14 +855,17 @@ router.post('/addFormData', (req, res) => {
                     if (error) {
                         console.log(`There was an error adding the information to the database. The error is: ${error}`);
                     } else {
-                        console.log(`Yes! The data was added. Here it is: ${result}`);
-                        res.redirect('/index');
+                        // console.log(`Yes! The data was added. Here it is: ${result}`);
+                        res.redirect('/login');
                         req.flash('successMsg', "You are now registered and able to login.");
                     }
                 })
         }))  
     } 
 });
+
+// <% if(user.formOfferings) {if ((user.formOfferings === '') || ((user.formOfferings).includes(''))) { %>checked<% }} %>
+
 
 router.post('/updateFormData', (req, res) => {
     const formData = req.body;

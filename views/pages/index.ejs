@@ -5,23 +5,23 @@
     <div class="page-container-column">
         
         <div class="large-content-container-column palette-b">
-            
+            <h1>WELCOME</h1>
             <p>
                 The Dorchester Community Care Network is working to make sure you and your neighbors have everything you need during the COVID-19 pandemic and beyond. In these fast-moving and uncertain times, it’s important that we show up for each other and remember that we are not alone. We love our neighborhood and the people in it, and that is why we are committed to taking care of every member. 
             </p>
             <p>
-                The form below started as a Google Form used to collect information about the specific needs and offerings of individuals and households in the Dorchester Community. We have moved to this web form and this website to better handle the data and track ongoing needs and offerings. 
+                The form below started as a Google Form used to collect information about the specific needs and offerings of individuals and households in the Dorchester Community. We have moved to this web form and this website to better handle the data and track ongoing needs and offerings.  
             </p>
             <p>
-                You can complete the form below without signing up with a username and password, but you must have a login to edit the information on the form after submission. We suggest <a href="./pages/create-account">signing up</a> and <a href="./pages/login">logging in</a> before completing the form. 
+                You can complete the form below to register a username and password. You will use this login infomation to edit the information on the form after submission. 
             </p>
         </div>
 <!-- Form Starts Here -->
         <div class="large-content-container-column palette-a">
             <div class="form-container">
                 <form id="formTarget" action="/addFormData" method="POST">
-                    <h1>COMPLETE THE FORM BELOW</h1>
-                    <p>You can complete the form below. Fields marked with an asterisk * are required. You will be able to choose which information you want to display publicly.</p>
+                    <h1>COMPLETE THE FORM</h1>
+                    <p>You can complete the form below. Fields marked with an asterisk * are required. You will be able to choose which information you want to display publicly. If you are running short on time, complete only the required fields and login at a later time to update your form.</p>
                     <hr>
 <!-- Name Section Starts Here -->
                     <fieldset>
@@ -160,7 +160,7 @@
                             </div>
                             <div class="input-container-check-radio">
                                 <input type="radio" value="Unknown / Not Dorchester" id="formNeighborhoodUnknown" name="formNeighborhood" required>
-                                <label for="formNeighborhoodUnknown" class="form-labels-check-radio">Don't know / Don't live in Dorchester or Mattapan'</label>
+                                <label for="formNeighborhoodUnknown" class="form-labels-check-radio">Don't know / Don't live in Dorchester or Mattapan</label>
                             </div>
                         </fieldset>
                         <br>
@@ -1451,12 +1451,12 @@
                                 <label for="blockCoordYes" class="form-labels-check-radio">Yes, let's chat!</label>
                             </div>
                             <div class="input-container-check-radio">
-                                <input type="radio" value="blockCoordNo" id="blockCoordNo" name="blockCoord">
-                                <label for="blockCoordNo" class="form-labels-check-radio">No</label> 
-                            </div>
-                            <div class="input-container-check-radio">
                                 <input type="radio" value="blockCoordMaybe" id="blockCoordMaybe" name="blockCoord">
                                 <label for="blockCoordMaybe" class="form-labels-check-radio">Maybe. I need more information.</label>
+                            </div>
+                            <div class="input-container-check-radio">
+                                <input type="radio" value="blockCoordNo" id="blockCoordNo" name="blockCoord">
+                                <label for="blockCoordNo" class="form-labels-check-radio">No</label> 
                             </div>
                             <br>
                         </fieldset>
@@ -1491,17 +1491,18 @@
                         <span class="form-labels-subtext">You will be able to use this information to login in the future in order to change or update this form information.  </span>
                         <div class="input-containers">
                             <label for="username" class="form-labels">Username *</label>
-                            <span class="form-labels-subtext">Please re-enter your email address from the Contact Information section at the top.</span>
+                            <span class="form-labels-subtext">Please choose a username.</span>
                             <input type="text" placeholder="choose a username" id="username" class="text-inputs emailB" name="username" required>
-                            <span class="form-labels-subtext" id="emailMatchMessage">Email must match what is listed in the Contact Information section above.</span>
+                            <!-- <span class="form-labels-subtext" id="emailMatchMessage">Email must match what is listed in the Contact Information section above.</span> -->
                         </div>
                         <div class="input-containers">
                             <label for="password" class="form-labels">Password *</label>
-                            <input type="text" placeholder="password" id="password" name="password" class="text-inputs passA" required>
+                            <span class="form-labels-subtext">Password must be at least 6 characters in length.</span>
+                            <input type="password" placeholder="password" id="password" name="password" class="text-inputs passA" required>
                         </div>
                         <div class="input-containers">
                             <label for="formPasswordB" class="form-labels">Re-Enter Password *</label>
-                            <input type="text" placeholder="confirm password" id="formPasswordB" name="formPasswordB" class="text-inputs passB" required>
+                            <input type="password" placeholder="confirm password" id="formPasswordB" name="formPasswordB" class="text-inputs passB" required>
                         </div>
                     </fieldset> <!-- Login Section ends here-->
                     <br>

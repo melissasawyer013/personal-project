@@ -14,19 +14,19 @@
             <br>
             <form id="loginForm" action="/sendLogin" method="POST">
                 <div class="input-containers">
-                    <label for="username" class="form-labels">Enter your email address * </label>
-                    <input type="text" placeholder="YourEmail@email.com" id="username" name="username" class="text-inputs" required>
+                    <label for="username" class="form-labels">Username</label>
+                    <input type="text" placeholder="username" id="username" name="username" class="text-inputs" required>
                 </div>
                 <div class="input-containers">
-                    <label for="password" class="form-labels">Password *</label>
+                    <label for="password" class="form-labels">Password</label>
                     <input type="password" placeholder="password" id="password" name="password" class="text-inputs" required>
                 </div>
                 <br>
                 <input type="submit" class="button palette-b">
                 <br>
             </form>
-            <a href="/forgot-password" aria-label="Click here to navigate to the password recovery page.">I forgot my password.</a>
-            <p>Don't have an account? <a href="/create-account">Click here to create an account.</a></p>
+            <!-- <a href="/forgot-password" aria-label="Click here to navigate to the password recovery page.">I forgot my password.</a> -->
+            <p>Don't have an account? <a href="/index">Complete the form on the homepage</a> to create one. <br>(If you are short on time, just complete the required information and you can edit your form entries at a later time.)</p>
         </div>
     </div>
     <script src="../scripts/scripts.js"></script>

@@ -149,14 +149,14 @@
                                     <input type="checkbox" value="Need: Other" id="searchNeedOther" name="searchNeeds">
                                     <label for="searchNeedOther" class="form-labels-check-radio">other</label>
                                 </div>
-                                <div class="input-container-check-radio">
+                                <!-- <div class="input-container-check-radio">
                                     <input type="checkbox" value="Need: Financial" id="searchNeedFinancial" name="searchNeeds">
                                     <label for="searchNeedFinancial" class="form-labels-check-radio">financial</label>
                                 </div>
                                 <div class="input-container-check-radio">
                                     <input type="checkbox" value="need: All" id="searchNeedAll" name="searchNeeds">
                                     <label for="searchNeedAll" class="form-labels-check-radio">all needs</label>
-                                </div>
+                                </div> -->
                                 <br>
                             </fieldset>
                         </div>
@@ -241,10 +241,10 @@
                                     <input type="checkbox" value="Offer: Other" id="searchOfferOther" name="searchOffers">
                                     <label for="searchOfferOther" class="form-labels-check-radio">other</label>
                                 </div>
-                                <div class="input-container-check-radio">
+                                <!-- <div class="input-container-check-radio">
                                     <input type="checkbox" value="Offer: All" id="searchOfferAll" name="searchOffers">
                                     <label for="searchOfferAll" class="form-labels-check-radio">all offerings</label>
-                                </div>
+                                </div> -->
                             </fieldset>
                         </div>
                     </div>    
@@ -259,7 +259,7 @@
         <div id="searchResultsContainer" class="search-results-container">
             <% if (needsToDisplay === undefined && offersToDisplay === undefined) { %>
                 <div class="medium-content-container-column palette-c" style="font-size: 1em;">
-                    <h2>Please search using the checkboxes above.</h2>
+                    <p style="font-size: 1.4em;">Please search using the checkboxes above.</p>
                 </div>
                 <% }
                 if (needsToDisplay) {

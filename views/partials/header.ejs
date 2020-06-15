@@ -29,9 +29,18 @@
                 <div class="navbar-top-links">
                     <a href="help">Help</a>
                 </div>
-                <div class="navbar-top-links">
-                    <a href="login">Login</a>
-                </div>
+                <% if (!locals.user) {%>
+                    <div class="navbar-top-links"> 
+                        <a href="login">Login</a>
+                    </div> 
+                    
+                <% } else if (locals.user) { %>
+                    
+                    <div class="navbar-top-links"> 
+                        <a href="update-form">Profile</a>
+                     </div>  
+                <% }; %>
+                
                 <!-- <div class="navbar-top-links">
                     <a href="#">Translate</a>
                 </div> -->
@@ -47,7 +56,11 @@
         <!-- Bottom Navigation Bar Begins-->
 
         <div class="bottom-nav" id="bottomNav">
-            <a href="/index#formTarget">Complete Form</a>
+            <% if (!locals.user) { %>
+                <a href="/index#formTarget">Complete Form</a>
+            <% } else { %>
+                <a href="/update-form">Logout</a>
+                <%}%>
             <a href="update-form">Update Form</a>
             <a href="needs-and-offerings">Needs and Offerings</a>
             <a href="community-resources">Community Resources</a>
