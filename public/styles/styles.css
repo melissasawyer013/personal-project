@@ -186,8 +186,6 @@ body {
     flex-wrap: wrap;
     width: 75vw;
     justify-content: center;
-    /* align-items: center; */
-    /* min-width: fit-content; */
 }
 
 .large-content-container-row {
@@ -229,8 +227,6 @@ body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 300;
     border: solid 3px #ffffff;
-    /* flex-wrap: wrap;
-    min-width: fit-content; */
 }
 
 .half-width-content-container-column {
@@ -240,8 +236,6 @@ body {
     align-items: flex-start;
     width: 50%;
     padding: 20px;
-    /* flex-wrap: wrap;
-    min-width: fit-content; */
 }
 
 .slim-content-container-column {
@@ -260,7 +254,6 @@ body {
     display: flex;
     flex-direction: column;
     max-width: 38vw;
-    /* width: 38%; */
     font-size: 1.2em;
     letter-spacing: .02em;
     font-weight: 300;
@@ -270,22 +263,6 @@ body {
     border: 3px solid #ffffff;
     flex-wrap: wrap;
     min-width: 385px;
-    /* min-width: fit-content; */
-    /* max-width: 38vw; */
-
-
-    /* display: flex;
-    flex-direction: column;
-    max-width: 75vw;
-    font-size: 1.25em;
-    padding: 20px 50px;
-    margin: 50px 0 30px 0;
-    letter-spacing: .02em;
-    font-weight: 300;
-    line-height: 1.7;
-    border: 3px solid #ffffff;
-    flex-wrap: wrap; */
-
 }
 
 .text-container-column {
@@ -295,8 +272,6 @@ body {
     margin: 0 0 0 40px;
     text-align: left;
     align-items: flex-start;
-    /* flex-wrap: wrap;
-    min-width: fit-content; */
 }
 
 .container-row {
@@ -322,10 +297,6 @@ body {
     min-width: fit-content;
 }
 
-.button-update {
-    width: 90px;
-}
-
 .button-long{
     margin: 0 20px 0 0;
     width: 300px;
@@ -336,7 +307,7 @@ body {
     text-align: left;
 }
 
-.button-update {
+.button-update{
     width: 90px;
     font-size: .8em;
     display: flex;
@@ -386,8 +357,6 @@ body {
 .reset-password-message {
     display: none;
 }
-
-
 
 /* FORMS GLOBAL STYLING */
 .form-container {
@@ -842,17 +811,16 @@ input[type='submit'] {
     width: device-width;
 }
 
-
-
 @media only screen and (max-width: 480px) {
     .body {
         height: 100%;
         word-wrap: break-word;
     }
+
     .navbar {
-        /* display: flex; */
         width: 100vw;
     }
+
     .navbar-top {
         flex-wrap: wrap;
     }
@@ -886,7 +854,6 @@ input[type='submit'] {
         min-width: fit-content;
         margin: 0 2px 10px 2px;
         font-size: .9em;
-
     }
     
     .navbar-top-links-donate {
@@ -904,6 +871,7 @@ input[type='submit'] {
          display: none;
          width: fit-content;
      }
+
      .bottom-nav a.icon {
          margin: 8px 20px 8px 0;
          display: block;    
@@ -913,11 +881,13 @@ input[type='submit'] {
          position: relative;
          display: block;
      }
+
      .bottom-nav.responsive .icon {
          position: absolute;
          right: 0;
          top: 0;
      }
+
      .bottom-nav.responsive a {
          float: none;
          display: block;
@@ -941,8 +911,7 @@ input[type='submit'] {
 
     .page-container-row {
         flex-direction: column;
-        justify-content: center;
-        
+        justify-content: center;  
     }
 
     .large-content-container-column{
@@ -952,10 +921,7 @@ input[type='submit'] {
         font-size: 1em;
         max-width: 89%; 
         width: 89%;
-
     }
-
-    /* .large-content-container-row{} */
 
     .medium-content-container-column{
         margin: 10px 0 10px 0;
@@ -963,8 +929,6 @@ input[type='submit'] {
         width: 98%;
         max-width: 100%;
         flex-wrap: wrap;
-        
-        /* word-wrap: break-word; */
     }
 
     .word-wrap {
@@ -987,8 +951,6 @@ input[type='submit'] {
         padding: 20px 0;
     }
 
-    /* .slim-content-container-column{} */
-
     .narrow-content-container-column{
         width: 88%;
         padding: 10px 20px;
@@ -997,7 +959,8 @@ input[type='submit'] {
         max-width: 100%;
         min-width: 80%;
         margin: 50px 0;  
-    }    
+    }
+
     .initially-display-none-explain-more-container {
         padding: 0 0 0 15px;
         margin-top: -25px;
@@ -1005,12 +968,6 @@ input[type='submit'] {
         flex-direction: column;
         max-width: 90%;
     }
-    /* .text-container-column{} */
-
-    /* .container-row{
-        width: 100%;
-        max-width: 100vw;
-    } */
 
     .container-row-no-wrap{
         flex-wrap: wrap;
@@ -1022,7 +979,6 @@ input[type='submit'] {
 
     .container-row-no-wrap.no-wrap {
         flex-wrap: nowrap;
-        /* width: 80%; */
     }
 
     .button-long {
@@ -1037,9 +993,6 @@ input[type='submit'] {
     .input-container-check-radio input{
         transform: scale(1.5);
         margin-right: 20px;
-        /* size: 1.5em; */
-        /* min-width: fit-content; */
-        /* min-height: fit-content; */
         width: 20px;
         height: 20px;
         padding: 8px;
@@ -1049,8 +1002,6 @@ input[type='submit'] {
         width: 13px;
         height: 13px;
         border-radius: 15px;
-        /* top: 1px; */
-        /* left: -3.5px; */
         position: relative;
         background-color: #EBC043;
         content: '';
@@ -1072,8 +1023,6 @@ input[type='submit'] {
         align-self: center;
     }
 
-    /* NEEDS AND OFFERINGS PAGE */
-
     .search-result-row-label{
         width: 35%;
     }
@@ -1089,21 +1038,10 @@ input[type='submit'] {
     .search-results-container {
         max-width: 99%;
         align-items: center;
-        
     }
-
-    /* .search-result-textarea */
-
-    
-    /* FORMS GLOBAL STYLING */
-
-    /* .form-container{} */
-    
-    /* .initially-display-none-explain-more-container{} */
-
 }
 
-/* 881 is the point where the lower navbars should be converted to a hamburger */
+
 
 @media only screen and (min-width:481px) and (max-width:640px){
     .word-wrap {
@@ -1118,7 +1056,6 @@ input[type='submit'] {
     .navbar-top-links-container {
         display: flex;
         flex-direction: row;
-        /* justify-content: space-between; */
         margin: 0 0 10px 0;
         font-family: 'Noto Sans', sans-serif;
         font-size: 1.2em;
@@ -1149,6 +1086,7 @@ input[type='submit'] {
          display: none;
          width: fit-content;
      }
+
      .bottom-nav a.icon {
          margin: 8px 20px 8px 0;
          display: block;    
@@ -1158,11 +1096,13 @@ input[type='submit'] {
          position: relative;
          display: block;
      }
+
      .bottom-nav.responsive .icon {
          position: absolute;
          right: 0;
          top: 0;
      }
+
      .bottom-nav.responsive a {
          float: none;
          display: block;
@@ -1170,10 +1110,10 @@ input[type='submit'] {
          margin: 15px 10px;
          font-size: .9em;
      }
+
      .bottom-nav .nav-link-box-special {
         width: 300px;
-    }
-  
+    } 
 }
 
 @media only screen and (min-width:641px) and (max-width:841px) {
@@ -1214,6 +1154,7 @@ input[type='submit'] {
          display: none;
          width: fit-content;
      }
+
      .bottom-nav a.icon {
          margin: 8px 20px 8px 0;
          display: block;    
@@ -1223,11 +1164,13 @@ input[type='submit'] {
          position: relative;
          display: block;
      }
+
      .bottom-nav.responsive .icon {
          position: absolute;
          right: 0;
          top: 0;
      }
+
      .bottom-nav.responsive a {
          float: none;
          display: block;
@@ -1235,6 +1178,7 @@ input[type='submit'] {
          margin: 15px 10px;
          font-size: .9em;
      }
+
      .bottom-nav .nav-link-box-special {
         width: 300px;
     }
@@ -1277,6 +1221,7 @@ input[type='submit'] {
          display: none;
          width: fit-content;
      }
+
      .bottom-nav a.icon {
          margin: 8px 20px 8px 0;
          display: block;    
@@ -1286,11 +1231,13 @@ input[type='submit'] {
          position: relative;
          display: block;
      }
+
      .bottom-nav.responsive .icon {
          position: absolute;
          right: 0;
          top: 0;
      }
+
      .bottom-nav.responsive a {
          float: none;
          display: block;
@@ -1298,12 +1245,11 @@ input[type='submit'] {
          margin: 15px 10px;
          font-size: .9em;
      }
+
      .bottom-nav .nav-link-box-special {
         width: 300px;
     }
 }
-
-/* 2 or 3 media queries probably */
 
 
 /* What I've Tried to Get Checkboxes and Radios to outline when they're tabbed through */

@@ -19,9 +19,6 @@ const MongoStore = require('connect-mongo')(session);
 const morgan = require('morgan');
 const uuid = require('uuidv4').uuid;
 const ensure = require('connect-ensure-login');
-// const mongoose = require('mongoose');
-// const passportLocalMongoose = require('passport-local-mongoose');
-// const connectEnsureLogin = require('connect-ensure-login');
 const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
 let dbHandler;
@@ -52,8 +49,6 @@ router.post('/sendLogin', passport.authenticate('local', {
 }))
 
 router.get('/update-form', checkAuthenticated, (req, res) => {
-    // console.log(req.user);
-    
     res.render('pages/update-form', {user: req.user})
 })
 
@@ -121,30 +116,22 @@ router.post('/addBlockCoordSub', (req, res) => {
         coordinatorExplain: coordinatorExplain,
     }
     dbHandler.collection(collectionBlockCoord).insertOne(userFormDataObject, (err, res) => {
-        // let message;
         if (err) {
-            message = `Error adding your interest to the database.`;
             console.log(`There was an error updating the database. The error is: ${err}`);
         } else {
-            // message = `The community resource was sumbitted.`;
             console.log(`The block coordination interest form was sumbitted`);
-            
-            // req.flash('successMsg', "Update successful.");
         }
     })
     console.log(userFormDataObject);
     res.render('pages/block-coordinator', {
         user: req.user,
-        // message: message,
     });
 });
 
 
 router.get('/community-resources-add-organization', (req, res) => {
-    let message;
     res.render('pages/community-resources-add-organization', {
         user: req.user,
-        // message: message,
     });
 });
 
@@ -153,10 +140,6 @@ router.get('/community-resources', (req, res) => {
         user: req.user,
     });
 });
-
-// router.get('/create-account', (req, res) => {
-//     res.render('pages/create-account');
-// });
 
 router.get('/donate', (req, res) => {
     res.render('pages/donate', {
@@ -179,27 +162,20 @@ router.post('/submitHelp', (req, res) => {
     let helpMessageName = formData['helpMessageName'];
     let helpMessageEmail = formData['helpMessageEmail'];
     let helpMessageText = formData['helpMessageText'];
-    
     const userFormDataObject = {
         helpMessageName: helpMessageName,
         helpMessageEmail: helpMessageEmail,
         helpMessageText: helpMessageText,
     }
     dbHandler.collection(collectionHelpSubmissions).insertOne(userFormDataObject, (err, res) => {
-        // let message;
         if (err) {
-            message = `Error adding your interest to the database.`;
             console.log(`There was an error updating the database. The error is: ${err}`);
         } else {
-            // message = `The community resource was sumbitted.`;
             console.log(`The block coordination interest form was sumbitted`);
-            
         }
     })
-    console.log(userFormDataObject);
     res.render('pages/help', {
         user: req.user,
-        // message: message,
     });
 })
 
@@ -212,18 +188,12 @@ router.get('/needs-and-offerings', (req, res) => {
 }); 
 
 router.put('/addCommunityNotes', checkAuthenticated, (function (req, res) {
-    console.log(req.body);
     let update = req.body;
-    console.log(update['userID']);
     let userID = update['userID'];
-    console.log(update['arrayToAppend'])
     let arrayToAppend = update['arrayToAppend'];
     arrayToAppend = arrayToAppend.split(',');
-    console.log(arrayToAppend);
     let updateKey = update['updateKey'];
-    console.log(updateKey);
     let updateObject = {[updateKey]: arrayToAppend};
-    console.log(updateObject);
     let ObjectId = require('mongodb').ObjectID;
 
     dbHandler.collection(collectionUserForm)
@@ -603,22 +573,17 @@ router.post('/addResourceSubmission', (req, res) => {
         nomResourceContact: nomResourceContact,
     }
     dbHandler.collection(collectionCommunityResourceSubmission).insertOne(userFormDataObject, (err, res) => {
-        // let message;
         if (err) {
             message = `The community resource was sumbitted.`;
             console.log(`There was an error updating the database. The error is: ${err}`);
         } else {
-            // message = `The community resource was sumbitted.`;
-            console.log(`Yes! The community resource was submitted.`);
-            
+            console.log(`Yes! The community resource was submitted.`);   
         }
     })
     console.log(userFormDataObject);
     res.render('pages/community-resources-add-organization', {
         user: req.user,
-        // message: message,
     });
-    // res.redirect('/update-form');
 });
 
 router.post('/addFormData', (req, res) => {
@@ -933,18 +898,15 @@ router.post('/addFormData', (req, res) => {
     if (password != formPasswordB) {
         errors.push({msg: "Password entries do not match."})
     }
-
     if (password.length < 6) {
         errors.push({msg: "Password should be at least 6 characters."})
     }
-
     if (errors.length > 0) {
         res.render('pages/index', {
             errors,
             formData,
         });
     } else {
-        // console.log(userFormDataObject);
         bcrypt.genSalt(10, (err, salt) => 
             bcrypt.hash(userFormDataObject.password, salt, (err, hash) => {
                 if(err) throw err;
@@ -955,7 +917,6 @@ router.post('/addFormData', (req, res) => {
                     if (error) {
                         console.log(`There was an error adding the information to the database. The error is: ${error}`);
                     } else {
-                        // console.log(`Yes! The data was added. Here it is: ${result}`);
                         res.redirect('/login');
                         req.flash('successMsg', "You are now registered and able to login.");
                     }
@@ -964,12 +925,8 @@ router.post('/addFormData', (req, res) => {
     } 
 });
 
-// <% if(user.formOfferings) {if ((user.formOfferings === '') || ((user.formOfferings).includes(''))) { %>checked<% }} %>
-
-
 router.post('/updateFormData', (req, res) => {
     const formData = req.body;
-    
     let formFirstName = formData['formFirstName'];
     let formLastName = formData['formLastName'];
     let formPublicDisplayName = formData['formPublicDisplayName'];
@@ -1276,12 +1233,9 @@ router.post('/updateFormData', (req, res) => {
             console.log(`There was an error updating the database. The error is: ${err}`);
         } else {
             console.log(`Yes! The data was updated.`);
-            
-            // req.flash('successMsg', "Update successful.");
         }
     })
     res.redirect('/update-form');
 });
-
 
 module.exports = router;

@@ -1,3 +1,4 @@
+<!-- Navbar -->
 <%- include('../partials/header')-%>
 <!-- Page Content Starts -->
     <div class="page-container-column">
@@ -257,6 +258,7 @@
 <!-- SEARCH FORM ENDS HERE -->
         </div>
         <div id="searchResultsContainer" class="search-results-container">
+<!-- Needs Search Results Starts Here -->
             <% if (needsToDisplay === undefined && offersToDisplay === undefined) { %>
                 <div class="medium-content-container-column palette-c" style="font-size: 1em;">
                     <p style="font-size: 1.4em;">Please search using the checkboxes above.</p>
@@ -344,7 +346,6 @@
                             <br><br>
                         </div>
                     </div>
-                    <!-- <form action="/addCommunityNotes" method="POST"> -->
                         <fieldset>
                             <div class="container-row-no-wrap no-wrap">
                                 <div class="search-result-row-label">
@@ -363,11 +364,11 @@
                                 <div>
                                 </div>
                             </div>
-                        </fieldset>  
-                    <!-- </form>   -->
+                        </fieldset>
                 </div>  
                 <%    })   
                 }
+<!-- Offers Search Results Starts Here -->
                 if (offersToDisplay) {
                     offersToDisplay.forEach(singleOfferToDisplay => { %>
                     <div class="medium-content-container-column palette-c" style="font-size: 1em;">
@@ -427,7 +428,6 @@
                                 <br><br>
                             </div>
                         </div>
-                        <!-- <form action="/addCommunityNotes" method="POST"> -->
                             <fieldset>
                                 <div class="container-row-no-wrap no-wrap">
                                     <div class="search-result-row-label">
@@ -444,16 +444,12 @@
                                         <br>
                                     </div>
                                 </div>
-                            </fieldset>  
-                        <!-- </form>   -->
+                            </fieldset>
                     </div>  
                     <%  } 
                     )
-                } %> 
-            
-               
+                } %>  
         </div>  
-
     </div>
     <script src="../scripts/scripts.js"></script>
 </body>

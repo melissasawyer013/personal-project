@@ -33,28 +33,14 @@
                     <div class="navbar-top-links"> 
                         <a href="login">Login</a>
                     </div> 
-                    
                 <% } else if (locals.user) { %>
-                    
                     <div class="navbar-top-links"> 
                         <a href="update-form">Profile</a>
                      </div>  
                 <% }; %>
-                
-                <!-- <div class="navbar-top-links">
-                    <a href="#">Translate</a>
-                </div> -->
-<!-- ATTEMPT AT GETTING NAVBAR HAMBURGER -->
-                <!-- <div class="navbar-top-links">
-                    <a href="javascript:void(0);" class="icon" onclick="toggleResponsive()">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </div> -->
-                
             </div>
         </div> <!-- End Top Navigation Bar -->   
-        <!-- Bottom Navigation Bar Begins-->
-
+<!-- Bottom Navigation Bar Begins-->
         <div class="bottom-nav" id="bottomNav">
             <% if (!locals.user) { %>
                 <a href="/index#formTarget">Complete Form</a>
@@ -70,38 +56,5 @@
                 Menu &nbsp <i class="fa fa-bars"> </i>
               </a>
         </div>
-
-        <!-- <div class="navbar-bottom-container" id="bottomNav"> 
-            <ul class="navbar-bottom-list-links">
-                <li><a href="/index#formTarget">Complete<br>Form</a></li>
-                <li><a href="update-form">Update<br>Form</a></li>
-                <li><a href="needs-and-offerings">Needs and <br> Offerings</a></li>
-                <div class="dropdown">
-                    <li>
-                        <a href="community-resources">Community<br>Resources</a>
-                        <div class="dropdown-content">
-                            <a href="community-resources-add-organization">Add a <br>Resource</a>
-                        </div>
-                    </li>
-                </div>
-                <li><a href="block-coordinator">Become a Block<br>Coordinator</a></li>
-                <li><a href="about-us">About Us</a></li>
-                <li>
-                    <a href="javascript:void(0);" class="icon hamburger" onclick="toggleResponsive()">
-                        <i class="fa fa-bars"></i>
-                    </a>
-                </li>
-            
-            </ul>
-<!-- ATTEMPT AT GETTING NAVBAR HAMBURGER -->
-            <!-- <button>
-                <i class="fa fa-bars"></i>
-            </button> -->
-                <!-- <a href="javascript:void(0);" class="icon hamburger" onclick="toggleResponsive()">
-                    <i class="fa fa-bars"></i>
-                </a> -->
-                    
-                
-            
-        <!-- </div> End Bottom Navigation Bar --> 
+        </div> <!-- End Bottom Navigation Bar --> 
     </nav> <!-- End Whole Navigation Bar -->

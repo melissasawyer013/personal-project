@@ -1,13 +1,13 @@
+<!-- Navbar -->
 <%- include('../partials/header')-%>
 <!-- Page Content Starts -->
     <div class="page-container-column">
-    <!-- Form Starts Here -->
+<!-- Form Starts Here -->
         <div class="large-content-container-column palette-b">
             <h1>PROFILE</h1>
             <p>Hello, <%=user.formFirstName%>! <br>You can update your form entries below.</p>
             <form action="/logout?_method=DELETE" method="POST">
                 <input type="submit" class="palette-a button" value="Logout">
-                <!-- <hr> -->
                 <br>
             </form>
             <div class="form-container">
@@ -16,7 +16,7 @@
                     <p>You can update your answers in the form below. Fields marked with an asterisk * are required. You will be able to choose which information you want to display publicly.</p>
                     <br>
                     <hr>
-    <!-- Name Section Starts Here -->
+<!-- Name Section Starts Here -->
                     <fieldset>
                         <legend class="header-legend">NAME</legend>
                         <div class="input-containers">
@@ -53,7 +53,7 @@
                     </fieldset>
                     <br>
                     <hr>
-                <!-- Contact Information Section Starts Here -->
+<!-- Contact Information Section Starts Here -->
                     <fieldset>
                         <legend class="header-legend">CONTACT INFORMATION</legend>
                         <div class="input-containers">
@@ -72,8 +72,6 @@
                                 <input type="radio" value="formPhoneAndEmailPublic" id="formPhoneAndEmailPublic" name="formPublicDisplayContact" required <% if(user.formPublicDisplayContact === 'formPhoneAndEmailPublic') { %> checked <%} %> >
                                 <label for="formPhoneAndEmailPublic" class="form-labels-check-radio">phone number and email</label>
                             </div>
-
-
                             <div class="input-container-check-radio">
                                 <input type="radio" value="formPhoneNumberOnlyPublic" id="formPhoneNumberOnlyPublic" name="formPublicDisplayContact" required <% if(user.formPublicDisplayContact === 'formPhoneNumberOnlyPublic') { %> checked <%} %> >
                                 <label for="formPhoneNumberOnlyPublic" class="form-labels-check-radio">phone number only</label>
@@ -178,7 +176,7 @@
                     </fieldset>
                     <br>
                     <hr>
-    <!-- Offerings Section Starts Here-->
+<!-- Offerings Section Starts Here-->
                     <fieldset class="checkForChecks">
                         <legend class="header-legend">OFFERINGS</legend>
                         <fieldset>
@@ -471,7 +469,7 @@
                     </fieldset> <!-- Offerings Fieldset ends here -->
                     <br>
                     <hr>
-    <!-- Needs Section Starts Here-->
+<!-- Needs Section Starts Here-->
                     <fieldset class="checkForChecks">
                         <legend class="header-legend">NEEDS</legend>
                         <fieldset>
@@ -1431,7 +1429,8 @@
                     <br>
                     <br>
                     <hr>
-                    <fieldset> <!-- Other Questions Section starts here-->
+<!-- Other Questions Section starts here-->
+                    <fieldset> 
                         <legend class="header-legend">OTHER QUESTIONS</legend>
                         <div class="input-containers">
                             <label for="explainNeighborConnections" class="form-labels">Have you already been connecting with your neighbors? Tell us a little bit about what your relationships to neighbors and/or your neighborhood coordination has looked like before COVID-19 pandemic and during it. We would like to figure out how best to connect with you and support you!</label>
@@ -1478,7 +1477,6 @@
                         </div>
                     </fieldset> <!-- Other Questions Section ends here-->
                     <br>
-                    
                     <input type="text" style="display: none;" value="<%= user._id %>" id="userId" name="userId">
                     <input type="submit" class="palette-a button" value="Update">
                 </form>
