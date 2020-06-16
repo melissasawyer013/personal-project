@@ -1037,11 +1037,11 @@ input[type='submit'] {
     .input-container-check-radio input{
         transform: scale(1.5);
         margin-right: 20px;
-        size: 1.5em;
-        min-width: fit-content;
-        min-height: fit-content;
-        width: fit-content;
-        height: fit-content;
+        /* size: 1.5em; */
+        /* min-width: fit-content; */
+        /* min-height: fit-content; */
+        width: 20px;
+        height: 20px;
     }
 
     .logo-container{
