@@ -1042,7 +1042,23 @@ input[type='submit'] {
         /* min-height: fit-content; */
         width: 20px;
         height: 20px;
-        padding: 10px;
+        padding: 8px;
+    }
+
+    input[type='radio']:checked:after {
+        width: 13px;
+        height: 13px;
+        border-radius: 15px;
+        /* top: 1px; */
+        /* left: -3.5px; */
+        position: relative;
+        background-color: #EBC043;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 1px solid #ffffff;
+        margin-left: -5px;
+        margin-top: -5px;
     }
 
     .logo-container{
