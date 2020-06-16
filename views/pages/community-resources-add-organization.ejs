@@ -3,14 +3,13 @@
     <div class="page-container-column">
         <div class="large-content-container-column palette-b">
             <h1>NOMINATE A COMMUNITY RESOURCE</h1>
-                <p>Criteria for review:</p>
+                <span>Criteria for review:</span>
                 <ul>
                     <li>must be offering services in Dorchester and Mattapan</li>
-                    <br>
                     <li>must have directions or sign-up procedure for residents</li>
                 </ul>
             <div class="form-container">
-                <form action="/addResourceData" method="POST">
+                <form action="/addResourceSubmission" method="POST">
                     <fieldset>
                         <legend class="sub-field-legend">Tell us as much as you can about the community resource below and submit it for our organizers to review.<br><span class="form-labels-subtext">Fields marked with an asterisk * are required.</span></legend>
                         <div class="input-containers">
@@ -33,13 +32,14 @@
                         </div>
                         <br>
                         <div class="input-containers">
-                            <label for="nomResourceConnection" class="form-labels">Share any contact information you have for this organization.<br><span class="form-labels-subtext">Do you know the name and contact information of someone within the organization that can tell us more?</span></label>
-                            <textarea class="text-inputs" id="nomResourceConnection" name="nomResourceConnecion" placeholder="Explain here"></textarea>
+                            <label for="nomResourceContact" class="form-labels">Share any contact information you have for this organization.<br><span class="form-labels-subtext">Do you know the name and contact information of someone within the organization that can tell us more?</span></label>
+                            <textarea class="text-inputs" id="nomResourceContact" name="nomResourceContact" placeholder="Share contact info here"></textarea>
                         </div>
                         <br>
                         <input type="submit" class="button palette-a">
                     </fieldset>
                 </form>
+                
             </div>
         </div>
     </div>

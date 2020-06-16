@@ -3,7 +3,10 @@ const router = express.Router();
 const mongodb = require('mongodb');
 const dbURL = process.env.dbURL;
 const dbName = process.env.dbName;
+const collectionCommunityResourceSubmission = process.env.collectionCommunityResourceSubmission;
 const collectionUserForm = process.env.collectionUserForm;
+const collectionBlockCoord = process.env.collectionBlockCoord;
+const collectionHelpSubmissions = process.env.collectionHelpSubmissions;
 const PORT = process.env.PORT || 5500;
 const dotenv = require('dotenv');
 const passport = require('passport');
@@ -16,8 +19,8 @@ const MongoStore = require('connect-mongo')(session);
 const morgan = require('morgan');
 const uuid = require('uuidv4').uuid;
 const ensure = require('connect-ensure-login');
-const mongoose = require('mongoose');
-const passportLocalMongoose = require('passport-local-mongoose');
+// const mongoose = require('mongoose');
+// const passportLocalMongoose = require('passport-local-mongoose');
 // const connectEnsureLogin = require('connect-ensure-login');
 const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
@@ -50,10 +53,12 @@ router.post('/sendLogin', passport.authenticate('local', {
 
 router.get('/update-form', checkAuthenticated, (req, res) => {
     // console.log(req.user);
+    
     res.render('pages/update-form', {user: req.user})
 })
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
+    req.flash('message', 'Login successful!')
     res.render('pages/login', {
         user: req.user,
     });
@@ -103,9 +108,43 @@ router.get('/block-coordinator', (req, res) => {
     });
 });
 
+router.post('/addBlockCoordSub', (req, res) => {
+    const formData = req.body;
+    let coordinatorName = formData['coordinatorName'];
+    let coordinatorPhoneNumber = formData['coordinatorPhoneNumber'];
+    let coordinatorEmailAddress = formData['coordinatorEmailAddress'];
+    let coordinatorExplain = formData['coordinatorExplain'];
+    const userFormDataObject = {
+        coordinatorName: coordinatorName,
+        coordinatorPhoneNumber: coordinatorPhoneNumber,
+        coordinatorEmailAddress: coordinatorEmailAddress,
+        coordinatorExplain: coordinatorExplain,
+    }
+    dbHandler.collection(collectionBlockCoord).insertOne(userFormDataObject, (err, res) => {
+        // let message;
+        if (err) {
+            message = `Error adding your interest to the database.`;
+            console.log(`There was an error updating the database. The error is: ${err}`);
+        } else {
+            // message = `The community resource was sumbitted.`;
+            console.log(`The block coordination interest form was sumbitted`);
+            
+            // req.flash('successMsg', "Update successful.");
+        }
+    })
+    console.log(userFormDataObject);
+    res.render('pages/block-coordinator', {
+        user: req.user,
+        // message: message,
+    });
+});
+
+
 router.get('/community-resources-add-organization', (req, res) => {
+    let message;
     res.render('pages/community-resources-add-organization', {
         user: req.user,
+        // message: message,
     });
 });
 
@@ -134,6 +173,35 @@ router.get('/help', (req, res) => {
         user: req.user,
     });
 });
+
+router.post('/submitHelp', (req, res) => {
+    const formData = req.body;
+    let helpMessageName = formData['helpMessageName'];
+    let helpMessageEmail = formData['helpMessageEmail'];
+    let helpMessageText = formData['helpMessageText'];
+    
+    const userFormDataObject = {
+        helpMessageName: helpMessageName,
+        helpMessageEmail: helpMessageEmail,
+        helpMessageText: helpMessageText,
+    }
+    dbHandler.collection(collectionHelpSubmissions).insertOne(userFormDataObject, (err, res) => {
+        // let message;
+        if (err) {
+            message = `Error adding your interest to the database.`;
+            console.log(`There was an error updating the database. The error is: ${err}`);
+        } else {
+            // message = `The community resource was sumbitted.`;
+            console.log(`The block coordination interest form was sumbitted`);
+            
+        }
+    })
+    console.log(userFormDataObject);
+    res.render('pages/help', {
+        user: req.user,
+        // message: message,
+    });
+})
 
 router.get('/needs-and-offerings', (req, res) => {
     res.render('pages/needs-and-offerings', {
@@ -520,6 +588,38 @@ function getResultSpecifics(matchEntries) {
     return allEntriesDisplayInfoArray;
 }
 
+router.post('/addResourceSubmission', (req, res) => {
+    const formData = req.body;
+    let nomResourceName = formData['nomResourceName'];
+    let nomResourceURL = formData['nomResourceURL'];
+    let nomResourceInfo = formData['nomResourceInfo'];
+    let nomResourceConnection = formData['nomResourceConnection'];
+    let nomResourceContact = formData['nomResourceContact'];
+    const userFormDataObject = {
+        nomResourceName: nomResourceName,
+        nomResourceURL: nomResourceURL,
+        nomResourceInfo: nomResourceInfo,
+        nomResourceConnection: nomResourceConnection,
+        nomResourceContact: nomResourceContact,
+    }
+    dbHandler.collection(collectionCommunityResourceSubmission).insertOne(userFormDataObject, (err, res) => {
+        // let message;
+        if (err) {
+            message = `The community resource was sumbitted.`;
+            console.log(`There was an error updating the database. The error is: ${err}`);
+        } else {
+            // message = `The community resource was sumbitted.`;
+            console.log(`Yes! The community resource was submitted.`);
+            
+        }
+    })
+    console.log(userFormDataObject);
+    res.render('pages/community-resources-add-organization', {
+        user: req.user,
+        // message: message,
+    });
+    // res.redirect('/update-form');
+});
 
 router.post('/addFormData', (req, res) => {
     const formData = req.body;
