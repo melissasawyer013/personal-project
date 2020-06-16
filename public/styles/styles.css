@@ -1034,6 +1034,15 @@ input[type='submit'] {
         align-self: center;
     }
 
+    .input-container-check-radio input{
+        transform: scale(1.5);
+        margin-right: 20px;
+        size: 1.5em;
+        min-width: fit-content;
+        min-height: fit-content;
+        width: fit-content;
+        height: fit-content;
+    }
 
     .logo-container{
         max-width: 80%;
