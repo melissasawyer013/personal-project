@@ -1000,7 +1000,7 @@ input[type='submit'] {
     }    
     .initially-display-none-explain-more-container {
         padding: 0 0 0 15px;
-        margin-top: -5px;
+        margin-top: -25px;
         display: none;
         flex-direction: column;
         max-width: 90%;
