@@ -998,7 +998,13 @@ input[type='submit'] {
         min-width: 80%;
         margin: 50px 0;  
     }    
-
+    .initially-display-none-explain-more-container {
+        padding: 0 0 0 15px;
+        margin-top: -5px;
+        display: none;
+        flex-direction: column;
+        max-width: 90%;
+    }
     /* .text-container-column{} */
 
     /* .container-row{
@@ -1066,7 +1072,7 @@ input[type='submit'] {
     /* FORMS GLOBAL STYLING */
 
     /* .form-container{} */
-
+    
     /* .initially-display-none-explain-more-container{} */
 
 }
