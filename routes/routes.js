@@ -253,7 +253,6 @@ router.get('/searchForNeedsAndOfferings', (function (req, res) {
                                 'needsToDisplay': allNeedEntriesDisplayInfoArray,
                                 'offersToDisplay': allOfferEntriesDisplayInfoArray,
                                 user: req.user,
-                                
                             })
                         }
                     });

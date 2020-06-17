@@ -1,4 +1,4 @@
-const { text } = require("body-parser");
+// const { text } = require("body-parser");
 
 // Shows hidden div with additional questions when needs or offerings checked on form
 let checkboxes = document.querySelectorAll(".contains-hidden-div");
@@ -9,6 +9,7 @@ for (let i=0; i<checkboxes.length; i++) {
 function displayHiddenDiv(e) {
   let checkboxInputToCheck = e.target;
   let divToShow = checkboxInputToCheck.parentNode.parentNode.children[1];
+  console.log(divToShow);
   if (checkboxInputToCheck.checked == true) {
     divToShow.style.display = "flex";
   } else {
