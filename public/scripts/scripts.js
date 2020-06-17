@@ -1,4 +1,4 @@
-const { text } = require("body-parser");
+// const { text } = require("body-parser");
 
 // Shows hidden div with additional questions when needs or offerings checked on form
 let checkboxes = document.querySelectorAll(".contains-hidden-div");
