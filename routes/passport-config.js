@@ -9,9 +9,6 @@ function initialize (passport, getUserByUsername, getUserById) {
         }
 
         try {
-            console.log(password);
-            console.log(user.password, user);
-            
             if (await bcrypt.compare(password, user.password)) {
                 console.log('passwords match')
                 return done(null, user)

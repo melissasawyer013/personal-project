@@ -122,7 +122,6 @@ router.post('/addBlockCoordSub', (req, res) => {
             console.log(`The block coordination interest form was sumbitted`);
         }
     })
-    console.log(userFormDataObject);
     res.render('pages/block-coordinator', {
         user: req.user,
     });

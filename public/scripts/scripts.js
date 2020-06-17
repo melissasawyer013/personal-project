@@ -1,3 +1,4 @@
+const { text } = require("body-parser");
 
 // Shows hidden div with additional questions when needs or offerings checked on form
 let checkboxes = document.querySelectorAll(".contains-hidden-div");
@@ -67,7 +68,10 @@ function addCommunityUpdate(userID, updateKey, priorUpdates) {
           spotToPrint.innerHTML += '<span>' + note + '</span><br>';
         }
       });
-      spotToPrint.innerHTML += '<br>';      
+      spotToPrint.innerHTML += '<br>'; 
+      console.log(textArea[0].value); 
+      textArea[0].value = null;
+      console.log(textArea[0].value);     
     }
   })
   .catch (err => console.log(err))
