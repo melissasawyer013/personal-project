@@ -252,6 +252,8 @@ router.get('/searchForNeedsAndOfferings', (function (req, res) {
                             res.render('pages/needs-and-offerings', {
                                 'needsToDisplay': allNeedEntriesDisplayInfoArray,
                                 'offersToDisplay': allOfferEntriesDisplayInfoArray,
+                                user: req.user,
+                                
                             })
                         }
                     });
