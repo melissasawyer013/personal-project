@@ -36,7 +36,8 @@
     "passport": "^0.4.1",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "uuidv4": "^6.1.0"
+    "uuidv4": "^6.1.0",
+    "nodemon": "^2.0.4"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
