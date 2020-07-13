@@ -25,6 +25,19 @@
                 </ul>
         </div>
         <div class="narrow-content-container-column palette-a">
+            <% if(typeof messages != "undefined") { %>
+                <div class="alert-messages palette-d">
+                    <span><%= messages[0] %></span>
+                </div> 
+             <%}%>
+             <% if (typeof errors != "undefined") { 
+                 for (let i=0; i<errors.length; i++)%> { %>
+                     
+                    <div class="alert-messages palette-d">
+                        <span><%= errors[i] %></span>
+                    </div> 
+                <%}
+             }%>
             <h1>WANT TO BE A BLOCK COORDINATOR?</h1>
             <div class="form-container">
                 <form action="/addBlockCoordSub" method="POST">
@@ -32,7 +45,7 @@
                         <legend class="sub-field-legend">Complete the form below.<br><span class="form-labels-subtext">Fields marked with an asterisk * are required.</span></legend>
                         <div class="input-containers">
                             <label for="coordinatorName" class="form-labels">Full Name *</label>
-                            <input type="text" placeholder="full name" id="coordinatorName" name="coordinatorName" class="text-inputs" required>
+                            <input type="text" placeholder="full name" id="coordinatorName" name="coordinatorName" class="text-inputs" required maxlength="60">
                         </div>
                         <div class="input-containers">
                             <label for="coordinatorPhoneNumber" class="form-labels">Phone Number *</label>
@@ -40,11 +53,11 @@
                         </div>
                         <div class="input-containers">
                             <label for="coordinatorEmailAddress" class="form-labels">Email Address *</label>
-                            <input type="email" placeholder="YourEmail@email.com" id="coordinatorEmailAddress" name="coordinatorEmailAddress" class="text-inputs" required>
+                            <input type="email" placeholder="YourEmail@email.com" id="coordinatorEmailAddress" name="coordinatorEmailAddress" class="text-inputs" required maxlength="70">
                         </div>
                         <div class="input-containers">
                             <label for="coordinatorExplain" class="form-labels">Tell us about yourself and your experiences. *<br><span class="form-labels-subtext">What is your connection to Dorchester? Why do you want to become a block coordinator? What organizing experience do you have? (no prior experience necessary)</span></label>
-                            <textarea class="text-inputs" id="coordinatorExplain" name="coordinatorExplain" placeholder="Explain here" required></textarea>
+                            <textarea class="text-inputs" id="coordinatorExplain" name="coordinatorExplain" placeholder="Explain here" required maxlength="3000"></textarea>
                         </div>
                         <br>
                         <input type="submit" class="palette-b button">

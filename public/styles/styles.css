@@ -153,6 +153,13 @@ body {
     color: #3F2B39;
 }
 
+.alert-messages {
+    display: flex;
+    font-weight: bold;
+    padding: 0 10px;
+    width: fit-content;
+}
+
 .page-container-column {
     display: flex;
     flex-direction: column;
