@@ -8,6 +8,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const flash = require('connect-flash');
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const initializePassport = require('./routes/passport-config');
 dotenv.config();
 
@@ -27,14 +28,26 @@ async function getUserById(_id, req) {
 
 const app = express();
 const PORT = process.env.PORT || 5500;
+const store = new MongoDBStore({
+    uri: process.env.dbURL,
+    collection: process.env.collectionSession
+});
 
 app.set('view engine', 'ejs');
 
 app.use(passport.initialize());
 app.use(passport.session());
 
+store.on('error', function(error) {
+    console.log(error);
+});
+
 app.use(session({
     secret: process.env.SECRET,
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+    },
+    store: store,
     resave: true,                   //save unmodified sessions
     saveUninitialized: true,
 }));
