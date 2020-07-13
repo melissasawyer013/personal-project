@@ -5,6 +5,11 @@
         <div class="large-content-container-column palette-a">
             <h1>BROWSE NEEDS & OFFERINGS</h1>
             <form id="searchForm" action="/searchForNeedsAndOfferings" method="GET">
+                <% if(typeof messages != "undefined") { %>
+                    <div class="alert-messages palette-d">
+                        <span><%= messages[0] %></span>
+                    </div> 
+                 <%}%>
                 <fieldset>
                     <legend style="text-align: center;">Narrow your search by selecting from the filters below.</legend>
                     <br>
@@ -371,7 +376,7 @@
 <!-- Offers Search Results Starts Here -->
                 if (offersToDisplay) {
                     offersToDisplay.forEach(singleOfferToDisplay => { %>
-                    <div class="medium-content-container-column palette-c" style="font-size: 1em;">
+                        <div class="medium-content-container-column palette-c" style="font-size: 1em;">
                         <h2> <%= singleOfferToDisplay[1] %> </h2>
                         <div class="container-row-no-wrap no-wrap">
                             <div class="search-result-row-label">

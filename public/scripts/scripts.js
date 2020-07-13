@@ -9,7 +9,6 @@ for (let i=0; i<checkboxes.length; i++) {
 function displayHiddenDiv(e) {
   let checkboxInputToCheck = e.target;
   let divToShow = checkboxInputToCheck.parentNode.parentNode.children[1];
-  console.log(divToShow);
   if (checkboxInputToCheck.checked == true) {
     divToShow.style.display = "flex";
   } else {
@@ -44,7 +43,7 @@ function displayHiddenDivUpdate(e) {
 
 
 //fetch function to add a community update to the database
-function addCommunityUpdate(userID, updateKey, priorUpdates) {
+function addCommunityUpdate(userID, updateKey, priorUpdates,) {
   const formData = new FormData();
   let textArea = document.getElementsByClassName(`${updateKey}${userID}`);
   let noteUpdate = textArea[0].value;
@@ -73,6 +72,9 @@ function addCommunityUpdate(userID, updateKey, priorUpdates) {
       console.log(textArea[0].value); 
       textArea[0].value = null;
       console.log(textArea[0].value);     
+    } else {
+      let spotToPrint = document.getElementById(`print${updateKey}${userID}`);
+      spotToPrint.innerHTML = 'You must be logged in to update. <a href="login">Login here.</a> Copy your community update text to paste after logging in.<br><br>';
     }
   })
   .catch (err => console.log(err))

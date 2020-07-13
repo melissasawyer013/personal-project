@@ -3,6 +3,11 @@
 <!-- Page Content Starts -->
     <div class="page-container-column">
         <div class="large-content-container-column palette-b">
+            <% if(typeof messages != "undefined") { %>
+                <div class="alert-messages palette-d">
+                    <span><%= messages[0] %></span>
+                </div> 
+             <%}%>
             <h1>NEED HELP?</h1>
             <form action="/submitHelp" method="POST">
                 <div class="input-containers">
@@ -22,6 +27,8 @@
                 <input type="submit" class="button palette-a">
                 <br>
             </form>
+            
+           
             <div class="separator-palette-b">&nbsp OR &nbsp</div>
             <p>Call the Dorchester Community Care Helpline at (###)###-####. (number coming soon)</p>
         </div>
