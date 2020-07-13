@@ -29,9 +29,9 @@
                 <div class="alert-messages palette-d">
                     <span><%= messages[0] %></span>
                 </div> 
-             <%}%>
-             <% if (typeof errors != "undefined") { 
-                 for (let i=0; i<errors.length; i++)%> { %>
+             <%}
+             if (typeof errors != "undefined") { 
+                 for (let i=0; i<errors.length; i++) { %>
                      
                     <div class="alert-messages palette-d">
                         <span><%= errors[i] %></span>

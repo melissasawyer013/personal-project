@@ -116,7 +116,7 @@ router.get('/about-us/', (req, res) => {
 router.get('/block-coordinator', (req, res) => {
     res.render('pages/block-coordinator', {
         user: req.user,
-        messages: req.flash('messages'),
+        // messages: req.flash('messages'),
     });
 });
 
