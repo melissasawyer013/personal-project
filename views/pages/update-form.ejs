@@ -5,6 +5,11 @@
 <!-- Form Starts Here -->
         <div class="large-content-container-column palette-b">
             <h1>PROFILE</h1>
+            <% if(typeof messages != "undefined") { %>
+                <div class="alert-messages palette-d">
+                    <span><%= messages[0] %></span>
+                </div> 
+             <%}%>
             <p>Hello, <%=user.formFirstName%>! <br>You can update your form entries below.</p>
             <form action="/logout?_method=DELETE" method="POST">
                 <input type="submit" class="palette-a button" value="Logout">

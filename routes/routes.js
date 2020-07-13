@@ -7,21 +7,21 @@ const collectionCommunityResourceSubmission = process.env.collectionCommunityRes
 const collectionUserForm = process.env.collectionUserForm;
 const collectionBlockCoord = process.env.collectionBlockCoord;
 const collectionHelpSubmissions = process.env.collectionHelpSubmissions;
-const PORT = process.env.PORT || 5500;
+// const PORT = process.env.PORT || 5500;
 const dotenv = require('dotenv');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const flash = require('connect-flash');
-const PATH = require('path');
+// const LocalStrategy = require('passport-local');
+// const LocalStrategy = require('passport-local').Strategy;
+// const PATH = require('path');
 const bcrypt = require('bcryptjs');
-const session = require('express-session');
-const MongoStore = require('connect-mongo')(session);
-const morgan = require('morgan');
-const uuid = require('uuidv4').uuid;
-const ensure = require('connect-ensure-login');
+// const session = require('express-session');
+const flash = require('connect-flash');
+// const ensure = require('connect-ensure-login');
 const methodOverride = require('method-override');
 const initializePassport = require('./passport-config');
+const { reset } = require('nodemon');
 let dbHandler;
+// const globals = require('../index')
 
 dotenv.config();
 router.use(express.urlencoded( {extended: false }));
@@ -38,37 +38,53 @@ mongoClient.connect(dbURL, { useUnifiedTopology: true }, (err, dbClient) => {
     };
 });
 
+router.use(passport.initialize());
+router.use(passport.session());
 router.use(flash());
+
+// router.use(session({
+//     secret: process.env.SECRET,
+//     resave: false,
+//     saveUninitialized: false, 
+//     cookie: {secure: true}
+// }));
 
 router.use(methodOverride('_method'));
 
 router.post('/sendLogin', passport.authenticate('local', {
     successRedirect: '/update-form',
     failureRedirect: '/login',
-    failureFlash: true
-}))
+    failureFlash: true,
+    // successFlash: true,
+    // messagesFlash: true, 
+}));
 
 router.get('/update-form', checkAuthenticated, (req, res) => {
-    res.render('pages/update-form', {user: req.user})
-})
+    res.render('pages/update-form', {
+        user: req.user,
+        messages: req.flash('messages'),
+    });
+});
 
 router.get('/login', checkNotAuthenticated, (req, res) => {
-    req.flash('message', 'Login successful!')
     res.render('pages/login', {
         user: req.user,
+        messages: req.flash('messages'),
     });
 });
 
 router.delete('/logout', (req, res) => {
     req.logOut();
-    res.redirect('/login')
+    req.flash('messages', 'You have successfully logged out.');
+    res.redirect('/login');
+    console.log('this is inside of logout', req.session)
 })
-
 
 function checkAuthenticated(req, res, next) {
     if(req.isAuthenticated()) {
         return next()
     }
+    req.flash('messages', 'You must be logged in to perform that action.');
     res.redirect('/login')
 }
 
@@ -100,6 +116,7 @@ router.get('/about-us/', (req, res) => {
 router.get('/block-coordinator', (req, res) => {
     res.render('pages/block-coordinator', {
         user: req.user,
+        messages: req.flash('messages'),
     });
 });
 
@@ -122,8 +139,11 @@ router.post('/addBlockCoordSub', (req, res) => {
             console.log(`The block coordination interest form was sumbitted`);
         }
     })
+    req.flash('messages', 'Thank you. The block coordinator form was submitted.');
+    // res.redirect ('/help');
     res.render('pages/block-coordinator', {
         user: req.user,
+        messages:req.flash('messages')
     });
 });
 
@@ -131,6 +151,7 @@ router.post('/addBlockCoordSub', (req, res) => {
 router.get('/community-resources-add-organization', (req, res) => {
     res.render('pages/community-resources-add-organization', {
         user: req.user,
+        messages:req.flash('messages')
     });
 });
 
@@ -153,6 +174,7 @@ router.get('/forgot-password', (req, res) => {
 router.get('/help', (req, res) => {
     res.render('pages/help', {
         user: req.user,
+        messages: req.flash('messages'),
     });
 });
 
@@ -166,23 +188,24 @@ router.post('/submitHelp', (req, res) => {
         helpMessageEmail: helpMessageEmail,
         helpMessageText: helpMessageText,
     }
-    dbHandler.collection(collectionHelpSubmissions).insertOne(userFormDataObject, (err, res) => {
+    dbHandler.collection(collectionHelpSubmissions).insertOne(userFormDataObject, (err, res, req) => {
         if (err) {
             console.log(`There was an error updating the database. The error is: ${err}`);
         } else {
-            console.log(`The block coordination interest form was sumbitted`);
+            // req.flash('messages', 'Your message was submitted.');
+            console.log(`The help form was sumbitted`);
         }
     })
-    res.render('pages/help', {
-        user: req.user,
-    });
-})
+    req.flash('messages', 'Thank you. Your message was submitted.');
+    res.redirect ('/help');
+});
 
 router.get('/needs-and-offerings', (req, res) => {
     res.render('pages/needs-and-offerings', {
         'needsToDisplay': undefined,
         'offersToDisplay': undefined,
         user: req.user,
+        messages: req.flash('messages')
     }); 
 }); 
 
@@ -582,9 +605,11 @@ router.post('/addResourceSubmission', (req, res) => {
         }
     })
     console.log(userFormDataObject);
-    res.render('pages/community-resources-add-organization', {
-        user: req.user,
-    });
+    req.flash('messages', 'Thank you! Your nomination was submitted.');
+    res.redirect('/community-resources-add-organization');
+    // res.render('pages/community-resources-add-organization', {
+    //     user: req.user,
+    // });
 });
 
 router.post('/addFormData', (req, res) => {
@@ -918,8 +943,8 @@ router.post('/addFormData', (req, res) => {
                     if (error) {
                         console.log(`There was an error adding the information to the database. The error is: ${error}`);
                     } else {
+                        req.flash('messages', "You are now registered and able to login.");
                         res.redirect('/login');
-                        req.flash('successMsg', "You are now registered and able to login.");
                     }
                 })
         }))  
@@ -1236,6 +1261,7 @@ router.post('/updateFormData', (req, res) => {
             console.log(`Yes! The data was updated.`);
         }
     })
+    req.flash('messages', 'Your information was updated.');
     res.redirect('/update-form');
 });
 

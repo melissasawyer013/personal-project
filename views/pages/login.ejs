@@ -4,8 +4,11 @@
     <div class="page-container-column">
         <div class="large-content-container-column palette-a">
             <h1>LOGIN</h1>
-            <div class="separator-palette-a">&nbsp OR &nbsp</div>
-            <br>
+            <% if(typeof messages != "undefined") { %>
+                <div class="alert-messages palette-d">
+                    <span><%= messages[0] %></span>
+                </div> 
+             <%}%>
             <form id="loginForm" action="/sendLogin" method="POST">
                 <div class="input-containers">
                     <label for="username" class="form-labels">Username</label>
@@ -15,6 +18,7 @@
                     <label for="password" class="form-labels">Password</label>
                     <input type="password" placeholder="password" id="password" name="password" class="text-inputs" required>
                 </div>
+                
                 <br>
                 <input type="submit" class="button palette-b">
                 <br>
